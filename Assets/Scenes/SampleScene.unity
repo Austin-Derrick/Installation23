@@ -295,7 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 682014150}
   - component: {fileID: 682014151}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 1326157395}
   - component: {fileID: 1326157399}
   - component: {fileID: 1326157398}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -601,12 +601,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  jumpHeight: 0
+  MaxHealth: 100
+  CurrentHealth: 100
+  damageBounceBack: 5
+  jumpHeight: 5
   groundCheck: {fileID: 1398300937}
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  checkRadius: 0.5
+  checkRadius: 0.001
+  goodToAttack: 1
 --- !u!212 &1603745677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -815,7 +819,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2021899539}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
