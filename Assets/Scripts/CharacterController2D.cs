@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
-    float speed = 10;
+    [Header("Movement Attributes")]
+    [SerializeField]
+    private float speed;
 
-    public float jumpHeight = 50;
+    [SerializeField]
+    private float jumpHeight;
 
-    float maxSpeed = 20;
+    [SerializeField]
+    private float maxSpeed;
 
+    [Space]
+    [Header("Camera Attributes")]
+    [SerializeField]
+    private Camera playerCam;
+
+    [SerializeField]
+    private Vector3 cameraOffset;
+
+    private float jumpForce;
+
+    private Vector3 charPos;
+    private Vector3 mousePos;
     new BoxCollider2D  collider;
 
     Rigidbody2D rb;
@@ -20,7 +36,11 @@ public class CharacterController2D : MonoBehaviour
     public float checkRadius;
     public LayerMask groundLayer;
 
-    private bool grounded;
+    private bool isGrounded;
+    private bool isJumping;
+    private bool jumpKeyHeld;
+
+    Vector2 counterJumpForce = Vector2.down * 100;
 
     private bool isFacingRight = true;
 
@@ -28,21 +48,62 @@ public class CharacterController2D : MonoBehaviour
     {
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+
+        jumpForce = CalculateJumpForce(Physics2D.gravity.magnitude, jumpHeight);
     }
 
     private void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
         if (rb.velocity.magnitude <= maxSpeed)
         {
             rb.velocity = new Vector2(input.x * speed, rb.velocity.y);
         }
         
+        if(isJumping)
+        {
+            if(!jumpKeyHeld && Vector2.Dot(rb.velocity, Vector2.up) > 0)
+            {
+                rb.AddForce(counterJumpForce * rb.mass);
+            }
+        }
     }
 
     private void Update()
     {
+        
+        //Updates mouse and character positions
+        mouseAndCharacterPosition();
+
+        playerCam.transform.position = gameObject.transform.position + cameraOffset;
+        //Character flipping based on mouse position
+        if(mousePos.x >= charPos.x && !isFacingRight)
+        {
+            FlipSprite(-1);
+            isFacingRight = true;
+        }
+        if(mousePos.x <= charPos.x && isFacingRight)
+        {
+            FlipSprite(-1);
+            isFacingRight = false;
+        }
+
         input.x = Input.GetAxisRaw("Horizontal");
+
+        if(Input.GetButtonDown("Jump"))
+        {
+            jumpKeyHeld = true;
+            if(isGrounded)
+            {
+                isJumping = true;
+                rb.AddForce(Vector2.up * jumpForce * rb.mass, ForceMode2D.Impulse);
+            }
+        }
+        else if(Input.GetButtonUp("Jump"))
+        {
+            jumpKeyHeld = false;
+        }
+        /*
         if (!isFacingRight && input.x > 0)
         {
             FlipSprite();
@@ -51,19 +112,34 @@ public class CharacterController2D : MonoBehaviour
         {
             FlipSprite();
         }
-
-        if (grounded == true && Input.GetKeyDown(KeyCode.Space))
+        
+        
+        if (isGrounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector2.up * jumpHeight;
 
-        }
+        }    
+        */
     }
 
-    private void FlipSprite()
+    //Uses Vector 3 to acquire character position and mouse position 
+    //relative to the world coordinates using the player camera.
+    private void mouseAndCharacterPosition()
     {
-        isFacingRight = !isFacingRight;
+        charPos = gameObject.transform.localPosition;
+        mousePos = playerCam.ScreenToWorldPoint(Input.mousePosition);
+    }
+    private void FlipSprite(int direction)
+    {
+        //isFacingRight = !isFacingRight;
         Vector2 scaler = transform.localScale;
-        scaler.x *= -1;
+        //scaler.x *= -1;
+        scaler.x *= direction;
         transform.localScale = scaler;
+    }
+
+    public float CalculateJumpForce(float gravityStrength, float jumpHeight)
+    {
+        return Mathf.Sqrt(2 * gravityStrength * jumpHeight);
     }
 }
