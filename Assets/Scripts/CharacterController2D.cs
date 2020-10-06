@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
-    float speed = 10;
+    [Tooltip("Movement speed of the player")]
+    public float speed = 10;
 
     public float jumpHeight = 50;
 
@@ -62,8 +63,8 @@ public class CharacterController2D : MonoBehaviour
     private void FlipSprite()
     {
         isFacingRight = !isFacingRight;
-        Vector2 scaler = transform.localScale;
-        scaler.x *= -1;
-        transform.localScale = scaler;
+        //Vector2 scaler = transform.localScale;
+        //scaler.x *= -1;
+        transform.Rotate(0, 180, 0);
     }
 }
