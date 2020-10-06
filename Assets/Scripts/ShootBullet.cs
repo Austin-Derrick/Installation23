@@ -6,28 +6,28 @@ public class ShootBullet : MonoBehaviour
 {
     bool isBeingHeld = false;
     int ammo = 5;
-    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Transform firePosition;
     Rigidbody2D bulletRB;
-    // Start is called before the first frame update
-    void Start()
-    {
-        bulletRB = bullet.GetComponent<Rigidbody2D>();   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (isBeingHeld && Input.GetKeyDown(KeyCode.C))
-        {
-            Transform bulletToShoot = Instantiate(bullet.transform, GameObject.Find("Anchor").transform);
-            bulletToShoot.transform.SetParent(null);
-            Rigidbody2D bulletToShootRB = bulletToShoot.GetComponent<Rigidbody2D>();
-            bulletToShootRB.AddForce(Vector2.right * 50, ForceMode2D.Impulse);
-        }
-    }
+    float shootForce = 10f;
 
     public void setIsBeingHeld()
     {
         isBeingHeld = true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            shootBullet(firePosition);
+        }
+    }
+    public void shootBullet(Transform shootPosition)
+    {
+        GameObject bulletToFire = Instantiate(bulletPrefab, shootPosition.position, shootPosition.rotation, null);
+        bulletRB = bulletToFire.GetComponent<Rigidbody2D>();
+        Vector2 bulletDirection = shootPosition.right;
+        bulletRB.AddForce(shootForce * bulletDirection, ForceMode2D.Impulse);
     }
 }

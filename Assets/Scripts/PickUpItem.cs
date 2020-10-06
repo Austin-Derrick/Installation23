@@ -13,12 +13,11 @@ public class PickUpItem : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Pickup")
+        if (collision.gameObject.CompareTag("Pickup"))
         {
             collision.transform.position = anchor.position;
             collision.gameObject.transform.SetParent(anchor);
 
-            shootBulletScript.setIsBeingHeld();
         }
     }
 }
