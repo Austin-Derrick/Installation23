@@ -20,7 +20,7 @@ public class ShootBullet : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && isBeingHeld == true)
         {
             StartCoroutine( shootBullet(firePosition));
         }

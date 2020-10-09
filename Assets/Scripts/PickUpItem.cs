@@ -16,6 +16,7 @@ public class PickUpItem : MonoBehaviour
         if (collision.gameObject.CompareTag("Pickup"))
         {
             collision.transform.position = anchor.position;
+            shootBulletScript.setIsBeingHeld();
             collision.gameObject.transform.SetParent(anchor);
 
         }
