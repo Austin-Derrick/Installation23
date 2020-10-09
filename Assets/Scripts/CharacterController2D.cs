@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+
     [Header("Movement Attributes")]
     [SerializeField]
     private float speed;
+
 
     [SerializeField]
     private float jumpHeight;
@@ -131,6 +133,7 @@ public class CharacterController2D : MonoBehaviour
     }
     private void FlipSprite(int direction)
     {
+
         //isFacingRight = !isFacingRight;
         Vector2 scaler = transform.localScale;
         //scaler.x *= -1;
