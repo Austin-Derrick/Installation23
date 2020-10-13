@@ -7,28 +7,28 @@ public class CharacterController2D : MonoBehaviour
     [Tooltip("Movement speed of the player")]
     public float speed = 10;
 
+    [SerializeField]
+    Camera playerCam;
+
     public float jumpHeight = 50;
 
     float maxSpeed = 20;
 
     new BoxCollider2D  collider;
-    [SerializeField]
-    Camera playerCam;
-
 
     Rigidbody2D rb;
 
-    Vector2 input;
+    public LayerMask groundLayer;
     public Transform groundCheck;
     public float checkRadius;
-    public LayerMask groundLayer;
-    Vector3 cameraOffset = new Vector3(0, 0, -10);
     private bool grounded;
 
     private bool isFacingRight = true;
 
     Vector3 mousePos = new Vector3();
+    Vector3 cameraOffset = new Vector3(0, 0, -10);
     Vector3 charPos;
+    Vector2 input;
 
     private void Awake()
     {
@@ -43,16 +43,17 @@ public class CharacterController2D : MonoBehaviour
         {
             rb.velocity = new Vector2(input.x * speed, rb.velocity.y);
         }
-        
     }
 
     private void Update()
     {
+        input.x = Input.GetAxisRaw("Horizontal");
 
         //Updates mouse and character positions
         mouseAndCharacterPosition();
 
         playerCam.transform.position = gameObject.transform.position + cameraOffset;
+
         //Character flipping based on mouse position
         if(mousePos.x >= charPos.x && !isFacingRight)
         {
@@ -64,25 +65,12 @@ public class CharacterController2D : MonoBehaviour
             FlipSprite();
             isFacingRight = false;
         }
-
-
-        input.x = Input.GetAxisRaw("Horizontal");
-        if (!isFacingRight && input.x > 0)
-        {
-            FlipSprite();
-        }
-        else if (isFacingRight && input.x < 0)
-        {
-            FlipSprite();
-        }
-
+                
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector2.up * jumpHeight;
-
         }
     }
-
 
     //Uses Vector 3 to acquire character position and mouse position 
     //relative to the world coordinates using the player camera.
@@ -95,8 +83,6 @@ public class CharacterController2D : MonoBehaviour
     private void FlipSprite()
     {
         isFacingRight = !isFacingRight;
-        //Vector2 scaler = transform.localScale;
-        //scaler.x *= -1;
         transform.Rotate(0, 180, 0);
     }
 }
