@@ -10,6 +10,9 @@ public class PickUpItem : MonoBehaviour
     Transform anchor;
     [SerializeField] ShootBullet shootBulletScript;
 
+    [SerializeField]
+    PlayerBehavior playerBehavior;
+
     private void Start()
     {
         anchor = transform.GetChild(2);
@@ -22,12 +25,14 @@ public class PickUpItem : MonoBehaviour
             if (inventory.currentIndex <= inventory.maxItems - 1)
             {
                 inventory.addItem(collision.gameObject);
-                if (inventory.currentIndex == 0)
-                {
+                //if (inventory.currentIndex == 0)
+                //{
+                    Debug.Log("Setting parent");
                     collision.transform.position = anchor.position;
                     shootBulletScript.setIsBeingHeld();
+                    playerBehavior.isHoldingItem = true;
                     collision.gameObject.transform.SetParent(anchor);
-                }
+                //}
             }
         }
     }

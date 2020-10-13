@@ -5,15 +5,16 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField]
-    public int maxItems { get; private set; }
+    public int maxItems = 5;
 
     [SerializeField]
-    public GameObject[] items { get; private set; }
+    public GameObject[] items;
 
     public bool isFull { get; private set; }
     // Most recently added Item
     public int mostRecentItem = 0;
     public int currentIndex = 0;
+    public int nextOpenSpace = 0;
 
     private void Awake()
     {
@@ -23,15 +24,16 @@ public class PlayerInventory : MonoBehaviour
 
     public void addItem(GameObject itemToAdd)
     {
-        if (currentIndex == maxItems - 1)
+        if (nextOpenSpace == maxItems - 1)
         {
             Debug.Log("Not Enough room in inventory");
         }
         else
         {
-            items[currentIndex] = itemToAdd;
-            currentIndex++;
-            mostRecentItem = currentIndex;
+            Debug.Log($"Added {itemToAdd.name} in inventory");
+            items[nextOpenSpace] = itemToAdd;
+            mostRecentItem = nextOpenSpace;
+            nextOpenSpace++;
         }
     }
 
