@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     [SerializeField]
-    private int maxItems;
+    public int maxItems { get; private set; }
 
     [SerializeField]
-    GameObject[] items;
+    public GameObject[] items { get; private set; }
 
     public bool isFull { get; private set; }
     // Most recently added Item
