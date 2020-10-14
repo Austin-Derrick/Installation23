@@ -25,14 +25,16 @@ public class PickUpItem : MonoBehaviour
             if (inventory.currentIndex <= inventory.maxItems - 1)
             {
                 inventory.addItem(collision.gameObject);
-                //if (inventory.currentIndex == 0)
-                //{
+                if (inventory.currentIndex == 0)
+                {
+                    Physics2D.IgnoreCollision(inventory.items[0].GetComponent<ItemComponents>().collider, GetComponent<Collider2D>(), true);
+
                     Debug.Log("Setting parent");
                     collision.transform.position = anchor.position;
                     shootBulletScript.setIsBeingHeld();
                     playerBehavior.isHoldingItem = true;
-                    collision.gameObject.transform.SetParent(anchor);
-                //}
+                    collision.gameObject.transform.SetParent(anchor, true);
+                }
             }
         }
     }
