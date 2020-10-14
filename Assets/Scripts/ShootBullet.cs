@@ -11,7 +11,7 @@ public class ShootBullet : MonoBehaviour
     Rigidbody2D bulletRB;
     float shootForce = 10f;
     [SerializeField] LineRenderer lineRenderer;
-    
+    [SerializeField] float damage = 25;
 
     public void setIsBeingHeld()
     {
@@ -38,6 +38,10 @@ public class ShootBullet : MonoBehaviour
         {
             lineRenderer.SetPosition(0, shootPosition.position);
             lineRenderer.SetPosition(1, hitInfo.point);
+            if(hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
+            {
+                hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+            }
         }
         else
         {

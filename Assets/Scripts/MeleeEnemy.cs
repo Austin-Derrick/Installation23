@@ -8,9 +8,6 @@ public class MeleeEnemy : MonoBehaviour
     public float speed;
     private Rigidbody2D enemyRb;
     private GameObject player;
-    public float MaxHealth = 100f;
-    public float CurrentHealth = 100f;
-    public float damageBounceBack = 5;
 
     [Space]
     [Header("Jump Variables")]
@@ -39,10 +36,6 @@ public class MeleeEnemy : MonoBehaviour
         int nonPlayer = 1 << 9;
         nonPlayer = ~nonPlayer;
         RaycastHit2D hit;
-        if(CurrentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
 
         //Checks to see if the player is within range of the enemy AI
         hit = Physics2D.Raycast(transform.position, player.transform.position, nonPlayer);
@@ -55,29 +48,7 @@ public class MeleeEnemy : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        // If enemy collides with bullet, destroy it
-        if (other.gameObject.name == "Bullet")
-        {
-            if (transform.position.x > other.gameObject.transform.position.x)
-                enemyRb.velocity = Vector2.left * damageBounceBack;
-            else
-                enemyRb.velocity = Vector2.right * damageBounceBack;
-            CurrentHealth -= 25;
-        }
-        // If Enemy collides with Player, they bounce back in the opposite direction of the player and then 
-        if (other.gameObject.CompareTag("Player"))
-        {
-            goodToAttack = false;
-            if (transform.position.x > other.gameObject.transform.position.x)
-                enemyRb.velocity = Vector2.left * damageBounceBack;
-            else
-                enemyRb.velocity = Vector2.right * damageBounceBack;
-            StartCoroutine(WaitForAttack());
-        }
-
-    }
+    
 
     private void ChaseThePlayer()
     {

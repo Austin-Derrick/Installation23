@@ -379,6 +379,7 @@ GameObject:
   - component: {fileID: 1326157395}
   - component: {fileID: 1326157399}
   - component: {fileID: 1326157398}
+  - component: {fileID: 1326157400}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -398,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f945c12967e17b4c8bb3f08fc19d987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
   jumpHeight: 10
   groundCheck: {fileID: 2021899539}
   checkRadius: 0.5
@@ -517,6 +519,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &1326157400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326157394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fcd34088572f443b27fbcc9b597206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  armor: 30
+  currentHealth: 100
+  damageBounceBack: 20
 --- !u!1 &1398300936
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,9 +578,10 @@ GameObject:
   - component: {fileID: 1603745676}
   - component: {fileID: 1603745675}
   - component: {fileID: 1603745679}
+  - component: {fileID: 1603745680}
   m_Layer: 0
   m_Name: EnemyTest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -601,9 +620,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  MaxHealth: 100
-  CurrentHealth: 100
-  damageBounceBack: 5
   jumpHeight: 5
   groundCheck: {fileID: 1398300937}
   groundLayer:
@@ -669,7 +685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603745674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.95, y: 3.9030602, z: -0.6365234}
+  m_LocalPosition: {x: -5.78, y: 3.9030602, z: -0.6365234}
   m_LocalScale: {x: 0.075, y: 0.075, z: 1}
   m_Children:
   - {fileID: 1398300937}
@@ -702,6 +718,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.67, y: 16.67}
   m_EdgeRadius: 0
+--- !u!114 &1603745680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603745674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fcd34088572f443b27fbcc9b597206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  armor: 0
+  currentHealth: 100
+  damageBounceBack: 10
 --- !u!1 &2010337237
 GameObject:
   m_ObjectHideFlags: 0
