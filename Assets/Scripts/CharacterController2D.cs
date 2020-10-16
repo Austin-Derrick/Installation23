@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    [SerializeField]
+    PlayerInventory inventory;
+
     [Tooltip("Movement speed of the player")]
     public float speed = 10;
 
@@ -34,6 +37,7 @@ public class CharacterController2D : MonoBehaviour
     {
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        inventory = GetComponent<PlayerInventory>();
     }
 
     private void FixedUpdate()
@@ -51,6 +55,7 @@ public class CharacterController2D : MonoBehaviour
 
         //Updates mouse and character positions
         mouseAndCharacterPosition();
+
 
         playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
