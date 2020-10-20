@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8042951209218418357}
   - component: {fileID: 8042951209218418356}
   - component: {fileID: 8042951209218418359}
+  - component: {fileID: 3263007566611534278}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Pickup
@@ -129,6 +130,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 496986009545652186, guid: aeb244e44de42ab44a65bb7b1281e777,
     type: 3}
   firePosition: {fileID: 8042951208010406451}
+  lineRenderer: {fileID: 0}
 --- !u!61 &8042951209218418359
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,3 +157,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3263007566611534278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042951209218418358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36b91e87ff32fd4fbb299075357220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
