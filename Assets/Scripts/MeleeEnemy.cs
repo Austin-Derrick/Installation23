@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
-    [Header("Attributes")]
-    public float speed;
-    private Rigidbody2D enemyRb;
-    private GameObject player;
+    [Header("AI")]
+    public bool withinRange;
 
     [Space]
     [Header("Jump Variables")]
@@ -17,58 +15,59 @@ public class MeleeEnemy : MonoBehaviour
     private bool grounded;
     public float checkRadius;
 
-    [Space]
-    [Header("AI")]
-    public bool goodToAttack = true;
-    
-
-
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody2D>();
-        player = GameObject.Find("Player");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        int nonPlayer = 1 << 9;
-        nonPlayer = ~nonPlayer;
-        RaycastHit2D hit;
-
-        //Checks to see if the player is within range of the enemy AI
-        hit = Physics2D.Raycast(transform.position, player.transform.position, nonPlayer);
-        if (hit && goodToAttack)
-        {
-            ChaseThePlayer();
-        }
-
-        
-        
+        grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
     }
 
-    
-
-    private void ChaseThePlayer()
+    public void MeleeBehavior(GameObject player, float speed, float attackRange, Rigidbody2D enemyRb)
     {
-        // Set enemy direction towards player and move there
+        withinRange = false;
+        if (!withinRange)
+            StartCoroutine(ChaseThePlayer(player, speed, enemyRb));
+        else
+            Attack();
+    }
+
+    IEnumerator ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
+    {
+        Debug.Log("Coroutine ChaseThePlayer is being called");
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
         if (player.transform.position.y > transform.position.y + 1 && grounded)
         {
-            Jump();
+            Jump(enemyRb);
         }
+        yield return new WaitForSeconds(.5f);
     }
 
-    private void Jump()
+    //private void ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
+    //{
+    //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    //    if(player.transform.position.y > transform.position.y + 1 && grounded)
+    //    {
+    //        Jump(enemyRb);
+    //    }
+
+    //}
+
+    public void Jump(Rigidbody2D enemyRb)
     {
         enemyRb.velocity = Vector2.up * jumpHeight;
     }
 
-    public IEnumerator WaitForAttack()
+    private void Attack()
     {
-        yield return new WaitForSeconds(1.5f);
-        goodToAttack = true;
+
     }
+
+    
+
+    
 }
