@@ -293,10 +293,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrenadeLauncher
       objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.7807019
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.7649922
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0.46031415
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380475750511644, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.43563533
+      objectReference: {fileID: 0}
     - target: {fileID: 9058380475750511647, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.45
+      value: -7.29
       objectReference: {fileID: 0}
     - target: {fileID: 9058380475750511647, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
@@ -351,17 +381,27 @@ PrefabInstance:
     - target: {fileID: 9058380475750511647, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9058380475750511647, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9058380475750511647, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380476715289110, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058380476715289110, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.49
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aaa398c04a99774782c8a11824f5c24, type: 3}
