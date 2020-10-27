@@ -1,13 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerBehavior : MonoBehaviour
 {
     public bool isHoldingItem;
     PlayerInventory inventory;
     Vector3 mousePos;
-    [SerializeField] Transform anchor;
+    [SerializeField] 
+    Transform anchor;
+    GameObject currentWeapon;
+    bool isFacingRight = true;
+    int currentInventoryIndex = 0;
 
     private void Start()
     {
@@ -18,27 +23,37 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (isHoldingItem)
         {
-            rotateItemInHands();
-            setGunPosition();
+            if (currentWeapon == null)
+            {
+                currentWeapon = inventory.items[currentInventoryIndex];
+            }
+            else
+            {
+                mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                rotateItemInHands();
+            }
         }
-    }
-
-    private void setGunPosition()
-    {
-        inventory.items[0].transform.position = anchor.position;
-        inventory.items[0].transform.rotation = anchor.rotation;
     }
 
     private void rotateItemInHands()
     {
+        if (mousePos.x < transform.position.x && isFacingRight)
+        {
+            currentWeapon.GetComponent<SpriteRenderer>().flipY = true;
+            isFacingRight = false;
+        }
+        if (mousePos.x > transform.position.x && !isFacingRight)
+        {
+            currentWeapon.GetComponent<SpriteRenderer>().flipY = false;
+            isFacingRight = true;
+        }
         // Vector math to get a vector that points in the direction that the tap is in
-        Vector3 shootDirection = (mousePos - anchor.position);
+        Vector2 shootDirection = (mousePos - anchor.position);
         // Get the tangent of the direction vector and convert the angle to degrees
         float thetaDegrees = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         // Rotates the play object according to the degrees that we calculated
-        anchor.transform.eulerAngles = new Vector3(0, anchor.transform.rotation.y, thetaDegrees);
+        anchor.transform.eulerAngles = new Vector3(0, 0, thetaDegrees);
     }
 }
