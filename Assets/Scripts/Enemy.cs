@@ -33,6 +33,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            //rangedEnemyScript.GetSpeed(speed);
             isRanged = false;
             isMelee = true;
         }
@@ -55,7 +56,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                rangedEnemyScript.RangedBehavior(player, speed, attackRange);
+                rangedEnemyScript.RangedBehavior();
                 
             }
         }

@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
-    public float offsetValue = 5.0f;
-    public Vector2 offsetLoc;
-    public float desiredAttackRange = 3.0f;
+    public float offsetVal = 5.0f;
+    private bool isActive = false;
+    private bool isSafe = true;
+    public float speed = 0;
+    public CircleCollider2D safetyBubble;
+    Vector2 MoveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -19,45 +23,57 @@ public class RangedEnemy : MonoBehaviour
         
     }
 
-    public void RangedBehavior(GameObject player, float speed, float attackRange)
+    public void GetSpeed(float Speed)
     {
-        MaintainDistance(player, speed);
+        speed = Speed;
     }
 
-    private void MaintainDistance(GameObject player, float speed)
+    //public void SetActive(bool status)
+    //{
+
+    //}
+
+    public void RangedBehavior(GameObject player)
     {
-        offsetLoc = player.transform.position;
-        if (transform.position.x >= player.transform.position.x)
-        {
-            //When player is to the left of the enemy
-            offsetLoc.x = transform.position.x + offsetValue;
-            Debug.Log("Player is to the left of the enemy");
-            if ((player.transform.position.x - transform.position.x) >= desiredAttackRange)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, offsetLoc, speed * Time.deltaTime);
-            }
-        } 
-        else if (transform.position.x <= player.transform.position.x)
-        {
-            //When player is to the right of the enemy
-            offsetLoc.x = transform.position.x - offsetValue;
-            Debug.Log("Player is to the right of the enemy");
-            if ((player.transform.position.x + transform.position.x) >= desiredAttackRange)
-            {
-                transform.position = Vector2.MoveTowards(transform.position, offsetLoc, speed * Time.deltaTime); ;
-            }
-        }
-        //Checks to see if the player is within range on either side
-        
-        
-        else
+        if(isSafe)
             Shoot();
+        else
+            StartCoroutine(MaintainDistance(speed, player));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if(CompareTag("Player"))
+            isSafe = false;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isSafe = true;
+    }
+
+
+    //When the player gets too close to the enemy, the enemy walks away from the player
+    IEnumerator MaintainDistance(float speed, GameObject player)
+    {
+        if(transform.position.x < player.transform.position.x)
+        {
+            
+            MoveDirection.x = transform.position.x - offsetVal;
+        }
+        else
+        {
+            
+            MoveDirection.x = transform.position.x + offsetVal;
+        }
+        MoveDirection.y = 0.0f;
         
+        transform.position = Vector2.MoveTowards(transform.position, MoveDirection, speed * Time.deltaTime);
+        yield return new WaitForSeconds(0.5f);
     }
 
     private void Shoot()
     {
-        Debug.Log("Enemy Would shoot");
         //The ranged enemy is gone shoot
     }
 }
