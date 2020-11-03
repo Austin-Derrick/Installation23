@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeEnemy : MonoBehaviour
 {
     [Header("AI")]
-    public bool withinRange;
+    public bool withinRange = false;
 
     [Space]
     [Header("Jump Variables")]

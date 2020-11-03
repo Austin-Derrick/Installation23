@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class RangedEnemy : MonoBehaviour
 {
-    public float offsetVal = 5.0f;
+    public float offsetVal = 4.0f;
     private bool isActive = false;
-    private bool isSafe = true;
+    private bool isSafe;
     public float speed = 0;
-    public CircleCollider2D safetyBubble;
     Vector2 MoveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        isSafe = true;
     }
 
     // Update is called once per frame
@@ -35,23 +34,20 @@ public class RangedEnemy : MonoBehaviour
 
     public void RangedBehavior(GameObject player)
     {
+        CheckForSafety(player);
         if(isSafe)
             Shoot();
         else
             StartCoroutine(MaintainDistance(speed, player));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void CheckForSafety(GameObject player)
     {
-       if(CompareTag("Player"))
+        if ((player.transform.position.x - transform.position.x) < offsetVal)
             isSafe = false;
+        else
+            isSafe = true;
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isSafe = true;
-    }
-
 
     //When the player gets too close to the enemy, the enemy walks away from the player
     IEnumerator MaintainDistance(float speed, GameObject player)
@@ -67,7 +63,7 @@ public class RangedEnemy : MonoBehaviour
             MoveDirection.x = transform.position.x + offsetVal;
         }
         MoveDirection.y = 0.0f;
-        
+        Debug.Log("Move Direction is x: " + MoveDirection.x + " y: " + MoveDirection.y);
         transform.position = Vector2.MoveTowards(transform.position, MoveDirection, speed * Time.deltaTime);
         yield return new WaitForSeconds(0.5f);
     }

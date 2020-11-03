@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                rangedEnemyScript.RangedBehavior();
+                rangedEnemyScript.RangedBehavior(player);
                 
             }
         }
