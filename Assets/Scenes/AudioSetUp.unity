@@ -247,8 +247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770cf35da19d93f4fb0eb49368a8e834, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: []
-  jump: {fileID: 0}
+  step:
+  - {fileID: 8300000, guid: deca6efe97daa98448a9ae7d5a283b90, type: 3}
+  - {fileID: 8300000, guid: 32e329546c914a34381d5dd519dbfbca, type: 3}
+  - {fileID: 8300000, guid: b40bebec3f4b5ca4ab53401711e4ced9, type: 3}
+  - {fileID: 8300000, guid: ded78e1b954278047a04ce124700575b, type: 3}
+  jump: {fileID: 8300000, guid: 7095fabce30536541bdbc3b4c512ef82, type: 3}
   minPitch: 0
   maxPitch: 0
   pitch: 0

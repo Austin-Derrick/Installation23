@@ -13,14 +13,15 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     AudioClip jump;
     //Variables
     [SerializeField]
-    float minPitch;
+    float minPitch = 1.0f;
     [SerializeField]
-    float maxPitch;
+    float maxPitch = 1.0f;
     [SerializeField]
     float pitch;
     [Range(0, 1)]
     [SerializeField]
     float volume = 1.0f;
+    bool walking = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,29 +33,47 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
-            footsteps();
+            walking = true;
+            
+        }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
+        {
+            walking = false;
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            walking = false;
             jumps();
+        }
+        if (walking) 
+        {
+            footsteps();
         }
     }
 
     void footsteps()
     {
-        source.clip = step[Random.Range(0, step.Length)];
-        pitch = Random.Range(minPitch, maxPitch);
-        source.pitch = pitch;
-        source.volume = volume;
-        source.Play();
+        if (!source.isPlaying)
+        {
+            Debug.Log("In Footsteps");
+            source.clip = step[Random.Range(0, step.Length)];
+            pitch = Random.Range(minPitch, maxPitch);
+            source.pitch = pitch;
+            source.volume = volume;
+            source.Play();
+        }
     }
 
     void jumps()
     {
-        source.clip = jump;
-        pitch = Random.Range(minPitch, maxPitch);
-        source.pitch = pitch;
-        source.volume = volume;
-        source.Play();
+        if (!source.isPlaying)
+        {
+            source.clip = jump;
+            pitch = Random.Range(minPitch, maxPitch);
+            source.pitch = pitch;
+            source.volume = volume;
+            source.Play();
+        }
     }
 }
