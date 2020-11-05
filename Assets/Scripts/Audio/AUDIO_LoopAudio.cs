@@ -12,14 +12,11 @@ public class AUDIO_LoopAudio : MonoBehaviour
     AudioClip clip; 
     void Start()
     {
-        source = GetComponent<AudioSource>();   
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        source = GetComponent<AudioSource>();
         source.clip = clip;
         source.loop = true;
         source.Play();
     }
+
+  
 }
