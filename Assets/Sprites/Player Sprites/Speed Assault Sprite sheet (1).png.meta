@@ -1,7 +1,55 @@
 fileFormatVersion: 2
 guid: 67b8e3bbe03971c45a471bebfd7dd454
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5494161806701105687
+    second: Speed Assault Sprite sheet (1)_0
+  - first:
+      213: -5388944601741676760
+    second: Speed Assault Sprite sheet (1)_1
+  - first:
+      213: -3138668443833250620
+    second: Speed Assault Sprite sheet (1)_2
+  - first:
+      213: -3308330010285448775
+    second: Speed Assault Sprite sheet (1)_3
+  - first:
+      213: -9044522611100780634
+    second: Speed Assault Sprite sheet (1)_4
+  - first:
+      213: 64457517542690092
+    second: Speed Assault Sprite sheet (1)_5
+  - first:
+      213: 3807287368475066806
+    second: Speed Assault Sprite sheet (1)_6
+  - first:
+      213: 7487981785834233270
+    second: Speed Assault Sprite sheet (1)_7
+  - first:
+      213: 677957079100293693
+    second: Speed Assault Sprite sheet (1)_8
+  - first:
+      213: -7332104562186805339
+    second: Speed Assault Sprite sheet (1)_9
+  - first:
+      213: 343166371312528156
+    second: Speed Assault Sprite sheet (1)_10
+  - first:
+      213: 2201088420228433131
+    second: Speed Assault Sprite sheet (1)_11
+  - first:
+      213: -4677278332794665016
+    second: Speed Assault Sprite sheet (1)_12
+  - first:
+      213: 7753846515755899162
+    second: Speed Assault Sprite sheet (1)_13
+  - first:
+      213: -1349594956277406700
+    second: Speed Assault Sprite sheet (1)_14
+  - first:
+      213: -8895622608448483093
+    second: Speed Assault Sprite sheet (1)_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -31,7 +79,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +88,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,9 +119,393 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_0
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 2314
+        width: 320
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71210facd0f2f3c40800000000000000
+      internalID: 5494161806701105687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_1
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 2297
+        width: 305
+        height: 405
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82fade2cf6f9635b0800000000000000
+      internalID: -5388944601741676760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 2343
+        width: 322
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc47910ea53174d0800000000000000
+      internalID: -3138668443833250620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_3
+      rect:
+        serializedVersion: 2
+        x: 1936
+        y: 2111
+        width: 400
+        height: 511
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b1eb2942637612d0800000000000000
+      internalID: -3308330010285448775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_4
+      rect:
+        serializedVersion: 2
+        x: 2529
+        y: 2111
+        width: 237
+        height: 559
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a7795aea966b7280800000000000000
+      internalID: -9044522611100780634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_5
+      rect:
+        serializedVersion: 2
+        x: 2891
+        y: 2124
+        width: 222
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2d4c3c45cff4e000800000000000000
+      internalID: 64457517542690092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_6
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 1980
+        width: 261
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1c9c390b336d430800000000000000
+      internalID: 3807287368475066806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_7
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 1997
+        width: 134
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd9e3dd2c7aae760800000000000000
+      internalID: 7487981785834233270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_8
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1941
+        width: 200
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d320cb81f56986900800000000000000
+      internalID: 677957079100293693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_9
+      rect:
+        serializedVersion: 2
+        x: 1577
+        y: 1936
+        width: 166
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af95d27fb12f3a90800000000000000
+      internalID: -7332104562186805339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_10
+      rect:
+        serializedVersion: 2
+        x: 2532
+        y: 1577
+        width: 195
+        height: 459
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1b61fc1ffb23c400800000000000000
+      internalID: 343166371312528156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_11
+      rect:
+        serializedVersion: 2
+        x: 2925
+        y: 1594
+        width: 273
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be401fe9146db8e10800000000000000
+      internalID: 2201088420228433131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_12
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 261
+        width: 640
+        height: 1555
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c7842a3328f61fb0800000000000000
+      internalID: -4677278332794665016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_13
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 1531
+        width: 183
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19d78e03523b9b60800000000000000
+      internalID: 7753846515755899162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_14
+      rect:
+        serializedVersion: 2
+        x: 1582
+        y: 1543
+        width: 159
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4142d68a986454de0800000000000000
+      internalID: -1349594956277406700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Speed Assault Sprite sheet (1)_15
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 1584
+        width: 361
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be09e7f5e566c8480800000000000000
+      internalID: -8895622608448483093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
