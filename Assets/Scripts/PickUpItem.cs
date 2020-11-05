@@ -14,7 +14,7 @@ public class PickUpItem : MonoBehaviour
 
     private void Start()
     {
-        anchor = transform.GetChild(2);
+        anchor = transform.GetChild(0);
         inventory = GetComponent<PlayerInventory>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
