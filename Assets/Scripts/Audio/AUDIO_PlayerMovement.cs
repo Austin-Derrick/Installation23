@@ -5,6 +5,12 @@ using UnityEngine;
 public class AUDIO_PlayerMovement : MonoBehaviour
 {
     //This script plays the sound for characters jumping and footsteps. They will be tied to the animations as function calls as soon as the animations are done. 
+    /// <summary>
+    /// HOW TO IMPLIMENT: 
+    /// 1. Attach to the Player or Create Empty Game Object Under the Player
+    /// 2. Set sounds for the jump and footsteps
+    /// 3. Set minPitch and maxPitch. Dont worry about setting the regular pitch. 
+    /// </summary>
     //Audiosources and Clips
     AudioSource source;
     [SerializeField]

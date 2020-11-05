@@ -15,12 +15,14 @@ public class Health : MonoBehaviour
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
+        
     }
 
     // Update is called once per frame
