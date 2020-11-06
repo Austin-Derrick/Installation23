@@ -30,7 +30,7 @@ public class CharacterController2D : MonoBehaviour
     private bool isFacingRight = true;
 
     Vector3 mousePos = new Vector3();
-    Vector3 cameraOffset = new Vector3(0, 0, -10);
+    Vector3 cameraOffset = new Vector3(0, +5, -10);
     Vector3 charPos;
     Vector2 input;
 
@@ -60,17 +60,17 @@ public class CharacterController2D : MonoBehaviour
 
         playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
-        //Character flipping based on mouse position
-        if(mousePos.x >= charPos.x && !isFacingRight)
-        {
-            FlipSprite();
-            isFacingRight = true;
-        }
-        if(mousePos.x <= charPos.x && isFacingRight)
-        {
-            FlipSprite();
-            isFacingRight = false;
-        }
+        ////Character flipping based on mouse position
+        //if(mousePos.x >= charPos.x && !isFacingRight)
+        //{
+        //    FlipSprite();
+        //    isFacingRight = true;
+        //}
+        //if(mousePos.x <= charPos.x && isFacingRight)
+        //{
+        //    FlipSprite();
+        //    isFacingRight = false;
+        //}
                 
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
