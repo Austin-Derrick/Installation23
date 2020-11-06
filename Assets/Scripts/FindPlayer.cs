@@ -5,7 +5,6 @@ using UnityEngine;
 public class FindPlayer : MonoBehaviour
 {
     private GameObject player;
-    public bool goodToAttack = true;
     Enemy enemy;
     RaycastHit2D hit;
     public Collider2D detectionRange;
@@ -30,7 +29,7 @@ public class FindPlayer : MonoBehaviour
         Debug.DrawLine(transform.position, collision.gameObject.transform.position, Color.red);
         //Checks to see if the player is within range of the enemy AI
         hit = Physics2D.Raycast(transform.position, collision.gameObject.transform.position, nonPlayer);
-        if (hit && goodToAttack)
+        if (hit)
         {
             enemy.SetFoundPlayer(true, collision.gameObject);
         }
