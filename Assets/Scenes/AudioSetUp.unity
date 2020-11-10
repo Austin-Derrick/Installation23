@@ -271,6 +271,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2247147005434673696}
   m_PrefabAsset: {fileID: 0}
+--- !u!120 &1908817046 stripped
+LineRenderer:
+  m_CorrespondingSourceObject: {fileID: 6596951030873984388, guid: 0ade4f9af8dd86d48841348308920b8f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1953321441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1953321441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -333,6 +339,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: lineRenderer
+      value: 
+      objectReference: {fileID: 1908817046}
     - target: {fileID: 8042951209218418358, guid: 0ade4f9af8dd86d48841348308920b8f,
         type: 3}
       propertyPath: m_Name
@@ -1002,10 +1013,10 @@ GameObject:
   - component: {fileID: 8631608401241233215}
   - component: {fileID: 8631608401241233208}
   - component: {fileID: 8631608401241233209}
-  - component: {fileID: 8631608401241233210}
   - component: {fileID: 8631608401241233211}
   - component: {fileID: 8631608401241233204}
   - component: {fileID: 8631608401241233214}
+  - component: {fileID: 8631608401241233206}
   m_Layer: 0
   m_Name: 'Player '
   m_TagString: Player
@@ -1013,6 +1024,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8631608401241233206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8631608401241233205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e5bab9b1f1b1142821cb137ba0a0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 8631608401241233211}
+  playerBehavior: {fileID: 8631608401241233204}
+  anchor: {fileID: 8631608400123275578}
 --- !u!114 &8631608401241233208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,9 +1051,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f945c12967e17b4c8bb3f08fc19d987, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
+  inventory: {fileID: 8631608401241233211}
   speed: 10
-  playerCam: {fileID: 0}
+  playerCam: {fileID: 2125834601}
   jumpHeight: 10
   groundLayer:
     serializedVersion: 2
@@ -1055,18 +1081,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8631608401241233210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8631608401241233205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a116192ea1da441a2bfec343d1c23b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8631608401241233211
 MonoBehaviour:
   m_ObjectHideFlags: 0
