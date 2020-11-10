@@ -30,7 +30,7 @@ public class CharacterController2D : MonoBehaviour
     private bool isFacingRight = true;
 
     Vector3 mousePos = new Vector3();
-    Vector3 cameraOffset = new Vector3(0, +5, -10);
+    Vector3 cameraOffset = new Vector3(0, 0, -10);
     Vector3 charPos;
     Vector2 input;
 
