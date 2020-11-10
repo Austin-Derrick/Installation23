@@ -12,19 +12,27 @@ public class ArmBehavior : MonoBehaviour
 
     Vector3 mousePos;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         gun.transform.parent = leftArmTargetTransform;
         rightHandTargetTransform.parent = rightHandAnchor;
+
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        gunBone.position = leftArmTargetTransform.position;
+        rightHandTargetTransform.position = rightHandAnchor.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gun.transform.position = leftArmTargetTransform.position;
+        //gun.transform.position = leftArmTargetTransform.position;
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         rotateItemInHands();
+        //rightHandTargetTransform.position = rightHandAnchor.position;
     }
 
     private void rotateItemInHands()
@@ -33,7 +41,6 @@ public class ArmBehavior : MonoBehaviour
         Vector2 shootDirection = (mousePos - gunBone.position);
         // Get the tangent of the direction vector and convert the angle to degrees
         float thetaDegrees = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-        Debug.Log(shootDirection.y);
         // Rotates the play object according to the degrees that we calculated
         gunBone.transform.eulerAngles = new Vector3(0, 0, thetaDegrees);
     }

@@ -60,18 +60,18 @@ public class CharacterController2D : MonoBehaviour
 
         playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
-        ////Character flipping based on mouse position
-        //if(mousePos.x >= charPos.x && !isFacingRight)
-        //{
-        //    FlipSprite();
-        //    isFacingRight = true;
-        //}
-        //if(mousePos.x <= charPos.x && isFacingRight)
-        //{
-        //    FlipSprite();
-        //    isFacingRight = false;
-        //}
-                
+        //Character flipping based on mouse position
+        if (mousePos.x >= charPos.x && !isFacingRight)
+        {
+            FlipSprite();
+            isFacingRight = true;
+        }
+        if (mousePos.x <= charPos.x && isFacingRight)
+        {
+            FlipSprite();
+            isFacingRight = false;
+        }
+
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = Vector2.up * jumpHeight;

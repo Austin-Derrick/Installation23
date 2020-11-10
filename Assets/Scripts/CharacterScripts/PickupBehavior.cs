@@ -44,3 +44,4 @@ public class PickupBehavior : MonoBehaviour
         }
     }
 }
+
