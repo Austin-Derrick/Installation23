@@ -11,10 +11,12 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     public float armor = 30;
     public float currentHealth = 100;
+    
 
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
+    public Enemy enemy;
     
 
     // Start is called before the first frame update
@@ -22,7 +24,14 @@ public class Health : MonoBehaviour
     {
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
-        
+        if(gameObject.CompareTag("Enemy"))
+        {
+            enemy = GetComponent<Enemy>();
+        }
+        else
+        {
+            enemy = null;
+        }
     }
 
     // Update is called once per frame
@@ -36,7 +45,7 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.CompareTag("Enemy"))
             {
-                //Kills enemy if they run out of heatlh, maybe we can have a death animation set up here
+                StartMenu.addToScore(enemy.scoreValue);
                 Destroy(gameObject);
             }
         }

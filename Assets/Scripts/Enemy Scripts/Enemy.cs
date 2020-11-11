@@ -12,7 +12,8 @@ public class Enemy : MonoBehaviour
     public MeleeEnemy meleeEnemyScript;
     public RangedEnemy rangedEnemyScript;
     public float attackRange;
-    
+    public int scoreValue;
+
     [Space]
     [Header("AI")]
     public bool FoundPlayer;
