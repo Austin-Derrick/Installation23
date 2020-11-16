@@ -11,11 +11,20 @@ public class PickUpItem : MonoBehaviour
 
     [SerializeField]
     PlayerBehavior playerBehavior;
+    
+    //Audio
+
+    [SerializeField]
+    AudioSource source;
+
+    [SerializeField]
+    AudioClip PickUpClip;
 
     private void Start()
     {
         anchor = transform.GetChild(2);
         inventory = GetComponent<PlayerInventory>();
+        source = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,6 +41,8 @@ public class PickUpItem : MonoBehaviour
                     collision.transform.position = anchor.position;
                     playerBehavior.isHoldingItem = true;
                     collision.gameObject.transform.SetParent(anchor, true);
+                    source.clip = PickUpClip;
+                    source.Play();
                 }
             }
         }
