@@ -52,7 +52,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
+        input.x = Input.GetAxis("Horizontal");
 
         //Updates mouse and character positions
         mouseAndCharacterPosition();
@@ -74,7 +74,8 @@ public class CharacterController2D : MonoBehaviour
 
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jumpHeight;
+            
+            rb.velocity = rb.velocity + Vector2.up * jumpHeight;
         }
     }
 
