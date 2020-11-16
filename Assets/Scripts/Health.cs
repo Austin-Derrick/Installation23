@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
+
+    AudioSource source;
+    AudioClip [] audDamage;
     
 
     // Start is called before the first frame update
@@ -22,7 +25,7 @@ public class Health : MonoBehaviour
     {
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
-        
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -64,8 +67,11 @@ public class Health : MonoBehaviour
     //Formula for taking damage is stored here, can be called from anywhere with base damage value being passed into it
     public void TakeDamage(float damage)
     {
+       
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
+        source.clip = audDamage[Random.Range(0, audDamage.Length)];
+        source.Play();
     }
 
     private void BounceBack(Collision2D collision)
