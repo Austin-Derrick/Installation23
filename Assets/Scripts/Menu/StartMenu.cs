@@ -8,9 +8,15 @@ public class StartMenu : MonoBehaviour
     public static int score = 0;
 
     // Start is called before the first frame update
+    AudioSource source;
+    [SerializeField]
+    AudioClip hover;
+    [SerializeField]
+    AudioClip select;
+
     void Start()
     {
-        
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -44,5 +50,19 @@ public class StartMenu : MonoBehaviour
     public static void addToScore(int val)
     {
         score += val;
+    }
+
+    //Audio
+
+    public void PlayHover()
+    {
+        source.clip = hover;
+        source.Play();
+    }
+
+    public void PlaySelect()
+    {
+        source.clip = select;
+        source.Play();
     }
 }
