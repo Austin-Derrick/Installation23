@@ -11,12 +11,13 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     public float armor = 30;
     public float currentHealth = 100;
-    
 
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
-    public Enemy enemy;
+
+    AudioSource source;
+    AudioClip [] audDamage;
     
 
     // Start is called before the first frame update
@@ -24,14 +25,7 @@ public class Health : MonoBehaviour
     {
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
-        if(gameObject.CompareTag("Enemy"))
-        {
-            enemy = GetComponent<Enemy>();
-        }
-        else
-        {
-            enemy = null;
-        }
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -45,7 +39,7 @@ public class Health : MonoBehaviour
             }
             else if (gameObject.CompareTag("Enemy"))
             {
-                StartMenu.addToScore(enemy.scoreValue);
+                //Kills enemy if they run out of heatlh, maybe we can have a death animation set up here
                 Destroy(gameObject);
             }
         }
@@ -73,8 +67,11 @@ public class Health : MonoBehaviour
     //Formula for taking damage is stored here, can be called from anywhere with base damage value being passed into it
     public void TakeDamage(float damage)
     {
+       
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
+        source.clip = audDamage[Random.Range(0, audDamage.Length)];
+        source.Play();
     }
 
     private void BounceBack(Collision2D collision)

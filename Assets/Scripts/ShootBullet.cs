@@ -13,6 +13,15 @@ public class ShootBullet : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] float damage = 25;
 
+    //Audio
+    AudioSource source;
+    [SerializeField]
+    AudioClip [] shot;
+
+    public void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void setIsBeingHeld()
     {
         isBeingHeld = true;
@@ -22,7 +31,12 @@ public class ShootBullet : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) )//&& isBeingHeld == true)
         {
-            StartCoroutine(shootBullet(firePosition));
+            StartCoroutine( shootBullet(firePosition));
+            if (!source.isPlaying)
+            {
+                source.clip = shot[Random.Range(0, shot.Length)];
+                source.Play();
+            }
         }
     }
     public IEnumerator shootBullet(Transform shootPosition)
