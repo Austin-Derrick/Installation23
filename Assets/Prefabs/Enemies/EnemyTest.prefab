@@ -189,6 +189,7 @@ MonoBehaviour:
   meleeEnemyScript: {fileID: 6271256550040299825}
   rangedEnemyScript: {fileID: 0}
   attackRange: 0
+  scoreValue: 100
   FoundPlayer: 0
   goodToAttack: 1
   player: {fileID: 0}
@@ -204,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 218ec3bf07ebf4343abd8c685c4e5d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goodToAttack: 1
   detectionRange: {fileID: 3249589822620879911}
 --- !u!1 &6271256550244958133
 GameObject:

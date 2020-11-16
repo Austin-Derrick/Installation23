@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2303fc4c9d75d148a3e133a28545fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooClose: 0
-  offsetValue: 1
-  offsetLoc: {x: 0, y: 0}
-  desiredAttackRange: 0.5
+  offsetVal: 4
+  speed: 0
 --- !u!1001 &215128012587559376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 6271256550040299831, guid: 5c237eb0590492943958fffd803030ab,
         type: 3}
       propertyPath: m_Name
-      value: RangedEnemyTest
+      value: RangedEnemyTest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7169569966978199266, guid: 5c237eb0590492943958fffd803030ab,
         type: 3}
@@ -108,6 +106,11 @@ PrefabInstance:
       propertyPath: rangedEnemyScript
       value: 
       objectReference: {fileID: 5805727754752074860}
+    - target: {fileID: 7169569966978199266, guid: 5c237eb0590492943958fffd803030ab,
+        type: 3}
+      propertyPath: scoreValue
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6271256550040299825, guid: 5c237eb0590492943958fffd803030ab, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5c237eb0590492943958fffd803030ab, type: 3}
