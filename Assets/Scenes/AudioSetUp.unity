@@ -252,6 +252,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8631608401969082996, guid: a39379d491c9aeb41871ed147d0a70fe,
+        type: 3}
+      propertyPath: PickUpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: daf28e59d2a08a1479d058c1c5309d69, type: 3}
     - target: {fileID: 8631608401969083003, guid: a39379d491c9aeb41871ed147d0a70fe,
         type: 3}
       propertyPath: m_Name
@@ -396,6 +401,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: shot.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: shot.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6a9a2dbd96c8eef49802d4d34c49850f, type: 3}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: shot.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 48ff976eb1765cf4a93463c1a781e254, type: 3}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: shot.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 29dcb51a1ef12f14dbe282135d031202, type: 3}
+    - target: {fileID: 8042951209218418356, guid: 0ade4f9af8dd86d48841348308920b8f,
+        type: 3}
+      propertyPath: shot.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 521a7e4d3ab2efe4bad8775051b02c6d, type: 3}
     - target: {fileID: 8042951209218418358, guid: 0ade4f9af8dd86d48841348308920b8f,
         type: 3}
       propertyPath: m_Name
@@ -505,36 +535,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1953321444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953321442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 052974baf54619a42ab7a0a85eb7745f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: daf28e59d2a08a1479d058c1c5309d69, type: 3}
---- !u!114 &1953321450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953321442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7954bc26f6e17548a2eacc9b2462c49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunshot:
-  - {fileID: 8300000, guid: 6a9a2dbd96c8eef49802d4d34c49850f, type: 3}
-  - {fileID: 8300000, guid: 48ff976eb1765cf4a93463c1a781e254, type: 3}
-  - {fileID: 8300000, guid: 29dcb51a1ef12f14dbe282135d031202, type: 3}
-  - {fileID: 8300000, guid: 521a7e4d3ab2efe4bad8775051b02c6d, type: 3}
 --- !u!1 &2125834599
 GameObject:
   m_ObjectHideFlags: 0
