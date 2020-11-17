@@ -30,7 +30,6 @@ public class PickupBehavior : MonoBehaviour
 
                 inventory.items[inventoryIndex].transform.position = anchor.position;
                 inventory.items[inventoryIndex].transform.rotation = anchor.rotation;
-                inventory.items[inventoryIndex].transform.parent = anchor.transform;
 
                 playerBehavior.isHoldingItem = true;
 
