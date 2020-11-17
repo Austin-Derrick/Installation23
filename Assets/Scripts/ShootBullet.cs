@@ -50,12 +50,16 @@ public class ShootBullet : MonoBehaviour
 
         if (hitInfo)
         {
-            lineRenderer.SetPosition(0, shootPosition.position);
-            lineRenderer.SetPosition(1, hitInfo.point);
-            if(hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
+            if (hitInfo.collider.isTrigger != true)
             {
-                hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+                lineRenderer.SetPosition(0, shootPosition.position);
+                lineRenderer.SetPosition(1, hitInfo.point);
+                if (hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
+                {
+                    hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+                }
             }
+            
         }
         else
         {
