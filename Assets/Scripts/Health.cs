@@ -46,7 +46,6 @@ public class Health : MonoBehaviour
             else if (gameObject.CompareTag("Enemy"))
             {
                 StartMenu.addToScore(enemy.scoreValue);
-                Destroy(gameObject);
             }
         }
     }

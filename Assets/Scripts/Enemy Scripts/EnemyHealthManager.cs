@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    int health;
-
+    float localHealth;
+    public Health health;
+    public Enemy enemy;
 
 
 
     private void Die()
     {
+        //Play death sound here
 
+        //Adds score to the player score based off of the value of the enemy set in the script of same name.
+        StartMenu.addToScore(enemy.scoreValue);
     }
     // Start is called before the first frame update
     void Start()
@@ -19,10 +23,10 @@ public class EnemyHealthManager : MonoBehaviour
         
     }
 
-    public void decreaseHealth(int damage)
+    private void Update()
     {
-        health -= damage;
-        if (health <= 0)
+        localHealth = health.currentHealth;
+        if (localHealth <= 0)
         {
             Die();
         }
