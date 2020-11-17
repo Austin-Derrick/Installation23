@@ -9,30 +9,41 @@ public class ArmBehavior : MonoBehaviour
     public Transform leftArmTargetTransform;
     public Transform rightHandAnchor;
     public Transform rightHandTargetTransform;
-
+    public bool isHoldingItem = false;
     Vector3 mousePos;
 
-    private void Awake()
-    {
-        gun.transform.parent = leftArmTargetTransform;
-        rightHandTargetTransform.parent = rightHandAnchor;
+    public int counter = 0;
+    //private void Awake()
+    //{
+    //    gun.transform.parent = leftArmTargetTransform;
+    //    rightHandTargetTransform.parent = rightHandAnchor;
+    //}
 
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        gunBone.position = leftArmTargetTransform.position;
-        rightHandTargetTransform.position = rightHandAnchor.position;
-    }
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    gunBone.position = leftArmTargetTransform.position;
+    //    rightHandTargetTransform.position = rightHandAnchor.position;
+    //}
 
     // Update is called once per frame
     void Update()
     {
-        //gun.transform.position = leftArmTargetTransform.position;
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        rotateItemInHands();
-        //rightHandTargetTransform.position = rightHandAnchor.position;
+        if (counter == 1)
+        {
+            gun.transform.parent = leftArmTargetTransform;
+            rightHandTargetTransform.parent = rightHandAnchor;
+            gunBone.position = leftArmTargetTransform.position;
+            rightHandTargetTransform.position = rightHandAnchor.position;
+        }
+        if (isHoldingItem && counter > 0)
+        {
+            //gun.transform.position = leftArmTargetTransform.position;
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            rotateItemInHands();
+            //rightHandTargetTransform.position = rightHandAnchor.position;
+            counter++;
+        }
     }
 
     private void rotateItemInHands()
