@@ -30,7 +30,7 @@ public class CharacterController2D : MonoBehaviour
     private bool isFacingRight = true;
 
     Vector3 mousePos = new Vector3();
-    Vector3 cameraOffset = new Vector3(0, 0, -10);
+    Vector3 cameraOffset = new Vector3(0, 0, -15);
     Vector3 charPos;
     Vector2 input;
 
@@ -52,11 +52,10 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update()
     {
-        input.x = Input.GetAxisRaw("Horizontal");
+        input.x = Input.GetAxis("Horizontal");
 
         //Updates mouse and character positions
         mouseAndCharacterPosition();
-
 
         playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
@@ -74,7 +73,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * jumpHeight;
+            rb.velocity += Vector2.up * jumpHeight;
         }
     }
 
