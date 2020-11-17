@@ -199,9 +199,11 @@ GameObject:
   - component: {fileID: 2579063068512987057}
   - component: {fileID: 1114769196876978272}
   - component: {fileID: 4686627673684447693}
+  - component: {fileID: 1313640753052572609}
+  - component: {fileID: 1313640753052572610}
   m_Layer: 0
   m_Name: TempGunSprite
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +215,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108399186462438983}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.86, y: 2.215, z: 0}
   m_LocalScale: {x: 0.13, y: 0.13, z: 1}
   m_Children:
@@ -239,7 +241,8 @@ MonoBehaviour:
   firePosition: {fileID: 1114769198280564116}
   lineRenderer: {fileID: 1114769198278865988}
   damage: 25
-  shot: []
+  shot:
+  - {fileID: 8300000, guid: 38c050959b7a62445b4cbd10c6d09d0d, type: 3}
 --- !u!82 &4686627673684447693
 AudioSource:
   m_ObjectHideFlags: 0
@@ -250,7 +253,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 38c050959b7a62445b4cbd10c6d09d0d, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -336,6 +339,44 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!61 &1313640753052572609
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108399186462438983}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.89, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.99, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1313640753052572610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108399186462438983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f36b91e87ff32fd4fbb299075357220a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2542288809182126103
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +476,7 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 2529817790469745563}
   m_Bounds:
-    m_Center: {x: 1.7946305, y: -0.68182063, z: 0}
+    m_Center: {x: 1.7946305, y: -0.681821, z: 0}
     m_Extent: {x: 4.525279, y: 1.1555768, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
