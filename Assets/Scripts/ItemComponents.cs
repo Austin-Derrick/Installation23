@@ -10,6 +10,13 @@ public class ItemComponents : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
-        rigidBody = GetComponent<Rigidbody2D>();
+        if (GetComponent<Rigidbody2D>() == null)
+        {
+
+        }
+        else
+        {
+            rigidBody = GetComponent<Rigidbody2D>();
+        }
     }
 }

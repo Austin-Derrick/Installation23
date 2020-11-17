@@ -10,6 +10,9 @@ public class PickupBehavior : MonoBehaviour
     [SerializeField]
     PlayerBehavior playerBehavior;
 
+    [SerializeField]
+    ArmBehavior armBehavior;
+
     public Transform anchor;
 
     int inventoryIndex = 0;
@@ -35,6 +38,9 @@ public class PickupBehavior : MonoBehaviour
 
                 inventoryIndex++;
                 inventory.nextOpenSpace = inventoryIndex;
+
+                armBehavior.isHoldingItem = true;
+                armBehavior.counter = 1;
             }
             else
             {
