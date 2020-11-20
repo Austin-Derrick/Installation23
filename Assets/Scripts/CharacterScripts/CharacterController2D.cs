@@ -25,7 +25,7 @@ public class CharacterController2D : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float checkRadius;
-    private bool grounded;
+    public bool grounded;
 
     private bool isFacingRight = true;
 
