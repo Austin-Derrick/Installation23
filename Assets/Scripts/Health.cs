@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class Health : MonoBehaviour
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
-
+    public Slider healthBar;
+    
+    [Space]
+    [Header("Sound")]
     AudioSource source;
     AudioClip [] audDamage;
     
@@ -26,6 +30,9 @@ public class Health : MonoBehaviour
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
         source = GetComponent<AudioSource>();
+        healthBar.minValue = 0;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = currentHealth;
     }
 
     // Update is called once per frame
@@ -43,6 +50,8 @@ public class Health : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        if(healthBar != null)
+            healthBar.value = currentHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

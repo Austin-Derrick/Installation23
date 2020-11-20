@@ -828,6 +828,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1223318403}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &816020935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2316582181672688159, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 947912971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &878128691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44092,6 +44104,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.2651518
       objectReference: {fileID: 0}
+    - target: {fileID: 326413754474482672, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1457134293885843560, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -44116,6 +44133,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.9500003
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697239213591009508, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1970191980185486309, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
@@ -45303,6 +45325,23 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 947912971}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2077668054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077668053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fcd34088572f443b27fbcc9b597206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  armor: 30
+  currentHealth: 100
+  damageBounceBack: 10
+  healthBar: {fileID: 816020935}
 --- !u!4 &2077668061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2821857677557979272, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
