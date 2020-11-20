@@ -90,7 +90,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
 
     void jumps()
     {
-        if (!jumpSource.isPlaying)
+        if (!jumpSource.isPlaying && characterController.grounded)
         {
             jumpSource.clip = jump;
             pitch = Random.Range(minPitch, maxPitch);
