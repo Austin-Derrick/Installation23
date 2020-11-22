@@ -38,7 +38,6 @@ public class MeleeEnemy : MonoBehaviour
 
     IEnumerator ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
     {
-        Debug.Log("Coroutine ChaseThePlayer is being called");
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         if (player.transform.position.y > transform.position.y + 1 && grounded)
         {

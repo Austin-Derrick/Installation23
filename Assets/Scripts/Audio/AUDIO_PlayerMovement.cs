@@ -64,7 +64,6 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (!source.isPlaying)
         {
-            Debug.Log("In Footsteps");
             source.clip = step[Random.Range(0, step.Length)];
             pitch = Random.Range(minPitch, maxPitch);
             source.pitch = pitch;

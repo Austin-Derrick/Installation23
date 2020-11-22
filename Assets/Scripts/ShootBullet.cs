@@ -52,12 +52,17 @@ public class ShootBullet : MonoBehaviour
         {
             if (hitInfo.collider.isTrigger != true)
             {
+                Debug.Log("The Bullet is not hitting a trigger");
                 lineRenderer.SetPosition(0, shootPosition.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
                 if (hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
                 {
                     hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
                 }
+            }
+            else
+            {
+                Debug.Log("The Bullet is hitting a trigger");
             }
             
         }

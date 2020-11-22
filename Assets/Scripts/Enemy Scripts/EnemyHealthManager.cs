@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-    int health;
-
-
+    Health health;
+    float localHealth;
+    Enemy enemy;
 
 
     private void Die()
     {
-
+        StartMenu.score += enemy.scoreValue;
+        Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = GetComponent<Health>();
+        enemy = GetComponent<Enemy>();
     }
 
-    public void decreaseHealth(int damage)
+    private void Update()
     {
-        health -= damage;
-        if (health <= 0)
-        {
+        localHealth = health.currentHealth;
+        if (localHealth <= 0)
             Die();
-        }
     }
 }

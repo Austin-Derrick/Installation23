@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 8122507655395085928}
   m_Layer: 0
   m_Name: AssualtCharacterSprite_Rigged
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1009,6 +1009,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e225ef4704af3f40b62b8a907dc7643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 0}
 --- !u!1 &3202131088103367608
 GameObject:
   m_ObjectHideFlags: 0

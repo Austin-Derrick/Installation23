@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class UpdateScore : MonoBehaviour
 {
-    Text score;
+    public Text score;
 
     // Start is called before the first frame update
     void Start()
     {
-        score = GetComponent<Text>();
+        
         if (SceneManager.GetActiveScene().buildIndex == 1)
             score.text = ("Score:  " + StartMenu.score.ToString());
     }
