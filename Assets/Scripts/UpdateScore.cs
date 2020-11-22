@@ -12,16 +12,16 @@ public class UpdateScore : MonoBehaviour
     void Start()
     {
         
-        //if (SceneManager.GetActiveScene().buildIndex == 1)
-        //    score.text = ("Score:  " + StartMenu.score.ToString());
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+            score.text = ("Score:  " + StartMenu.score.ToString());
     }
 
     // Update is called once per frame
-    //void Update()
-    //{
-    //    if (score != null)
-    //        score.text = "Score: " + StartMenu.score.ToString();
-    //    else
-    //        score.text = "Score: " + 0;
-    //}
+    void Update()
+    {
+        if (score != null)
+            score.text = "Score: " + StartMenu.score.ToString();
+       else
+            score.text = "Score: " + 0;
+    }
 }

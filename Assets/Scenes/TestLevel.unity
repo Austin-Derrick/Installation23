@@ -552,6 +552,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb1ed521bbb8b4041bf60f50098cc961, type: 3}
+--- !u!114 &157098829 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1831688083947994263, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 947912971}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &158579806 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
@@ -114289,6 +114301,11 @@ PrefabInstance:
       propertyPath: rightHandAnchor
       value: 
       objectReference: {fileID: 630866877}
+    - target: {fileID: 4812538315219449669, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 157098829}
     - target: {fileID: 4825957648252374709, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
       propertyPath: m_Name
@@ -117341,7 +117358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7164602d37932e74db6ab88b140a2231, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeRemaining: 1000
+  timeRemaining: 180
   timerIsRunning: 0
   timeText: {fileID: 812382768}
 --- !u!4 &1722760310
