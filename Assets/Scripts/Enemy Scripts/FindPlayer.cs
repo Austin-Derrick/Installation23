@@ -31,7 +31,7 @@ public class FindPlayer : MonoBehaviour
         hit = Physics2D.Raycast(transform.position, collision.gameObject.transform.position, nonPlayer);
         if (hit)
         {
-            enemy.SetFoundPlayer(true, collision.gameObject);
+            //enemy.SetFoundPlayer(true, collision.gameObject);
         }
     }
 

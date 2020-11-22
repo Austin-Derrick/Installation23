@@ -12,8 +12,8 @@ public class UpdateScore : MonoBehaviour
     void Start()
     {
         
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-            score.text = ("Score:  " + StartMenu.score.ToString());
+        //if (SceneManager.GetActiveScene().buildIndex == 1)
+        //    score.text = ("Score:  " + StartMenu.score.ToString());
     }
 
     // Update is called once per frame

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField]
     PlayerInventory inventory;
 
@@ -98,6 +99,7 @@ public class CharacterController2D : MonoBehaviour
         {
             transform.position = resetPoint.transform.position;
         }
+        animator.SetFloat("DeltaX", Mathf.Abs(input.x));
 
         //Testing
     }
