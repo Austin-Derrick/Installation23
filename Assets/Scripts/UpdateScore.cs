@@ -17,11 +17,11 @@ public class UpdateScore : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (score != null)
-            score.text = "Score: " + StartMenu.score.ToString();
-        else
-            score.text = "Score: " + 0;
-    }
+    //void Update()
+    //{
+    //    if (score != null)
+    //        score.text = "Score: " + StartMenu.score.ToString();
+    //    else
+    //        score.text = "Score: " + 0;
+    //}
 }
