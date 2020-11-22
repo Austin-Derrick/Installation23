@@ -7,16 +7,19 @@ public class EnemySpawner : MonoBehaviour
     public List<Enemy> enemyPrefabs;
     public int enemyCount;
     public int waveNumber = 1;
-    public BoxCollider2D room;
+    public LayerMask groundLayer;
 
     [SerializeField]
-    float spawnRange = 9;
+    private BoxCollider2D room;
+
+    [SerializeField]
+    float spawnCheckRange = 3;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnEnemyWave(waveNumber);
-        room = GetComponent<BoxCollider2D>();
+        BoxCollider2D room = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -36,10 +39,27 @@ public class EnemySpawner : MonoBehaviour
 
     Vector3 GenerateSpawnPos()
     {
+        Vector2 validSpawnPos = Vector2.zero;
+        for (; validSpawnPos == Vector2.zero;)
+        {
+            Vector2 possibleSpawnPos = RandomPointInBounds(room.bounds);
+
+            if (Physics2D.OverlapCircle(possibleSpawnPos, spawnCheckRange, groundLayer) == false)
+            {
+                Debug.Log("Valid spawn position found!");
+                validSpawnPos = possibleSpawnPos;
+            }
+            else
+                Debug.Log("No suitable location not found, trying again.");
+        }
+
+        return validSpawnPos;
+        /*
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
         float spawnPosY = Random.Range(-spawnRange, spawnRange);
         Vector3 randomPos = new Vector3(spawnPosX, spawnPosY, 0);
         return randomPos;
+        */
     }
 
     void SpawnEnemyWave(int enemyWave)
@@ -61,5 +81,10 @@ public class EnemySpawner : MonoBehaviour
         int minRange = maxRange - waveNum;
         int enemies = Random.Range(minRange, maxRange);
         return enemies;
+    }
+
+    public static Vector2 RandomPointInBounds(Bounds bounds)
+    {
+        return new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
     }
 }
