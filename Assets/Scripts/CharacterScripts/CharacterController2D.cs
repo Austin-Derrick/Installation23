@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    public Animator animator;
+
     [SerializeField]
     PlayerInventory inventory;
 
@@ -77,6 +79,8 @@ public class CharacterController2D : MonoBehaviour
             
             rb.velocity = rb.velocity + Vector2.up * jumpHeight;
         }
+
+        animator.SetFloat("DeltaX", Mathf.Abs(input.x));
     }
 
     //Uses Vector 3 to acquire character position and mouse position 

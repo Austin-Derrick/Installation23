@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArmBehavior : MonoBehaviour
 {
+    public Transform gunAnchor;
     public GameObject gun;
     public Transform gunBone;
     public Transform leftArmTargetTransform;
@@ -11,6 +12,7 @@ public class ArmBehavior : MonoBehaviour
     public Transform rightHandTargetTransform;
     public bool isHoldingItem = false;
     Vector3 mousePos;
+    public Animator animator;
 
     public int counter = 0;
     //private void Awake()
@@ -29,19 +31,21 @@ public class ArmBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        animator.SetBool("IsHoldingGun", isHoldingItem);
         if (counter == 1)
         {
-            gun.transform.parent = leftArmTargetTransform;
-            rightHandTargetTransform.parent = rightHandAnchor;
-            gunBone.position = leftArmTargetTransform.position;
+            gun.transform.position = gunAnchor.position;
+            gun.transform.parent = gunAnchor;
             rightHandTargetTransform.position = rightHandAnchor.position;
+            rightHandTargetTransform.parent = rightHandAnchor;
+            //gunBone.position = leftArmTargetTransform.position;
         }
         if (isHoldingItem && counter > 0)
         {
             //gun.transform.position = leftArmTargetTransform.position;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rotateItemInHands();
-            //rightHandTargetTransform.position = rightHandAnchor.position;
+            rightHandTargetTransform.position = rightHandAnchor.position;
             counter++;
         }
     }

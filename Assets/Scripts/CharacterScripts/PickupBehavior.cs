@@ -13,6 +13,8 @@ public class PickupBehavior : MonoBehaviour
     [SerializeField]
     ArmBehavior armBehavior;
 
+    public Animator animator;
+
     public Transform anchor;
 
     int inventoryIndex = 0;
@@ -41,6 +43,7 @@ public class PickupBehavior : MonoBehaviour
 
                 armBehavior.isHoldingItem = true;
                 armBehavior.counter = 1;
+
             }
             else
             {
