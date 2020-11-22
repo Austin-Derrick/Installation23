@@ -77,9 +77,9 @@ public class Health : MonoBehaviour
        
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
-        if(source.clip != null)
-            source.clip = audDamage[Random.Range(0, audDamage.Length)];
-        source.Play();
+        //if(source.clip != null)
+        //    source.clip = audDamage[Random.Range(0, audDamage.Length)];
+        //source.Play();
     }
 
     private void BounceBack(Collision2D collision)

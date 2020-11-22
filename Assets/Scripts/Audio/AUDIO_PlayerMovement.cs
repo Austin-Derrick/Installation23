@@ -16,11 +16,9 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     [SerializeField]
     AudioSource jumpSource;
     [SerializeField]
-    AudioClip[] gravelStep;
+    AudioClip[] step;
     [SerializeField]
     AudioClip jump;
-    [SerializeField]
-    AudioClip[] metalStep;
     //Variables
     [SerializeField]
     float minPitch = 1.0f;
@@ -32,14 +30,10 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     [SerializeField]
     float volume = 1.0f;
     bool walking = false;
-    string material;
-    CharacterController2D characterController;
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
-        characterController = GetComponent<CharacterController2D>();
-        material = "gravel";
     }
 
     // Update is called once per frame
@@ -68,50 +62,24 @@ public class AUDIO_PlayerMovement : MonoBehaviour
 
     void footsteps()
     {
-        if (!source.isPlaying && material == "gravel" && characterController.grounded)
+        if (!source.isPlaying)
         {
-            Debug.Log("In Footsteps");
-            source.clip = gravelStep[Random.Range(0, gravelStep.Length)];
-            pitch = Random.Range(minPitch, maxPitch);
-            source.pitch = pitch;
-            source.volume = volume;
-            source.Play();
-        }
-        else if (!source.isPlaying && material == "metal" && characterController.grounded)
-        {
-            Debug.Log("In Footsteps");
-            source.clip = metalStep[Random.Range(0, metalStep.Length)];
+            source.clip = step[Random.Range(0, step.Length)];
             pitch = Random.Range(minPitch, maxPitch);
             source.pitch = pitch;
             source.volume = volume;
             source.Play();
         }
     }
-
     void jumps()
     {
-        if (!jumpSource.isPlaying && characterController.grounded)
+        if (!jumpSource.isPlaying)
         {
             jumpSource.clip = jump;
             pitch = Random.Range(minPitch, maxPitch);
             jumpSource.pitch = pitch;
+            jumpSource.volume = volume;
             jumpSource.Play();
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "FootstepMetal")
-        {
-            material = "metal";
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "FootstepMetal")
-        {
-            material = "gravel";
         }
     }
 }

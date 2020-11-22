@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField]
     PlayerInventory inventory;
 
@@ -14,11 +15,14 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     Camera playerCam;
 
+    [SerializeField]
+    GameObject resetPoint;
+
     public float jumpHeight = 50;
 
     float maxSpeed = 20;
 
-    new BoxCollider2D  collider;
+    new BoxCollider2D collider;
 
     Rigidbody2D rb;
 
@@ -26,6 +30,7 @@ public class CharacterController2D : MonoBehaviour
     public Transform groundCheck;
     public float checkRadius;
     public bool grounded;
+    private bool canDoubleJump;
 
     private bool isFacingRight = true;
 
@@ -58,7 +63,7 @@ public class CharacterController2D : MonoBehaviour
         mouseAndCharacterPosition();
 
 
-        playerCam.transform.position = gameObject.transform.position + cameraOffset;
+        //playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
         //Character flipping based on mouse position
         if (mousePos.x >= charPos.x && !isFacingRight)
@@ -72,11 +77,31 @@ public class CharacterController2D : MonoBehaviour
             isFacingRight = false;
         }
 
+        //Jumping from ground
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            
+            canDoubleJump = true;
             rb.velocity = rb.velocity + Vector2.up * jumpHeight;
         }
+
+        //Jumping Mid-Air
+        if (grounded == false && canDoubleJump && Input.GetKeyDown(KeyCode.Space))
+        {
+            canDoubleJump = false;
+            //"v" saves current X and Y velocity, foribly changes the Y to be a fraction of normal jump height, then sets the RB velocity. 
+            //Prevents combining the two jump velocities into a super jump by button mashing.
+            Vector2 v = rb.velocity;
+            v.y = jumpHeight * .8f;
+            rb.velocity = v;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            transform.position = resetPoint.transform.position;
+        }
+        animator.SetFloat("DeltaX", Mathf.Abs(input.x));
+
+        //Testing
     }
 
     //Uses Vector 3 to acquire character position and mouse position 
