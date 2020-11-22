@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class Health : MonoBehaviour
     [Space]
     [Header("Misc")]
     public float damageBounceBack = 10;
-
+    public Slider healthBar;
+    
+    [Space]
+    [Header("Sound")]
     AudioSource source;
     AudioClip [] audDamage;
     
@@ -26,6 +30,12 @@ public class Health : MonoBehaviour
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
         source = GetComponent<AudioSource>();
+        if(healthBar != null)
+        {
+            healthBar.minValue = 0;
+            healthBar.maxValue = maxHealth;
+            healthBar.value = currentHealth;
+        }
     }
 
     // Update is called once per frame
@@ -37,12 +47,9 @@ public class Health : MonoBehaviour
             {
                 //Game Over, or whatever we decide on death
             }
-            else if (gameObject.CompareTag("Enemy"))
-            {
-                //Kills enemy if they run out of heatlh, maybe we can have a death animation set up here
-                Destroy(gameObject);
-            }
         }
+        if(healthBar != null)
+            healthBar.value = currentHealth;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -52,7 +59,7 @@ public class Health : MonoBehaviour
         {
             BounceBack(collision);
         }
-        if (collision.gameObject.CompareTag("Player") && !gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
             BounceBack(collision);
         }
@@ -70,7 +77,8 @@ public class Health : MonoBehaviour
        
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
-        source.clip = audDamage[Random.Range(0, audDamage.Length)];
+        if(source.clip != null)
+            source.clip = audDamage[Random.Range(0, audDamage.Length)];
         source.Play();
     }
 

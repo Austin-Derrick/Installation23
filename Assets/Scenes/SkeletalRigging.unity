@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &244620469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6650905984903047082, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 4497765704898221828}
+  m_PrefabAsset: {fileID: 0}
 --- !u!120 &405456751 stripped
 LineRenderer:
   m_CorrespondingSourceObject: {fileID: 6596951030873984388, guid: 0ade4f9af8dd86d48841348308920b8f,
@@ -260,7 +266,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 1062322678}
   playerBehavior: {fileID: 1062322677}
+  armBehavior: {fileID: 0}
   anchor: {fileID: 2085527219}
+--- !u!1 &1130066012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2973849392269997347, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 4497765704898221828}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1130066015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3701489976953208133, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 4497765704898221828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130066012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fa74b68731c834bb655155718ee7e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1130066016 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1256670446891536218, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 4497765704898221828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130066012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f12330faa17774e8b86d3d718ebcbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1130066017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4497765705383297746, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+    type: 3}
+  m_PrefabInstance: {fileID: 4497765704898221828}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130066012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f622fcc36ad1740b51e0214750d624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1130066021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130066012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e5bab9b1f1b1142821cb137ba0a0c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 1130066015}
+  playerBehavior: {fileID: 1130066016}
+  armBehavior: {fileID: 1130066017}
+  anchor: {fileID: 244620469}
 --- !u!1001 &1144606392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -298,6 +363,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051282999143646240, guid: 7aaa398c04a99774782c8a11824f5c24,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9058380475750511642, guid: 7aaa398c04a99774782c8a11824f5c24,
         type: 3}
@@ -626,7 +696,7 @@ PrefabInstance:
     - target: {fileID: 2579063068512987057, guid: dcdfd8f28fa8479488e4b9d78d24b1e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.215
+      value: 0.185
       objectReference: {fileID: 0}
     - target: {fileID: 2579063068512987057, guid: dcdfd8f28fa8479488e4b9d78d24b1e2,
         type: 3}
@@ -694,6 +764,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1256670446891536218, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2821857677557979272, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -769,11 +844,26 @@ PrefabInstance:
       propertyPath: rightHandAnchor
       value: 
       objectReference: {fileID: 715954574}
+    - target: {fileID: 4497765705383297746, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6395325934106427955, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
       propertyPath: playerCam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6395325934106427955, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122507655395085928, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a7f7d3db77bfee4d959af72a8ea6643, type: 3}
 --- !u!1001 &7571703598676940047

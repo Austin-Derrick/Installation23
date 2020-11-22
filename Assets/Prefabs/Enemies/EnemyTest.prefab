@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6271256550040299821}
   - component: {fileID: 7169569966978199266}
   - component: {fileID: 2601730156367830321}
+  - component: {fileID: 3425305503273455639}
   m_Layer: 0
   m_Name: EnemyTest
   m_TagString: Enemy
@@ -171,6 +172,7 @@ MonoBehaviour:
   armor: 0
   currentHealth: 100
   damageBounceBack: 10
+  healthBar: {fileID: 0}
 --- !u!114 &7169569966978199266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +208,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: {fileID: 3249589822620879911}
+--- !u!114 &3425305503273455639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6271256550040299831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85697350bad5d14697cb52d7b9b1bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6271256550244958133
 GameObject:
   m_ObjectHideFlags: 0

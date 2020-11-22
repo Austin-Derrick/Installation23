@@ -14,6 +14,8 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     //Audiosources and Clips
     AudioSource source;
     [SerializeField]
+    AudioSource jumpSource;
+    [SerializeField]
     AudioClip[] step;
     [SerializeField]
     AudioClip jump;
@@ -62,7 +64,6 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (!source.isPlaying)
         {
-            Debug.Log("In Footsteps");
             source.clip = step[Random.Range(0, step.Length)];
             pitch = Random.Range(minPitch, maxPitch);
             source.pitch = pitch;
@@ -73,13 +74,13 @@ public class AUDIO_PlayerMovement : MonoBehaviour
 
     void jumps()
     {
-        if (!source.isPlaying)
+        if (!jumpSource.isPlaying)
         {
-            source.clip = jump;
+            jumpSource.clip = jump;
             pitch = Random.Range(minPitch, maxPitch);
-            source.pitch = pitch;
-            source.volume = volume;
-            source.Play();
+            jumpSource.pitch = pitch;
+            jumpSource.volume = volume;
+            jumpSource.Play();
         }
     }
 }
