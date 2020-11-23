@@ -31,12 +31,12 @@ public class MeleeEnemy : MonoBehaviour
     {
         withinRange = false;
         if (!withinRange)
-            StartCoroutine(ChaseThePlayer(player, speed, enemyRb));
+            StartCoroutine(IChaseThePlayer(player, speed, enemyRb));
         else
             Attack();
     }
 
-    IEnumerator ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
+    IEnumerator IChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
     {
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         if (player.transform.position.y > transform.position.y + 1 && grounded)
@@ -46,15 +46,15 @@ public class MeleeEnemy : MonoBehaviour
         yield return new WaitForSeconds(.5f);
     }
 
-    //private void ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
-    //{
-    //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    //    if(player.transform.position.y > transform.position.y + 1 && grounded)
-    //    {
-    //        Jump(enemyRb);
-    //    }
+    private void ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
+    {
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if(player.transform.position.y > transform.position.y + 1 && grounded)
+        {
+            Jump(enemyRb);
+        }
 
-    //}
+    }
 
     public void Jump(Rigidbody2D enemyRb)
     {
