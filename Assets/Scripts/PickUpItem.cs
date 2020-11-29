@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUpItem : MonoBehaviour
 {
+
+    AUDIO_PlayerMovement audPlayerMovement;
     [SerializeField]
     PlayerInventory inventory;
 
@@ -24,7 +26,7 @@ public class PickUpItem : MonoBehaviour
     {
         anchor = transform.GetChild(2);
         inventory = GetComponent<PlayerInventory>();
-        source = GetComponent<AudioSource>();
+        audPlayerMovement = GetComponent<AUDIO_PlayerMovement>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -41,8 +43,7 @@ public class PickUpItem : MonoBehaviour
                     collision.transform.position = anchor.position;
                     playerBehavior.isHoldingItem = true;
                     collision.gameObject.transform.SetParent(anchor, true);
-                    source.clip = PickUpClip;
-                    source.Play();
+                    
                 }
             }
         }

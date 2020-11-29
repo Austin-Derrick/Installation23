@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class AUDIO_PlayerMovement : MonoBehaviour
 {
-    //This script plays the sound for characters jumping and footsteps. They will be tied to the animations as function calls as soon as the animations are done. 
+    //This script plays the sound for character interactions and movement.
     /// <summary>
-    /// HOW TO IMPLIMENT: 
-    /// 1. Attach to the Player or Create Empty Game Object Under the Player
-    /// 2. Set sounds for the jump and footsteps
-    /// 3. Set minPitch and maxPitch. Dont worry about setting the regular pitch. 
-    /// </summary>
+   
     //Audiosources and Clips
+    //Footsteps
     AudioSource source;
-    [SerializeField]
-    AudioSource jumpSource;
     [SerializeField]
     AudioClip[] gravelStep;
     [SerializeField]
     AudioClip[] metalStep;
+    //Jump
     [SerializeField]
+    AudioSource jumpSource;
+   [SerializeField]
     AudioClip jump;
+    //PickUp
+    [SerializeField]
+    AudioSource pickUpSource;
+    [SerializeField]
+    AudioClip pickupSound;
+
+
     //Variables
     [SerializeField]
     float minPitch = 1.0f;
@@ -99,6 +104,17 @@ public class AUDIO_PlayerMovement : MonoBehaviour
         }
     }
 
+    public void PlayPickUp()
+    {
+        if (!pickUpSource.isPlaying)
+        {
+            pickUpSource.clip = pickupSound;
+            pitch = Random.Range(minPitch, maxPitch);
+            pickUpSource.pitch = pitch;
+            pickUpSource.Play();
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "FootstepMetal")
@@ -112,6 +128,14 @@ public class AUDIO_PlayerMovement : MonoBehaviour
         if(collision.gameObject.tag == "FootstepMetal")
         {
             material = "gravel";
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Pickup")
+        {
+            PlayPickUp();
         }
     }
 }
