@@ -99,7 +99,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "FootStepMetal")
+        if(collision.gameObject.tag == "FootstepMetal")
         {
             material = "metal";
         }
