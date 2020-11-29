@@ -85,15 +85,17 @@ public class AUDIO_PlayerMovement : MonoBehaviour
             source.Play();
         }
     }
-    void jumps()
+    public void jumps()
     {
         if (!jumpSource.isPlaying && controller.grounded)
         {
+            Debug.Log("Jump initiatied");
             jumpSource.clip = jump;
             pitch = Random.Range(minPitch, maxPitch);
             jumpSource.pitch = pitch;
             jumpSource.volume = volume;
             jumpSource.Play();
+            Debug.Log("Jump Played");
         }
     }
 
