@@ -16,7 +16,9 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     [SerializeField]
     AudioSource jumpSource;
     [SerializeField]
-    AudioClip[] step;
+    AudioClip[] gravelStep;
+    [SerializeField]
+    AudioClip[] metalStep;
     [SerializeField]
     AudioClip jump;
     //Variables
@@ -30,16 +32,20 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     [SerializeField]
     float volume = 1.0f;
     bool walking = false;
+    string material = "gravel";
+    CharacterController2D controller;
+    
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
+        controller = GetComponent<CharacterController2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+        /*if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
         {
             walking = true;
             
@@ -57,14 +63,22 @@ public class AUDIO_PlayerMovement : MonoBehaviour
         if (walking) 
         {
             footsteps();
-        }
+        }*///
     }
 
     void footsteps()
     {
-        if (!source.isPlaying)
+        if (!source.isPlaying && controller.grounded && material == "gravel")
         {
-            source.clip = step[Random.Range(0, step.Length)];
+            source.clip = gravelStep[Random.Range(0, gravelStep.Length)];
+            pitch = Random.Range(minPitch, maxPitch);
+            source.pitch = pitch;
+            source.volume = volume;
+            source.Play();
+        }
+        if (!source.isPlaying && controller.grounded && material == "metal")
+        {
+            source.clip = metalStep[Random.Range(0, metalStep.Length)];
             pitch = Random.Range(minPitch, maxPitch);
             source.pitch = pitch;
             source.volume = volume;
@@ -73,13 +87,29 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     }
     void jumps()
     {
-        if (!jumpSource.isPlaying)
+        if (!jumpSource.isPlaying && controller.grounded)
         {
             jumpSource.clip = jump;
             pitch = Random.Range(minPitch, maxPitch);
             jumpSource.pitch = pitch;
             jumpSource.volume = volume;
             jumpSource.Play();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "FootStepMetal")
+        {
+            material = "metal";
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "FootstepMetal")
+        {
+            material = "gravel";
         }
     }
 }
