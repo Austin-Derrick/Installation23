@@ -10,6 +10,8 @@ public class CharacterController2D : MonoBehaviour
 
     [Tooltip("Movement speed of the player")]
     public float speed = 10;
+    [SerializeField]
+    float cameraSpeed = 1.1f;
 
     [SerializeField]
     Camera playerCam;
@@ -30,6 +32,7 @@ public class CharacterController2D : MonoBehaviour
     public float checkRadius;
     public bool grounded;
     private bool canDoubleJump;
+    public GameObject player;
 
     private bool isFacingRight = true;
 
@@ -37,9 +40,13 @@ public class CharacterController2D : MonoBehaviour
     Vector3 cameraOffset = new Vector3(0, 0, -10);
     Vector3 charPos;
     Vector2 input;
+    //This variable is hold the position the Camera will go ahead of the player towards.
+    Vector2 cameraBoost = new Vector2(5, 5);
+    
 
     private void Awake()
     {
+        
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         inventory = GetComponent<PlayerInventory>();
@@ -54,8 +61,16 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        playerCam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, playerCam.transform.position.z);
+
+    }
+
     private void Update()
     {
+
+
         input.x = Input.GetAxis("Horizontal");
 
         //Updates mouse and character positions
@@ -100,7 +115,7 @@ public class CharacterController2D : MonoBehaviour
         }
         animator.SetFloat("DeltaX", Mathf.Abs(input.x));
 
-        //Testing
+        CameraControl();
     }
 
     //Uses Vector 3 to acquire character position and mouse position 
@@ -115,5 +130,26 @@ public class CharacterController2D : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
+    }
+
+    private void CameraControl()
+    {
+        float xCameraGoal = input.x * (transform.position.x + cameraBoost.x);
+        Vector3 cameraGoal = new Vector3(xCameraGoal, transform.position.y, playerCam.transform.position.z);
+        //if(input.x > 0 || input.x < 0)
+        //    cameraGoal = new Vector3((input.x * cameraBoost.x), transform.position.y, playerCam.transform.position.z);
+        //else
+        //   cameraGoal = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
+
+        playerCam.transform.position = Vector3.Lerp(playerCam.transform.position, cameraGoal, cameraSpeed);
+        //if (playerCam.transform.position.x >= cameraGoal.x)
+        //{
+        //    cameraSpeed = speed;
+        //}
+        //else
+        //{
+        //    //The 1 can be changed, is how much faster the camera will be than the player
+        //    //cameraSpeed = speed + 1;
+        //}
     }
 }
