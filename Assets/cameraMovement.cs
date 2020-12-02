@@ -34,6 +34,7 @@ public class cameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        /*
         if(transform.position != target.position)
         {
             Vector3 targetPosition = new Vector3(target.position.x, target.position.y, transform.position.z);           
@@ -45,6 +46,8 @@ public class cameraMovement : MonoBehaviour
                 Mathf.Clamp(transform.localPosition.y, bottomLimit, topLimit),
                 transform.position.z
             );
+            */
+        transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
     }
 
     public void NewRoom(Transform newParent, float leftBounds, float rightBounds, float topBounds, float bottomBounds)

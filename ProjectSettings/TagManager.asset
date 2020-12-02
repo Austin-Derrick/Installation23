@@ -8,6 +8,7 @@ TagManager:
   - Pickup
   - Enemy
   - FootstepMetal
+  - Entrance
   layers:
   - Default
   - TransparentFX
