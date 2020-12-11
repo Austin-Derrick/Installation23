@@ -41,7 +41,7 @@ public class CharacterController2D : MonoBehaviour
     Vector3 charPos;
     Vector2 input;
     //This variable is hold the position the Camera will go ahead of the player towards.
-    Vector2 cameraBoost = new Vector2(5, 5);
+    Vector2 cameraBoost = new Vector2(5f, 5f);
     
 
     private void Awake()
@@ -63,8 +63,8 @@ public class CharacterController2D : MonoBehaviour
 
     private void Start()
     {
-        playerCam.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, playerCam.transform.position.z);
 
+        playerCam.transform.position = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
     }
 
     private void Update()
@@ -134,22 +134,49 @@ public class CharacterController2D : MonoBehaviour
 
     private void CameraControl()
     {
-        float xCameraGoal = input.x * (transform.position.x + cameraBoost.x);
-        Vector3 cameraGoal = new Vector3(xCameraGoal, transform.position.y, playerCam.transform.position.z);
-        //if(input.x > 0 || input.x < 0)
-        //    cameraGoal = new Vector3((input.x * cameraBoost.x), transform.position.y, playerCam.transform.position.z);
-        //else
-        //   cameraGoal = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
+        Vector3 cameraGoal;
+        
+        if (input.x > 0 && isFacingRight)
+        {
+            // I just want to get your love and affection <3
+            // Calculating the distance that the camera will be away from the player.
+            // Based on if the player is moving (Abs(input.x)), the right facing direction of the player (transofrm.right.x), and the distance we want to maintain(cameraboost.x).
+            float distanceToMaintain = Mathf.Abs(input.x) * transform.right.x * cameraBoost.x;
 
+            // Give me cuddles uWu
+            // Adding the distance we want to maintain to the players position
+            // This will calculate the distance the camera should be, relative to the players position
+            float xCameraGoal = distanceToMaintain + transform.position.x;
+
+            // Creating a vector pointing to where the camera should be.
+            // Taking into account the players y position, and the camera Depth.
+            cameraGoal = new Vector3(xCameraGoal, transform.position.y, playerCam.transform.position.z);
+        }
+        else if(input.x < 0 && !isFacingRight)
+        {
+            // I just want to get your love and affection <3
+            // Calculating the distance that the camera will be away from the player.
+            // Based on if the player is moving (Abs(input.x)), the right facing direction of the player (transofrm.right.x), and the distance we want to maintain(cameraboost.x).
+            float distanceToMaintain = Mathf.Abs(input.x) * transform.right.x * cameraBoost.x;
+
+            // Give me cuddles uWu
+            // Adding the distance we want to maintain to the players position
+            // This will calculate the distance the camera should be, relative to the players position
+            float xCameraGoal = distanceToMaintain + transform.position.x;
+
+            // Creating a vector pointing to where the camera should be.
+            // Taking into account the players y position, and the camera Depth.
+            cameraGoal = new Vector3(xCameraGoal, transform.position.y, playerCam.transform.position.z);
+        }
+        else
+            cameraGoal = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
+
+        StartCoroutine(stayAhead(cameraGoal));
+    }
+
+    IEnumerator stayAhead(Vector3 cameraGoal)
+    {
         playerCam.transform.position = Vector3.Lerp(playerCam.transform.position, cameraGoal, cameraSpeed);
-        //if (playerCam.transform.position.x >= cameraGoal.x)
-        //{
-        //    cameraSpeed = speed;
-        //}
-        //else
-        //{
-        //    //The 1 can be changed, is how much faster the camera will be than the player
-        //    //cameraSpeed = speed + 1;
-        //}
+        yield return new WaitForSeconds(.5f);
     }
 }
