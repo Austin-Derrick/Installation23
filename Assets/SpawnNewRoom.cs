@@ -10,6 +10,7 @@ public class SpawnNewRoom : MonoBehaviour
     private RoomData newRoomData;
     private RoomData thisRoomData;
 
+    private int leftOrRightOffset;
     private GameObject closestEntrance;
 
     public BoxCollider2D nextRoomCollider;
@@ -44,6 +45,7 @@ public class SpawnNewRoom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && newRoomSpawned != true)
         {
+            
             newRoomSpawned = true;  
             roomToSpawn = roomGenerationScript.ArenaRooms[(Random.Range(0,2))];
             newRoomData = roomToSpawn.GetComponent<RoomData>();
@@ -69,6 +71,9 @@ public class SpawnNewRoom : MonoBehaviour
                 }
 
             }
+            closestEntrance.transform.SetParent(newRoom.transform);
+            closestEntrance.transform.position = transform.position + new Vector3(3 * leftOrRightOffset, 0, 0);
+            newRoom.transform.SetParent(closestEntrance.transform);
             closestEntrance.gameObject.SetActive(false);
             Debug.Log("Closest entrance detected" + closestEntrance.name);
 
@@ -81,11 +86,13 @@ public class SpawnNewRoom : MonoBehaviour
         if (transform.position.x > transform.parent.position.x)
         {
             Debug.Log("Connector is to the RIGHT!");
+            leftOrRightOffset = 1;
         }
         else
         {
             Debug.Log("Connector is to the LEFT!");
             spawnOffset = -spawnOffset;
+            leftOrRightOffset = -1;
         }
     }
 }
