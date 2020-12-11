@@ -7,6 +7,7 @@ public class CharacterController2D : MonoBehaviour
     public Animator animator;
     [SerializeField]
     PlayerInventory inventory;
+    AUDIO_PlayerMovement audPlayerMovement;
 
     [Tooltip("Movement speed of the player")]
     public float speed = 10;
@@ -43,6 +44,7 @@ public class CharacterController2D : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         inventory = GetComponent<PlayerInventory>();
+        audPlayerMovement = GetComponent<AUDIO_PlayerMovement>();
     }
 
     private void FixedUpdate()
@@ -79,6 +81,7 @@ public class CharacterController2D : MonoBehaviour
         //Jumping from ground
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
+            audPlayerMovement.jumps();
             canDoubleJump = true;
             rb.velocity = rb.velocity + Vector2.up * jumpHeight;
         }
