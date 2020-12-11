@@ -81,7 +81,7 @@ public class CharacterController2D : MonoBehaviour
         //Jumping from ground
         if (grounded == true && Input.GetKeyDown(KeyCode.Space))
         {
-            audPlayerMovement.jumps();
+            //audPlayerMovement.jumps();
             canDoubleJump = true;
             rb.velocity = rb.velocity + Vector2.up * jumpHeight;
         }
