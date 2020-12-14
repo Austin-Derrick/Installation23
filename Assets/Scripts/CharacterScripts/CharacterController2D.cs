@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
+    #region Component Initialization
     public Animator animator;
+    private Rigidbody2D playerRigidbody;
+    private CapsuleCollider2D capsuleCollider;
+
     [SerializeField]
     PlayerInventory inventory;
-    AUDIO_PlayerMovement audPlayerMovement;
 
+    AUDIO_PlayerMovement audPlayerMovement;
+    #endregion
+
+    #region Player Stats
     [Tooltip("Movement speed of the player")]
-    public float speed = 10;
+    [SerializeField]
+    private float speed = 10;
 
     [SerializeField]
     Camera playerCam;
@@ -18,19 +26,22 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     GameObject resetPoint;
 
-    public float jumpHeight = 50;
+    [SerializeField]
+    private float jumpHeight = 50;
 
-    float maxSpeed = 20;
+    [SerializeField]
+    private float maxSpeed = 20;
 
-    new BoxCollider2D collider;
+    //Jumping Bools
+    public bool grounded;
+    private bool canDoubleJump;
+    #endregion
 
-    Rigidbody2D rb;
-
+    #region Environment Data
     public LayerMask groundLayer;
     public Transform groundCheck;
     public float checkRadius;
-    public bool grounded;
-    private bool canDoubleJump;
+    #endregion
 
     private bool isFacingRight = true;
 
@@ -41,8 +52,8 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
-        collider = GetComponent<BoxCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>();
+        playerRigidbody = GetComponent<Rigidbody2D>();
         inventory = GetComponent<PlayerInventory>();
         audPlayerMovement = GetComponent<AUDIO_PlayerMovement>();
     }
@@ -50,9 +61,14 @@ public class CharacterController2D : MonoBehaviour
     private void FixedUpdate()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
-        if (rb.velocity.magnitude <= maxSpeed)
+        if (playerRigidbody.velocity.magnitude <= maxSpeed)
         {
-            rb.velocity = new Vector2(input.x * speed, rb.velocity.y);
+            playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
+        }
+        grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        if (playerRigidbody.velocity.magnitude > maxSpeed)
+        {
+            playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
         }
     }
 
@@ -83,7 +99,7 @@ public class CharacterController2D : MonoBehaviour
         {
             audPlayerMovement.jumps();
             canDoubleJump = true;
-            rb.velocity = rb.velocity + Vector2.up * jumpHeight;
+            playerRigidbody.velocity = playerRigidbody.velocity + Vector2.up * jumpHeight;
         }
 
         //Jumping Mid-Air
@@ -92,9 +108,9 @@ public class CharacterController2D : MonoBehaviour
             canDoubleJump = false;
             //"v" saves current X and Y velocity, foribly changes the Y to be a fraction of normal jump height, then sets the RB velocity. 
             //Prevents combining the two jump velocities into a super jump by button mashing.
-            Vector2 v = rb.velocity;
+            Vector2 v = playerRigidbody.velocity;
             v.y = jumpHeight * .8f;
-            rb.velocity = v;
+            playerRigidbody.velocity = v;
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -119,4 +135,5 @@ public class CharacterController2D : MonoBehaviour
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
     }
+
 }
