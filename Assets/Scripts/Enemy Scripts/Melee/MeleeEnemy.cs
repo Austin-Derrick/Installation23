@@ -49,7 +49,7 @@ public class MeleeEnemy : MonoBehaviour
     //private void ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
     //{
     //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    //    if(player.transform.position.y > transform.position.y + 1 && grounded)
+    //    if (player.transform.position.y > transform.position.y + 1 && grounded)
     //    {
     //        Jump(enemyRb);
     //    }
@@ -63,7 +63,7 @@ public class MeleeEnemy : MonoBehaviour
 
     private void Attack()
     {
-
+        Debug.Log("Oh Boy, Time to attack!");
     }
 
     
