@@ -32,5 +32,18 @@ public class RoomGeneration : MonoBehaviour
             return arenaRooms;
         }
     }
-
+    public GameObject[] HallwayRooms
+    {
+        get
+        {
+            return hallwayRooms;
+        }
+    }
+    public GameObject[] VerticalRooms
+    {
+        get
+        {
+            return verticalRooms;
+        }
+    }
 }

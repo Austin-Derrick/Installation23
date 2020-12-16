@@ -31,6 +31,19 @@ public class RoomData : MonoBehaviour
         
     }
     
+    public void FlipSide()
+    {
+        for(int element = 0; element < entrances.Count; element++)
+        {
+            ConnectorData thisConnectorData = entrances[element].GetComponent<ConnectorData>();
+            if (thisConnectorData.isRight)
+            {
+                thisConnectorData.isRight = false;
+            }
+            else
+                thisConnectorData.isRight = true;
+        }
+    }
     public float RoomSize
     {
         get

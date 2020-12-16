@@ -74,25 +74,22 @@ public class ShootBullet : MonoBehaviour
         {
             case "Automatic Rifle":
                 damage = Random.Range(10, 15);
-                firingRate = .1f + (damage / 100);
+                firingRate = Random.Range(.04f, .06f) + (damage / 150);
                 reloadTime = 2f + (damage/10);
-                maxAmmo = 15 + ((Random.Range(1, 3) * 5));
-                Debug.Log("Weapon is an Assault Rifle!");
+                maxAmmo = 15 + ((Random.Range(1, 5) * 5));
                 break;
             case "DMR":
                 damage = Random.Range(25, 35);
                 firingRate = .5f + (damage / 100);
                 reloadTime = 2f + (damage / 10);
                 maxAmmo = 4 + Random.Range(0, 6);
-                Debug.Log("Weapon is a DMR!");
                 break;
             case "Burst Rifle":
                 damage = Random.Range(10, 15);
-                burstRate = Random.Range(.05f, .15f) + (damage / 200);
+                burstRate = Random.Range(.05f, .1f) + (damage / 200);
                 firingRate = burstRate * 4;
                 reloadTime = 2f + (damage / 10);
                 maxAmmo = 3 * (Random.Range(5, 10));
-                Debug.Log("Weapon is a Burst Rifle!");
                 break;
         }
     }
