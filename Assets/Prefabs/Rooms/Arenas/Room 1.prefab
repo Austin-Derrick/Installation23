@@ -1843,7 +1843,7 @@ CompositeCollider2D:
   m_GameObject: {fileID: 7496744030772601756}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: fa0733a5ca8c34240969681fd0e80556, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2686,6 +2686,16 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 6.8837433
       objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 7423197609140549791}
     - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2751,6 +2761,12 @@ PrefabInstance:
 --- !u!4 &7423197609140549788 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+    type: 3}
+  m_PrefabInstance: {fileID: 8541028529758800887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &7423197609140549791 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
     type: 3}
   m_PrefabInstance: {fileID: 8541028529758800887}
   m_PrefabAsset: {fileID: 0}

@@ -13,13 +13,12 @@ public class EnemySpawner : MonoBehaviour
     private BoxCollider2D room;
 
     [SerializeField]
-    float spawnCheckRange = 3;
+    Vector2 spawnCheckRange;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnEnemyWave(waveNumber);
-        BoxCollider2D room = gameObject.GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -44,7 +43,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector2 possibleSpawnPos = RandomPointInBounds(room.bounds);
 
-            if (Physics2D.OverlapCircle(possibleSpawnPos, spawnCheckRange, groundLayer) == false)
+            if (Physics2D.OverlapBox(possibleSpawnPos, spawnCheckRange, groundLayer) == false)
             {
                 Debug.Log("Valid spawn position found!");
                 validSpawnPos = possibleSpawnPos;

@@ -85,6 +85,7 @@ public class SpawnNewRoom : MonoBehaviour
             
             newConnector.SetActive(false);
             gameObject.SetActive(false);
+
             #region Old Code
             //if(newRoomData.CanBeFlipped)
             //{
