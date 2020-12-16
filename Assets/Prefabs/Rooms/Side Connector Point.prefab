@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6433921442897210504}
   - component: {fileID: 8880035035114480308}
   - component: {fileID: 1750082685911069056}
-  m_Layer: 0
+  - component: {fileID: 3118047130508460542}
+  m_Layer: 8
   m_Name: Side Connector Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7621384581983063596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 21.71, y: -2.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -72,3 +73,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextRoomCollider: {fileID: 8880035035114480308}
   newRoomSpawned: 0
+--- !u!114 &3118047130508460542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7621384581983063596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c330d72d96e6d74fb32fa48f15cc431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRight: 1
