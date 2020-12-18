@@ -28,10 +28,10 @@ public class UpdateScore : MonoBehaviour
        else
             score.text = "Score: " + 0;
 
-        Ammo.text = wepScript.currentAmmo + "/" + wepScript.maxAmmo;
-        if(wepScript.reloading)
-        {
-            Ammo.text = "--/" + wepScript.maxAmmo;
-        }
+        //Ammo.text = wepScript.currentAmmo + "/" + wepScript.maxAmmo;
+        //if(wepScript.reloading)
+        //{
+        //    Ammo.text = "--/" + wepScript.maxAmmo;
+        //}
     }
 }

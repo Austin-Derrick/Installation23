@@ -69,7 +69,7 @@ public class ShootBullet : MonoBehaviour
     {
         weaponType = weaponOptions[Random.Range(0, weaponOptions.Length)];
         Debug.Log("Weapon type is " + weaponType);
-
+        weaponType = weaponOptions[2];
         switch(weaponType)
         {
             case "Automatic Rifle":
@@ -195,8 +195,6 @@ public class ShootBullet : MonoBehaviour
             StartCoroutine(shootBullet(firePosition));
             source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
             yield return new WaitForSeconds(burstDelay);
-
         }
-        
     }
 }
