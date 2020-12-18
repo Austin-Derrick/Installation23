@@ -8,7 +8,6 @@ public class EnemyHealthManager : MonoBehaviour
     float localHealth;
     Enemy enemy;
 
-
     private void Die()
     {
         StartMenu.score += enemy.scoreValue;

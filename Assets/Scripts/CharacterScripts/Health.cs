@@ -23,7 +23,6 @@ public class Health : MonoBehaviour
     AudioSource source;
     AudioClip [] audDamage;
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +53,6 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
         if (collision.gameObject.name == "Bullet")
         {
             BounceBack(collision);
@@ -74,7 +72,6 @@ public class Health : MonoBehaviour
     //Formula for taking damage is stored here, can be called from anywhere with base damage value being passed into it
     public void TakeDamage(float damage)
     {
-       
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
         //if(source.clip != null)
@@ -94,6 +91,4 @@ public class Health : MonoBehaviour
             entityRb.velocity = Vector2.right * damageBounceBack;
         }
     }
-
-
 }
