@@ -13,6 +13,9 @@ public class RoomData : MonoBehaviour
     [SerializeField]
     private bool canBeFlipped;
 
+    [SerializeField]
+    private BoxCollider2D roomSizeCollider;
+
     private CompositeCollider2D compCollider;
 
     public GameObject usedEntrance;
@@ -23,6 +26,7 @@ public class RoomData : MonoBehaviour
     {
         compCollider = GetComponentInChildren<CompositeCollider2D>();
         Debug.Log(compCollider.bounds);
+        roomSizeCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame

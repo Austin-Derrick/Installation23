@@ -14,12 +14,11 @@ public class SpawnNewRoom : MonoBehaviour
 
     private GameObject newConnector;
 
-    public BoxCollider2D nextRoomCollider;
-
     private Vector3 spawnOffset;
 
     private Vector3 newRoomSpawnPos;
     public bool newRoomSpawned = false;
+    public bool roomFits = false;
 
     private GameObject RoomGenerationObject;
     private RoomGeneration roomGenerationScript;
@@ -27,8 +26,6 @@ public class SpawnNewRoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        nextRoomCollider = GetComponent<BoxCollider2D>();
         thisRoom = gameObject.transform.parent.gameObject;
         thisRoomData = GetComponentInParent<RoomData>();
 
