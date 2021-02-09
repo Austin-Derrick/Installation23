@@ -21,6 +21,7 @@ public class GrenadeLauncher : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             LaunchGrenade();
+            FindObjectOfType<AudioManager>().Play("Grenade Launcher Shot");
         }
     }
     void LaunchGrenade()

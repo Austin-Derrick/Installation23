@@ -50,25 +50,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
-        {
-            walking = true;
-            
-        }
-        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.D))
-        {
-            walking = false;
-
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            walking = false;
-            jumps();
-        }
-        if (walking) 
-        {
-            footsteps();
-        }*///
+      
     }
 
     void footsteps()
@@ -90,13 +72,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
         }
     }
 
-    public void PlayPickUp()
-    {
-        if (!pickUpSource.isPlaying)
-        {
-            FindObjectOfType<AudioManager>().Play("Pick Up");
-        }
-    }
+  
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -118,7 +94,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Pickup")
         {
-            PlayPickUp();
+            FindObjectOfType<AudioManager>().Play("Pick Up");
         }
     }
 }

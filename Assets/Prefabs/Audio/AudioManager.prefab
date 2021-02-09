@@ -87,7 +87,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: Machine Gun
-    clip: {fileID: 8300000, guid: daf28e59d2a08a1479d058c1c5309d69, type: 3}
+    clip: {fileID: 8300000, guid: 89244aa1e6d69f343891fa7245bdc000, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -122,3 +122,9 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Player Hurt
+    clip: {fileID: 8300000, guid: e26ed88b3b32d7549bba8ab2b9d11166, type: 3}
+    volume: 0.508
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0

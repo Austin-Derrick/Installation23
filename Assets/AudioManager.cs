@@ -34,19 +34,21 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
-
+        Debug.Log("Playing: " + name + ".");
         //Footsteps
         if (s.name == "Gravel Footstep")
         {
             s.volume = UnityEngine.Random.Range(.7f, 1f);
             s.pitch = UnityEngine.Random.Range(.8f, 1.2f);
             s.source.Play();
+            Debug.Log("Playing: " + name + ".");
         }
         if (s.name == "Metal Footstep")
         {
             s.volume = UnityEngine.Random.Range(.7f, 1f);
             s.pitch = UnityEngine.Random.Range(.8f, 1.2f);
             s.source.Play();
+            Debug.Log("Playing: " + name + ".");
         }
 
 
