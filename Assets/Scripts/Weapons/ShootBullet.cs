@@ -138,8 +138,8 @@ public class ShootBullet : MonoBehaviour
         nextFire = Time.time + firingRate;
         currentAmmo--;
         StartCoroutine(shootBullet(firePosition));
-
-        source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
+        FindObjectOfType<AudioManager>().Play("Pistol");
+        //source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
     }
     public void BurstFire(float Delay)
     {

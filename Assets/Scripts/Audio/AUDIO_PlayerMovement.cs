@@ -75,32 +75,18 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (!source.isPlaying && controller.grounded && material == "gravel")
         {
-            source.clip = gravelStep[Random.Range(0, gravelStep.Length)];
-            pitch = Random.Range(minPitch, maxPitch);
-            source.pitch = pitch;
-            source.volume = volume;
-            source.Play();
+            FindObjectOfType<AudioManager>().Play("Gravel Footstep");
         }
         if (!source.isPlaying && controller.grounded && material == "metal")
         {
-            source.clip = metalStep[Random.Range(0, metalStep.Length)];
-            pitch = Random.Range(minPitch, maxPitch);
-            source.pitch = pitch;
-            source.volume = volume;
-            source.Play();
+            FindObjectOfType<AudioManager>().Play("Metal Footstep");
         }
     }
     public void jumps()
     {
         if (!jumpSource.isPlaying && controller.grounded)
         {
-            Debug.Log("Jump initiatied");
-            jumpSource.clip = jump;
-            pitch = Random.Range(minPitch, maxPitch);
-            jumpSource.pitch = pitch;
-            jumpSource.volume = volume;
-            jumpSource.Play();
-            Debug.Log("Jump Played");
+            FindObjectOfType<AudioManager>().Play("Jump");
         }
     }
 
@@ -108,10 +94,7 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (!pickUpSource.isPlaying)
         {
-            pickUpSource.clip = pickupSound;
-            pitch = Random.Range(minPitch, maxPitch);
-            pickUpSource.pitch = pitch;
-            pickUpSource.Play();
+            FindObjectOfType<AudioManager>().Play("Pick Up");
         }
     }
 
