@@ -160,12 +160,16 @@ MonoBehaviour:
   inventory: {fileID: 1910325829134268788}
   speed: 7
   playerCam: {fileID: 0}
+  resetPoint: {fileID: 0}
   jumpHeight: 15
+  maxSpeed: 20
+  grounded: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheck: {fileID: 1709050818032168798}
   checkRadius: 0.5
+  cameraSpeed: 1.1
 --- !u!114 &6441399883093822041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,7 +233,6 @@ MonoBehaviour:
   inventory: {fileID: 1910325829134268788}
   playerBehavior: {fileID: 4083662742002092907}
   armBehavior: {fileID: 1709050816380634851}
-  animator: {fileID: 1709050817983816531}
   anchor: {fileID: 8471342904035615643}
 --- !u!1 &148991522702500456
 GameObject:
@@ -279,6 +282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e225ef4704af3f40b62b8a907dc7643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 0}
+  Ammo: {fileID: 0}
+  wepScript: {fileID: 0}
 --- !u!1 &408917169986414473
 GameObject:
   m_ObjectHideFlags: 0
