@@ -61,7 +61,7 @@ public class TextBoxManager : MonoBehaviour
         {
             if(!isTyping)
             {
-                currentLine += 1;
+                currentLine++;
 
                 if (currentLine > endAtLine)
                 {

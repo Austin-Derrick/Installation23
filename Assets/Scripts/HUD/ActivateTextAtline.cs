@@ -6,7 +6,7 @@ public class ActivateTextAtline : MonoBehaviour
 {
     public TextAsset theText;
 
-    public int startLine;
+    public int startLine = 0;
     public int endLine;
 
     public TextBoxManager textBox;
@@ -14,7 +14,6 @@ public class ActivateTextAtline : MonoBehaviour
 
     public bool requireButtonPress;
     private bool waitForPress;
-
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +27,24 @@ public class ActivateTextAtline : MonoBehaviour
         if (waitForPress && Input.GetKeyDown(KeyCode.Mouse0))
         {
 
+            //These are the actual lines that update the text in the textbox manager
+            textBox.ReloadScript(theText);
+            textBox.currentLine = startLine;
+            textBox.endAtLine = endLine;
+            textBox.EnableTextBox();
+
+
+            if (destroyWhenActivated)
+            {
+                Destroy(gameObject);
+            }
+            
+            
         }
+
+        
+        
+        
     }
 
     //From here, you would put your trigger type. OnTriggerEnter, OnCollisionEnter, on mouse down, etc etc.
@@ -44,16 +60,7 @@ public class ActivateTextAtline : MonoBehaviour
                 return;
             }
 
-            //These are the actual lines that update the text in the textbox manager
-            textBox.ReloadScript(theText);
-            textBox.currentLine = startLine;
-            textBox.endAtLine = endLine;
-            textBox.EnableTextBox();
-
-            if(destroyWhenActivated)
-            {
-                Destroy(gameObject);
-            }
+            
         }
     }
 
