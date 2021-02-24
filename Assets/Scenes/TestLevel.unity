@@ -1473,6 +1473,11 @@ PrefabInstance:
       propertyPath: MaxDistance
       value: 21.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1735110383932830202, guid: 3208ad370fcb2c040a51ee50990b0176,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1735110383932830207, guid: 3208ad370fcb2c040a51ee50990b0176,
         type: 3}
       propertyPath: m_Name
@@ -1554,7 +1559,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 485005102}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &485005105
 Transform:
   m_ObjectHideFlags: 0
