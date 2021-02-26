@@ -133,6 +133,18 @@ public class CharacterController2D : MonoBehaviour
         //Testing
     }
 
+
+    //Function to make it so player cannot move. May be needed for several purposes.
+    public void SetSpeedToZero()
+    {
+        speed = 0;
+    }
+
+    public void ReturnSpeedToDefault()
+    {
+        speed = 10;
+    }
+
     //Uses Vector 3 to acquire character position and mouse position 
     //relative to the world coordinates using the player camera.
     private void mouseAndCharacterPosition()
