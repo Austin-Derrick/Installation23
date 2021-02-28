@@ -61,6 +61,7 @@ public class TextBoxManager : MonoBehaviour
         {
             if(!isTyping)
             {
+                FindObjectOfType<AudioManager>().Play("Dialogue");
                 currentLine++;
 
                 if (currentLine > endAtLine)
