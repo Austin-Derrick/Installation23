@@ -117295,31 +117295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
-        type: 3}
-      propertyPath: sounds.Array.data[14].name
-      value: Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
-        type: 3}
-      propertyPath: sounds.Array.data[14].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: d8a4c779e2e527c48a9f517bbeee7917, type: 3}
-    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
-        type: 3}
-      propertyPath: sounds.Array.data[14].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
-        type: 3}
-      propertyPath: sounds.Array.data[14].pitch
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5337448427193055279, guid: b93b71b1a7949fe40804f4e18af9d547,
         type: 3}
       propertyPath: m_LocalPosition.x

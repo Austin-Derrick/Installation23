@@ -128,3 +128,21 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Dialogue
+    clip: {fileID: 8300000, guid: d8a4c779e2e527c48a9f517bbeee7917, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Door_Powerdown
+    clip: {fileID: 8300000, guid: 84b9700d8f7d2ea4dbecf1b6e1a3de9d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pistol_Reload
+    clip: {fileID: 8300000, guid: 07b590fac38fd834ab952ba773fdafc3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
