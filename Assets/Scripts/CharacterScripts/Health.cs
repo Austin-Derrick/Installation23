@@ -55,17 +55,17 @@ public class Health : MonoBehaviour
     {
         if (collision.gameObject.name == "Bullet")
         {
-            BounceBack(collision);
+            //BounceBack(collision);
         }
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
-            BounceBack(collision);
+            //BounceBack(collision);
         }
         if(collision.gameObject.CompareTag("Enemy") && !gameObject.CompareTag("Enemy"))
         {
             float enemyHealth = collision.gameObject.GetComponent<Health>().maxHealth;
             TakeDamage(enemyHealth * .1f);
-            BounceBack(collision);
+            //BounceBack(collision);
         }
     }
 
