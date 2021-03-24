@@ -6,6 +6,8 @@ public class ActivateTextAtline : MonoBehaviour
 {
     public TextAsset theText;
 
+    public GameObject rightMousePrompt;
+
     public int startLine = 0;
     public int endLine;
 
@@ -24,7 +26,7 @@ public class ActivateTextAtline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (waitForPress && Input.GetKeyDown(KeyCode.Mouse0))
+        if (waitForPress && Input.GetKeyDown(KeyCode.Mouse1))
         {
 
             //These are the actual lines that update the text in the textbox manager
@@ -56,6 +58,7 @@ public class ActivateTextAtline : MonoBehaviour
         {
             if(requireButtonPress)
             {
+                rightMousePrompt.SetActive(true);
                 waitForPress = true;
                 return;
             }
@@ -68,6 +71,7 @@ public class ActivateTextAtline : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            rightMousePrompt.SetActive(false);
             waitForPress = false;
         }
     }

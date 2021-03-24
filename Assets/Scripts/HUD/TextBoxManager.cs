@@ -25,6 +25,8 @@ public class TextBoxManager : MonoBehaviour
 
     public float typeSpeed;
 
+    public Image enterKey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +59,9 @@ public class TextBoxManager : MonoBehaviour
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
+            
             if(!isTyping)
             {
                 FindObjectOfType<AudioManager>().Play("Dialogue");
@@ -78,15 +81,16 @@ public class TextBoxManager : MonoBehaviour
             {
                 cancelTyping = true;
             }
-            
+
+
         }
 
-        
     }
 
     private IEnumerator TextScroll (string lineOfText)
     {
         int letter = 0;
+        enterKey.enabled = false;
         theText.text = "";
         isTyping = true;
         cancelTyping = false;
@@ -97,8 +101,10 @@ public class TextBoxManager : MonoBehaviour
             yield return new WaitForSeconds(typeSpeed);
         }
         theText.text = lineOfText;
+        enterKey.enabled = true;
         isTyping = false;
         cancelTyping = false;
+
     }
 
     public void EnableTextBox()
