@@ -5,20 +5,21 @@ using UnityEngine;
 
 public class SpawnNewRoom : MonoBehaviour
 {
-    private GameObject roomToSpawn;
+    private GameObject connectedRoom;
     private GameObject thisRoom;
-    private RoomData newRoomData;
+    private ConnectorData thisConnectorData;
+    private ConnectorData linkedConnectorData;
+    private RoomData connectedRoomData;
     private RoomData thisRoomData;
 
     private int flipChoice;
 
     private GameObject newConnector;
 
-    private Vector3 spawnOffset;
+    //private Vector3 spawnOffset;
 
-    private Vector3 newRoomSpawnPos;
-    public bool newRoomSpawned = false;
-    public bool roomFits = false;
+    //private Vector3 newRoomSpawnPos;
+    //public bool roomFits = false;
 
     private GameObject RoomGenerationObject;
     private RoomGeneration roomGenerationScript;
@@ -30,6 +31,7 @@ public class SpawnNewRoom : MonoBehaviour
         thisRoomData = GetComponentInParent<RoomData>();
 
         roomGenerationScript = GameObject.Find("Room Generation").GetComponent<RoomGeneration>();
+        thisConnectorData = this.GetComponent<ConnectorData>();
     }
 
     // Update is called once per frame
@@ -40,50 +42,72 @@ public class SpawnNewRoom : MonoBehaviour
  
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && newRoomSpawned != true)
+        if (collision.gameObject.CompareTag("Player") && thisConnectorData.roomSpawned != true)
         {
-            int spawnLeftOrRight = 1;
-            newRoomSpawned = true;
-            roomToSpawn = ChooseRoomType();
-            newRoomData = roomToSpawn.GetComponent<RoomData>();
-            spawnOffset = new Vector3(newRoomData.RoomSize, 0, 0);          
+            thisConnectorData.roomSpawned = true;
+            connectedRoom = Instantiate(ChooseRoomType(), this.transform.parent.position, new Quaternion(0, 0, 0, 0));
+            connectedRoomData = connectedRoom.GetComponent<RoomData>();
+            connectedRoom.SetActive(false);
 
-            GameObject newRoom = Instantiate(roomToSpawn, this.transform.position + spawnOffset, new Quaternion(0, 0, 0, 0));
-
-            newRoomData = newRoom.GetComponent<RoomData>();
-            newConnector = newRoomData.entrances[Random.Range(0, newRoomData.entrances.Count)];
-            ConnectorData thisConnectorData = this.GetComponent<ConnectorData>();
-            ConnectorData newConnectorData = newConnector.GetComponent<ConnectorData>();
-
-            if(thisConnectorData.IsRight && newConnectorData.IsRight == false) 
-            {
-                flipChoice = 1;
-                spawnLeftOrRight = 1;
-            }
-            else if(thisConnectorData.IsRight == false && newConnectorData.IsRight)
-            {
-                flipChoice = 1;
-                spawnLeftOrRight = -1;
-            }
-            else if(thisConnectorData.IsRight && newConnectorData.IsRight) 
-            {
-                flipChoice = -1;
-                spawnLeftOrRight = 1;
-                newRoomData.FlipSide();
-            }
-            else if(thisConnectorData.IsRight == false && newConnectorData.IsRight == false)
-            {
-                flipChoice = -1;
-                spawnLeftOrRight = -1;
-                newRoomData.FlipSide();
-            }
-            newRoom.gameObject.transform.localScale = new Vector3(flipChoice, 1, 1);
-            SetPositionWithConnector(newRoom, spawnLeftOrRight);
+            newConnector = connectedRoomData.entrances[Random.Range(0, connectedRoomData.entrances.Count)];
             
-            newConnector.SetActive(false);
-            gameObject.SetActive(false);
+            linkedConnectorData = newConnector.GetComponent<ConnectorData>();
+            linkedConnectorData.roomSpawned = true;
+            connectedRoom.gameObject.transform.localScale = new Vector3(LinkConnectors(thisConnectorData,linkedConnectorData), 1, 1);
+
+            linkedConnectorData.connectedRoom = thisRoom;
+            linkedConnectorData.linkedConnector = this.gameObject;
+            thisConnectorData.connectedRoom = connectedRoom;
+            thisConnectorData.linkedConnector = newConnector;
+
+            MoveBetweenRooms(newConnector, linkedConnectorData, collision.gameObject);
+            thisRoom.SetActive(false);
+            connectedRoom.SetActive(true);
 
             #region Old Code
+            //int spawnLeftOrRight = 1;
+            //newRoomSpawned = true;
+            //connectedRoom = ChooseRoomType();
+            //connectedRoomData = connectedRoom.GetComponent<RoomData>();
+            ////spawnOffset = new Vector3(newRoomData.RoomSize, 0, 0);          
+
+            //GameObject newRoom = Instantiate(connectedRoom,this.transform.parent.position, new Quaternion(0, 0, 0, 0));
+            ////GameObject newRoom = Instantiate(connectedRoom, this.transform.position + spawnOffset, new Quaternion(0, 0, 0, 0));
+
+            //connectedRoomData = newRoom.GetComponent<RoomData>();
+            //newConnector = connectedRoomData.entrances[Random.Range(0, connectedRoomData.entrances.Count)];
+            //ConnectorData thisConnectorData = this.GetComponent<ConnectorData>();
+            //ConnectorData newConnectorData = newConnector.GetComponent<ConnectorData>();
+
+            //if(thisConnectorData.IsRight && newConnectorData.IsRight == false) 
+            //{
+            //    flipChoice = 1;
+            //    spawnLeftOrRight = 1;
+            //}
+            //else if(thisConnectorData.IsRight == false && newConnectorData.IsRight)
+            //{
+            //    flipChoice = 1;
+            //    spawnLeftOrRight = -1;
+            //}
+            //else if(thisConnectorData.IsRight && newConnectorData.IsRight) 
+            //{
+            //    flipChoice = -1;
+            //    spawnLeftOrRight = 1;
+            //    connectedRoomData.FlipSide();
+            //}
+            //else if(thisConnectorData.IsRight == false && newConnectorData.IsRight == false)
+            //{
+            //    flipChoice = -1;
+            //    spawnLeftOrRight = -1;
+            //    connectedRoomData.FlipSide();
+            //}
+            //newRoom.gameObject.transform.localScale = new Vector3(flipChoice, 1, 1);
+            //SetPositionWithConnector(newRoom, spawnLeftOrRight);
+
+            //newConnector.SetActive(false);
+            //gameObject.SetActive(false);
+            #endregion
+            #region Older Code
             //if(newRoomData.CanBeFlipped)
             //{
             //    int[] flipChoices = new int[2] { -1, 1 };
@@ -111,6 +135,12 @@ public class SpawnNewRoom : MonoBehaviour
             #endregion
 
         }
+        else if(collision.gameObject.CompareTag("Player") && thisConnectorData.roomSpawned == true)
+        {
+            thisRoom.SetActive(false);
+            MoveBetweenRooms(thisConnectorData.linkedConnector, thisConnectorData.linkedConnector.GetComponent<ConnectorData>(), collision.gameObject);            
+            thisConnectorData.connectedRoom.SetActive(true);
+        }
     }
 
     private void LeftOrRight()
@@ -123,17 +153,9 @@ public class SpawnNewRoom : MonoBehaviour
         else
         {
             Debug.Log("Connector is to the LEFT!");
-            spawnOffset = -spawnOffset;
+            //spawnOffset = -spawnOffset;
             flipChoice = -1;
         }
-    }
-    private void SetPositionWithConnector(GameObject room, int leftOrRight)
-    {
-        newConnector.transform.SetParent(null);
-        room.transform.SetParent(newConnector.transform);
-        newConnector.transform.position = gameObject.transform.position + new Vector3(2 * leftOrRight,0,0);
-        room.transform.SetParent(null);
-        newConnector.transform.SetParent(room.transform);
     }
     private GameObject ChooseRoomType()
     {
@@ -153,5 +175,43 @@ public class SpawnNewRoom : MonoBehaviour
             roomToReturn = roomGenerationScript.VerticalRooms[(Random.Range(0, roomGenerationScript.VerticalRooms.Length))];
         }
         return roomToReturn;
+    }
+    private void MoveBetweenRooms(GameObject newConnector, ConnectorData newConnectorData, GameObject playerCharacter)
+    {
+        int spawnOffset = 0;
+        
+        if(newConnectorData.isRight)
+        {
+            spawnOffset = -1;
+        }
+        else
+        {
+            spawnOffset = 1;
+        }
+        Vector3 newSpawnPosition = new Vector3(newConnector.transform.position.x + spawnOffset, newConnector.transform.position.y, 0);
+        playerCharacter.transform.position = newSpawnPosition;
+    }
+    private int LinkConnectors(ConnectorData thisConnector, ConnectorData newRoomConnector)
+    {
+        int flipChoice = 1;
+        if (thisConnector.IsRight && newRoomConnector.IsRight == false)
+        {
+            flipChoice = 1;
+        }
+        else if (thisConnector.IsRight == false && newRoomConnector.IsRight)
+        {
+            flipChoice = 1;
+        }
+        else if (thisConnector.IsRight && newRoomConnector.IsRight)
+        {
+            flipChoice = -1;
+            connectedRoomData.FlipSide();
+        }
+        else if (thisConnector.IsRight == false && newRoomConnector.IsRight == false)
+        {
+            flipChoice = -1;
+            connectedRoomData.FlipSide();
+        }
+        return flipChoice;
     }
 }
