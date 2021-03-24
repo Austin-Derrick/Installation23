@@ -7,6 +7,10 @@ public class ConnectorData : MonoBehaviour
     [SerializeField]
     public bool isRight;
 
+    public GameObject connectedRoom;
+    public GameObject linkedConnector;
+    public bool roomSpawned = false;
+
     private void Start()
     {
         
@@ -14,6 +18,18 @@ public class ConnectorData : MonoBehaviour
     private void Update()
     {
         
+    }
+
+    public GameObject ConnectedRoom
+    {
+        get
+        {
+            return connectedRoom;
+        }
+        set
+        {
+
+        }
     }
     public bool IsRight
     {
