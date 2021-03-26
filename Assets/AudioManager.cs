@@ -1,10 +1,12 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
+    Scene scene;
     // Start is called before the first frame update
     void Awake()
     {
@@ -20,8 +22,17 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        Play("Theme");
-        Play("Ambience");
+        scene = SceneManager.GetActiveScene();
+        if (scene.name == "StartScreen")
+        {
+            Play("MM_Theme");
+            Play("MM_PowerHum");
+        }
+        else
+        {
+            Play("Theme");
+            Play("Ambience");
+        }
     }
 
     // Update is called once per frame
@@ -50,7 +61,12 @@ public class AudioManager : MonoBehaviour
             s.source.Play();
             Debug.Log("Playing: " + name + ".");
         }
-
+        if(s.name == "MM_SelectStart")
+        {
+            s.source.Play();
+            Debug.Log("Playing: " + name + ".");
+            s.source.volume = 0;
+        }
 
     }
 }

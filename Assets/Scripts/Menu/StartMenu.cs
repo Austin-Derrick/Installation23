@@ -6,18 +6,12 @@ using UnityEngine.SceneManagement;
 public class StartMenu : MonoBehaviour
 {
     public static int score = 0;
+    
 
     // Start is called before the first frame update
-    AudioSource source;
-    [SerializeField]
-    AudioClip hover;
-    [SerializeField]
-    AudioClip select;
+ 
 
-    void Start()
-    {
-        source = GetComponent<AudioSource>();
-    }
+   
 
     // Update is called once per frame
     void Update()
@@ -29,7 +23,10 @@ public class StartMenu : MonoBehaviour
 
     public void GoToFirstLevel()
     {
-        SceneManager.LoadScene(1);
+        if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void GoToEndScreen()
@@ -56,13 +53,19 @@ public class StartMenu : MonoBehaviour
 
     public void PlayHover()
     {
-        source.clip = hover;
-        source.Play();
+        if(!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
+        FindObjectOfType<AudioManager>().Play("MM_Hover");
     }
 
-    public void PlaySelect()
+    public void Select()
     {
-        source.clip = select;
-        source.Play();
+        if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
+            FindObjectOfType<AudioManager>().Play("MM_Select");
+    }
+
+    public void SelectPlay()
+    {
+        if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
+            FindObjectOfType<AudioManager>().Play("MM_SelectPlay");
     }
 }
