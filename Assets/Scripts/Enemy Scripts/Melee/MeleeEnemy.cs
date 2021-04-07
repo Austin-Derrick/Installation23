@@ -15,15 +15,10 @@ public class MeleeEnemy : Enemy
     public float checkRadius;
 
     StateMachine stateMachine => GetComponent<StateMachine>();
-
     public Transform Target { get; private set; }
-
     public bool isGrounded = true;
-
     Transform FloorCheck;
-
     public GameObject _player;
-
     BoxCollider2D collider => GetComponent<BoxCollider2D>();
 
     private void Awake()
@@ -31,12 +26,6 @@ public class MeleeEnemy : Enemy
         InitializeStateMachine();
         FloorCheck = transform.GetChild(2);
         player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

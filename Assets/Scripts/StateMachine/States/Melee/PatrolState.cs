@@ -62,7 +62,7 @@ public class PatrolState : BaseState
             }
         }
 
-        if (wallCheck)
+        if (wallCheck || !groundCheck)
         {
             Flip();
 

@@ -6,19 +6,13 @@ public class Enemy : MonoBehaviour
 {
     [Header("Attributes")]
     public float speed;
-    private Rigidbody2D enemyRb;
-    public bool isMelee;
-    public bool isRanged;
-    public MeleeEnemy meleeEnemyScript;
-    public RangedEnemy rangedEnemyScript;
+    private Rigidbody2D RB;
     public float attackRange;
     public int scoreValue;
 
     [Space]
     [Header("AI")]
     public GameObject player;
-
-
 
     public virtual void Attack(float distance)
     {
