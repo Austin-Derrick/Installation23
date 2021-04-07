@@ -1,72 +1,60 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeEnemy : MonoBehaviour
+public class MeleeEnemy : Enemy
 {
     [Header("AI")]
-    public bool withinRange = false;
 
     [Space]
     [Header("Jump Variables")]
     public float jumpHeight;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    private bool grounded;
     public float checkRadius;
 
-    // Start is called before the first frame update
-    void Start()
+    StateMachine stateMachine => GetComponent<StateMachine>();
+    public Transform Target { get; private set; }
+    public bool isGrounded = true;
+    Transform FloorCheck;
+    public GameObject _player;
+    BoxCollider2D collider => GetComponent<BoxCollider2D>();
+
+    private void Awake()
     {
-        
+        InitializeStateMachine();
+        FloorCheck = transform.GetChild(2);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        grounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, groundLayer);
+        isGrounded = Physics2D.OverlapBox(FloorCheck.position, new Vector2(collider.size.x - 0.1f, 0.15f), 0, groundLayer);
     }
 
-    public void MeleeBehavior(GameObject player, float speed, float attackRange, Rigidbody2D enemyRb)
+    public override void Attack(float distance)
     {
-        withinRange = false;
-        if (!withinRange)
-            StartCoroutine(ChaseThePlayer(player, speed, enemyRb));
-        else
-            Attack();
-    }
-
-    IEnumerator ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        if (player.transform.position.y > transform.position.y + 1 && grounded)
+        if (isGrounded)
         {
-            Jump(enemyRb);
+            this.GetComponent<Rigidbody2D>().AddForce(new Vector2(distance, 5), ForceMode2D.Impulse);
+            Debug.Log("Pounce");
+            // Decrease Player health
         }
-        yield return new WaitForSeconds(.5f);
     }
 
-    //private void ChaseThePlayer(GameObject player, float speed, Rigidbody2D enemyRb)
-    //{
-    //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    //    if (player.transform.position.y > transform.position.y + 1 && grounded)
-    //    {
-    //        Jump(enemyRb);
-    //    }
-
-    //}
-
-    public void Jump(Rigidbody2D enemyRb)
+    void InitializeStateMachine()
     {
-        enemyRb.velocity = Vector2.up * jumpHeight;
+        var states = new Dictionary<Type, BaseState>()
+        {
+            { typeof(PatrolState), new PatrolState(this)},
+            { typeof(ChaseState), new ChaseState(this)},
+            { typeof(AttackState), new AttackState(this)}
+        };
+
+        stateMachine.SetStates(states);
     }
 
-    private void Attack()
-    {
-        Debug.Log("Oh Boy, Time to attack!");
-    }
 
-    
-
-    
 }

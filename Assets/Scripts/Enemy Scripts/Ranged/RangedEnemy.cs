@@ -1,52 +1,45 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RangedEnemy : MonoBehaviour
+public class RangedEnemy : Enemy
 {
+    StateMachine stateMachine => GetComponent<StateMachine>();
+
+
     public float offsetVal = 4.0f;
-    private bool isActive = false;
-    private bool isSafe;
-    public float speed = 0;
     Vector2 MoveDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        isSafe = true;
+        InitializeStateMachine();
     }
 
-    // Update is called once per frame
-    void Update()
+    void InitializeStateMachine()
     {
-        
+        var states = new Dictionary<Type, BaseState>()
+        {
+            { typeof(PatrolState), new PatrolState(this)},
+            { typeof(ChaseState), new ChaseState(this)},
+            { typeof(AttackState), new AttackState(this)}
+        };
+
+        stateMachine.SetStates(states);
     }
 
-    public void GetSpeed(float Speed)
-    {
-        speed = Speed;
-    }
-
-    //public void SetActive(bool status)
-    //{
-
-    //}
-
+    #region OLD
     public void RangedBehavior(GameObject player)
     {
         CheckForSafety(player);
-        if(isSafe)
-            Shoot();
-        else
-            StartCoroutine(MaintainDistance(speed, player));
+        Shoot();
+        StartCoroutine(MaintainDistance(speed, player));
     }
 
     private void CheckForSafety(GameObject player)
     {
-        if ((player.transform.position.x - transform.position.x) < offsetVal)
-            isSafe = false;
-        else
-            isSafe = true;
+        //if ((player.transform.position.x - transform.position.x) < offsetVal)
     }
 
     //When the player gets too close to the enemy, the enemy walks away from the player
@@ -72,4 +65,5 @@ public class RangedEnemy : MonoBehaviour
     {
         //The ranged enemy is gone shoot
     }
+    #endregion  
 }
