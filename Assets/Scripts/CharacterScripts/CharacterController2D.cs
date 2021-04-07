@@ -128,8 +128,8 @@ public class CharacterController2D : MonoBehaviour
             transform.position = resetPoint.transform.position;
         }
         animator.SetFloat("DeltaX", Mathf.Abs(input.x));
-
-        CameraControl();
+        playerCam.transform.position = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
+        //CameraControl();
         //Testing
     }
 
