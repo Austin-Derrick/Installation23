@@ -34,4 +34,8 @@ public class Parallax : MonoBehaviour
         else if (temp < startPos - length)
             startPos -= length;
     }
+    private void Update()
+    {
+        //transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
+    }
 }

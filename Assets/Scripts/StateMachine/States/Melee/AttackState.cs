@@ -10,7 +10,7 @@ public class AttackState : BaseState
 
     float distanceToPlayer;
     float count = 0.5f;
-    float waitTime = 0.5f;
+    float waitTime = 1.0f;
     public AttackState(Enemy enemy) : base(enemy.gameObject)
     {
         _enemy = enemy;

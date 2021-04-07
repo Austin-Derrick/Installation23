@@ -15,18 +15,18 @@ public class ChaseState : BaseState
 
     public ChaseState(Enemy enemy) : base(enemy.gameObject)
     {
-        Debug.Log("Set");
+        
         _enemy = enemy;
         player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {
-            Debug.Log("Set player");
+            
 
         }
         if (_enemy != null)
         {
-            Debug.Log("Set enemy");
+            
 
         }
     }
@@ -36,17 +36,21 @@ public class ChaseState : BaseState
         distanceToPlayer = Vector3.Distance(_enemy.transform.position, player.transform.position);
         if (distanceToPlayer < 1.5f)
         {
-            Debug.Log("Attack");
             return typeof(AttackState);
         }
         else if (distanceToPlayer > 7)
         {
-            Debug.Log("Patrol");
+            
             return typeof(PatrolState);
         }
         else
         {
             _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, player.transform.position, 0.02f);
+            if (player.transform.position.y > _enemy.transform.position.y + 3)
+            {
+                _enemy.GetComponent<Rigidbody2D>().AddForce(new Vector2(Vector2.Distance(_enemy.transform.position, player.transform.position), 5), ForceMode2D.Impulse);
+                return typeof(ChaseState);
+            }
             return typeof(ChaseState);
         }
     }
