@@ -25,13 +25,13 @@ public class StartMenu : MonoBehaviour
     {
         if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 
     public void GoToEndScreen()
     {
-        SceneManager.LoadScene(2);
+        ///SceneManager.LoadScene(2);
     }
 
     public void GoToStartScreen()
