@@ -9,33 +9,46 @@ public class Chest_Open_Audio_Trigger : MonoBehaviour
     public AudioClip OpenClip;
     public AudioSource loopsource;
     public AudioSource openSource;
+    [SerializeField]
     bool canOpen = false;
+    [SerializeField]
+    bool hasBeenOpened = false;
+
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         loopsource.clip = LoopClip;
         loopsource.loop = true;
-        loopsource.Play();
+        if (!hasBeenOpened)
+            loopsource.Play();
         openSource.clip = OpenClip;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && canOpen && !openSource.isPlaying)
+        if(Input.GetKeyDown(KeyCode.E) && canOpen && !hasBeenOpened && !openSource.isPlaying)
         {
             loopsource.Stop();
             openSource.Play();
+            hasBeenOpened = true;
+            canOpen = false;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        canOpen = true;
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            canOpen = true;
+        }       
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        canOpen = false;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canOpen = false;
+        }
     }
+
 }

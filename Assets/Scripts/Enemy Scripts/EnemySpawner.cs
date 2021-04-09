@@ -29,11 +29,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (enemyCount == 0)
-        {
-            waveNumber++;
-            SpawnEnemyWave(waveNumber);
-        }
+        
     }
 
     Vector3 GenerateSpawnPos()

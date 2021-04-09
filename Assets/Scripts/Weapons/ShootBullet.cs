@@ -25,7 +25,10 @@ public class ShootBullet : MonoBehaviour
     [SerializeField] LineRenderer lineRenderer;
 
     [SerializeField]
-    float damage = 25;
+    float damage;
+
+    [SerializeField]
+    int weaponTypeDebug;
 
 
     public string[] weaponOptions = new string[3] { "Automatic Rifle", "DMR", "Burst Rifle" };
@@ -33,7 +36,9 @@ public class ShootBullet : MonoBehaviour
 
     private bool canFire = true;
     private float nextFire;
+    [SerializeField]
     float burstRate;
+
     float nextBurst;
     public bool reloading = false;
 
@@ -42,7 +47,6 @@ public class ShootBullet : MonoBehaviour
 
     [SerializeField]
     private float reloadTime;
-
 
     //Audio
     AudioSource source;
@@ -68,30 +72,45 @@ public class ShootBullet : MonoBehaviour
     }
     private void GenerateWeapon()
     {
-        weaponType = weaponOptions[Random.Range(0, weaponOptions.Length)];
+        if(weaponTypeDebug != 0)
+        {
+            switch(weaponTypeDebug)
+            {
+                case 1:
+                    weaponType = "Automatic Rifle";
+                    break;
+                case 2:
+                    weaponType = "DMR";
+                    break;
+                case 3:
+                    weaponType = "Burst Rifle";
+                    break;
+
+            }
+        }
         Debug.Log("Weapon type is " + weaponType);
 
         switch(weaponType)
         {
             case "Automatic Rifle":
-                damage = Random.Range(10, 15);
-                firingRate = Random.Range(.04f, .06f) + (damage / 150);
-                reloadTime = 1f + (damage/10);
+                damage = Random.Range(20, 30);
+                firingRate = Random.Range(.07f, .1f);
+                reloadTime = 1f + (damage/50);
                 maxAmmo = 15 + ((Random.Range(1, 5) * 5));
                 
                 break;
             case "DMR":
-                damage = Random.Range(50, 60);
-                firingRate = .1f + (damage / 100);
-                reloadTime = 1f + (damage / 25);
+                damage = Random.Range(75, 100);
+                firingRate = .5f;
+                reloadTime = .5f + (damage / 50);
                 maxAmmo = 4 + Random.Range(0, 6);
                 
                 break;
             case "Burst Rifle":
-                damage = Random.Range(10, 15);
-                burstRate = Random.Range(.05f, .1f) + (damage / 200);
+                damage = Random.Range(35, 45);
+                burstRate = Random.Range(.075f, .125f);
                 firingRate = burstRate * 4;
-                reloadTime = 1f + (damage / 10);
+                reloadTime = .2f + (damage / 50);
                 maxAmmo = 3 * (Random.Range(5, 10));
                 
                 break;
