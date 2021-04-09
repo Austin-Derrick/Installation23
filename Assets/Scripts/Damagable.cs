@@ -4,5 +4,11 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-    AudioClip dieSound;
+    public delegate void Damaged(float damageAmount);
+    public event Damaged OnDamaged;
+
+    public void hitByPlayer(float damageAmount)
+    {
+        OnDamaged?.Invoke(damageAmount);
+    }
 }

@@ -172,7 +172,8 @@ public class ShootBullet : MonoBehaviour
                 lineRenderer.SetPosition(1, hitInfo.point);
                 if (hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
                 {
-                    hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
+                    hitInfo.collider.gameObject.GetComponent<Damagable>().hitByPlayer(damage);
+                    //hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
                 }
             }
             else

@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
 {
     private Collider2D entityCollider;
     private Rigidbody2D entityRb;
+    public Damagable damagable;
 
     [Header("Attributes")]
     public float maxHealth = 100;
@@ -26,6 +27,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        damagable = GetComponent<Damagable>();
         entityRb = GetComponent<Rigidbody2D>();
         entityCollider = GetComponent<Collider2D>();
         source = GetComponent<AudioSource>();
@@ -35,18 +37,20 @@ public class Health : MonoBehaviour
             healthBar.maxValue = maxHealth;
             healthBar.value = currentHealth;
         }
+
+        damagable.OnDamaged += TakeDamage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentHealth <= 0)
+        /*if (currentHealth <= 0)
         {
             if(gameObject.CompareTag("Player"))
             {
-                //Game Over, or whatever we decide on death
+                //Game Over, or whatever we decide odn death
             }
-        }
+        }*/
         if(healthBar != null)
             healthBar.value = currentHealth;
     }
@@ -64,7 +68,7 @@ public class Health : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy") && !gameObject.CompareTag("Enemy"))
         {
             float enemyHealth = collision.gameObject.GetComponent<Health>().maxHealth;
-            TakeDamage(enemyHealth * .1f);
+            //TakeDamage(enemyHealth * .1f);
             //BounceBack(collision);
         }
     }
@@ -74,6 +78,10 @@ public class Health : MonoBehaviour
     {
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
+        if (currentHealth <= 0)
+        {
+            GetComponent<EnemyHealthManager>().Die();
+        }
         //if(source.clip != null)
         //    source.clip = audDamage[Random.Range(0, audDamage.Length)];
         //source.Play();

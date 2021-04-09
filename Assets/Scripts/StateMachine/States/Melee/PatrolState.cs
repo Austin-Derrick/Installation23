@@ -58,7 +58,7 @@ public class PatrolState : BaseState
             }
             else
             {
-                Debug.Log($"{hit.collider.gameObject.name}");
+                //Debug.Log($"{hit.collider.gameObject.name}");
             }
         }
 
