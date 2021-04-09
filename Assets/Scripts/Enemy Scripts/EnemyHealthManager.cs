@@ -15,8 +15,8 @@ public class EnemyHealthManager : MonoBehaviour
     {
         //Instantiate(EnemyDeathSound, this.transform.position, this.transform.rotation);
         StartMenu.score += enemy.scoreValue;
-        source.Play();
-        Invoke("killBug", 0.5f);
+        source.PlayOneShot(source.clip);
+        Invoke("killBug", .8f);
         //Destroy(gameObject);
     }
     // Start is called before the first frame update
