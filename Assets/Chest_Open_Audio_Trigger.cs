@@ -12,6 +12,7 @@ public class Chest_Open_Audio_Trigger : MonoBehaviour
     bool canOpen = false;
     void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         loopsource.clip = LoopClip;
         loopsource.loop = true;
         loopsource.Play();
