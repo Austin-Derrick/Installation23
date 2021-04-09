@@ -271,6 +271,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
+        type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 60f8f70bfec61b14ab0c38cccc0f90aa, type: 3}
+    - target: {fileID: 5337448427193055278, guid: b93b71b1a7949fe40804f4e18af9d547,
+        type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5337448427193055279, guid: b93b71b1a7949fe40804f4e18af9d547,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3793,6 +3803,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 2.4000244
       objectReference: {fileID: 0}
+    - target: {fileID: 2077668062, guid: 4a7f7d3db77bfee4d959af72a8ea6643, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 60f8f70bfec61b14ab0c38cccc0f90aa, type: 3}
     - target: {fileID: 326413754474482672, guid: 4a7f7d3db77bfee4d959af72a8ea6643,
         type: 3}
       propertyPath: m_AnchorMax.y
