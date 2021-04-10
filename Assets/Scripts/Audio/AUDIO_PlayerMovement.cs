@@ -57,18 +57,27 @@ public class AUDIO_PlayerMovement : MonoBehaviour
     {
         if (!source.isPlaying && controller.grounded && material == "gravel")
         {
-            FindObjectOfType<AudioManager>().Play("Gravel Footstep");
+            source.clip = gravelStep[Random.Range(0, gravelStep.Length)];
+            source.pitch = Random.Range(minPitch, maxPitch);
+            source.volume = Random.Range(.8f, 1f);
+            source.PlayOneShot(source.clip);
         }
         if (!source.isPlaying && controller.grounded && material == "metal")
         {
-            FindObjectOfType<AudioManager>().Play("Metal Footstep");
+            source.clip = metalStep[Random.Range(0, metalStep.Length)];
+            source.pitch = Random.Range(minPitch, maxPitch);
+            source.volume = Random.Range(.8f, 1f);
+            source.PlayOneShot(source.clip);
         }
     }
     public void jumps()
     {
         if (!jumpSource.isPlaying && controller.grounded)
         {
-            FindObjectOfType<AudioManager>().Play("Jump");
+            jumpSource.clip = jump;
+            jumpSource.pitch = Random.Range(minPitch, maxPitch);
+            jumpSource.volume = Random.Range(.8f, 1f);
+            jumpSource.PlayOneShot(jumpSource.clip);
         }
     }
 
