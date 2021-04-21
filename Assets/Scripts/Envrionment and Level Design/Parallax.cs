@@ -7,7 +7,7 @@ public class Parallax : MonoBehaviour
 
     private float length;
     private float startPos;
-    public GameObject cam;
+    public GameObject player;
     public float parallaxEffect;
     
     // Start is called before the first frame update
@@ -20,13 +20,13 @@ public class Parallax : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //How far we've moved relative to Cam
-        float temp = (cam.transform.position.x * (1 - parallaxEffect));
+        //How far we've moved relative to player
+        float temp = (player.transform.position.x * (1 - parallaxEffect));
 
         //Determines distance the parallax has travelled
-        float dist = (cam.transform.position.x * parallaxEffect);
+        float dist = (player.transform.position.x * parallaxEffect);
 
-        transform.position = new Vector3(startPos + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3(startPos + dist, (player.transform.position.y - 15), transform.position.z);
 
         //Keeps background repeating.
         if (temp > startPos + length)
@@ -36,6 +36,6 @@ public class Parallax : MonoBehaviour
     }
     private void Update()
     {
-        //transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
+        //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
     }
 }
