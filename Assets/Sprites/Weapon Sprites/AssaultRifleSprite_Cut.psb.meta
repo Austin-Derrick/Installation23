@@ -101,10 +101,10 @@ ScriptedImporter:
     spriteID: 1e0c59852658af54697e00b0172d50d4
     internalID: 0
     spriteBone:
-    - name: gun_bone
-      position: {x: 104.18793, y: 218.90564, z: 0}
-      rotation: {x: 0, y: 0, z: -0.00038602026, w: 0.99999994}
-      length: 804.81085
+    - name: bone_1
+      position: {x: 190.79425, y: 263.4461, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0062291757, w: 0.9999806}
+      length: 720.14435
       parentId: -1
     spriteOutline: []
     vertices:
@@ -756,10 +756,10 @@ ScriptedImporter:
     mosaicPosition: {x: 4, y: 4}
   characterData:
     bones:
-    - name: gun_bone
-      position: {x: 827.1879, y: 772.90564, z: 0}
-      rotation: {x: 0, y: 0, z: -0.00038602026, w: 0.99999994}
-      length: 804.8108
+    - name: bone_1
+      position: {x: 913.79425, y: 817.4461, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0062291757, w: 0.9999806}
+      length: 720.14435
       parentId: -1
     parts:
     - spritePosition:
