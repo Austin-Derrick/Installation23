@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 616822672091092369, guid: d98b720c872b948449e1893d7c24fcef, type: 3}
+  - {fileID: 4308962628525838025, guid: 9255d6ac2be0dd44489c533e970adc7f, type: 3}
   enemyCount: 0
   waveNumber: 1
   groundLayer:
