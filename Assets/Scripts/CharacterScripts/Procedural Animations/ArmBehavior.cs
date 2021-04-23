@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class ArmBehavior : MonoBehaviour
 {
+
     public Transform gunAnchor;
     public GameObject gun;
     public Transform gunBone;
-    public Transform leftArmTargetTransform;
-    public Transform rightHandAnchor;
-    public Transform rightHandTargetTransform;
+    #region Arm Targets
+    public GameObject leftArmTargetTransform;
+    public GameObject rightHandTargetTransform;
+    #endregion
+    public GameObject gunFrontHandPosition;
+    public GameObject gunBackHandPosition;
     public bool isHoldingItem = false;
     Vector3 mousePos;
     public Animator animator;
@@ -31,13 +35,16 @@ public class ArmBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         animator.SetBool("IsHoldingGun", isHoldingItem);
         if (counter == 1)
         {
+            animator.SetLookAtWeight(1);
+            animator.SetLookAtPosition()
             gun.transform.position = gunAnchor.position;
             gun.transform.parent = gunAnchor;
-            rightHandTargetTransform.position = rightHandAnchor.position;
-            rightHandTargetTransform.parent = rightHandAnchor;
+            //rightHandTargetTransform.position = rightHandAnchor.position;
+            //rightHandTargetTransform.parent = rightHandAnchor;
             //gunBone.position = leftArmTargetTransform.position;
         }
         if (isHoldingItem && counter > 0)
@@ -45,7 +52,8 @@ public class ArmBehavior : MonoBehaviour
             //gun.transform.position = leftArmTargetTransform.position;
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rotateItemInHands();
-            rightHandTargetTransform.position = rightHandAnchor.position;
+            MoveHands();
+            //rightHandTargetTransform.position = rightHandAnchor.position;
             counter++;
         }
     }
@@ -58,5 +66,10 @@ public class ArmBehavior : MonoBehaviour
         float thetaDegrees = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
         // Rotates the play object according to the degrees that we calculated
         gunBone.transform.eulerAngles = new Vector3(0, 0, thetaDegrees);
+    }
+    private void MoveHands()
+    {
+        animator.SetIKPosition()
+
     }
 }
