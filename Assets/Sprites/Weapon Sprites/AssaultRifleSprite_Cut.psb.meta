@@ -102,9 +102,9 @@ ScriptedImporter:
     internalID: 0
     spriteBone:
     - name: bone_1
-      position: {x: 190.79425, y: 263.4461, z: 0}
-      rotation: {x: 0, y: 0, z: 0.0062291757, w: 0.9999806}
-      length: 720.14435
+      position: {x: 52.65033, y: 195.67743, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0039818133, w: 0.9999921}
+      length: 858.8265
       parentId: -1
     spriteOutline: []
     vertices:
@@ -757,9 +757,9 @@ ScriptedImporter:
   characterData:
     bones:
     - name: bone_1
-      position: {x: 913.79425, y: 817.4461, z: 0}
-      rotation: {x: 0, y: 0, z: 0.0062291757, w: 0.9999806}
-      length: 720.14435
+      position: {x: 775.6503, y: 749.6774, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0039818133, w: 0.9999921}
+      length: 858.8265
       parentId: -1
     parts:
     - spritePosition:

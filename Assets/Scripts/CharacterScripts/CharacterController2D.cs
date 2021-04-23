@@ -32,6 +32,9 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 20;
 
+    [SerializeField]
+    private Transform heldWeapon;
+
     //Jumping Bools
     public bool grounded;
     private bool canDoubleJump;
@@ -81,6 +84,8 @@ public class CharacterController2D : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
         }
+
+        //RotateItemInHands();
     }
 
     private void Update()
