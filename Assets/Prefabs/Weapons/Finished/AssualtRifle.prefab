@@ -175,13 +175,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41399e34e71792342bf3a054db3ca70b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBeingHeld: 0
+  maxAmmo: 0
+  currentAmmo: 0
   bulletPrefab: {fileID: 496986009545652186, guid: aeb244e44de42ab44a65bb7b1281e777,
     type: 3}
   firePosition: {fileID: 1773298131815275254}
   shootForce: 10
   lineRenderer: {fileID: 1773298130011427413}
   damage: 25
+  weaponTypeDebug: 0
+  weaponOptions:
+  - Automatic Rifle
+  - DMR
+  - Burst Rifle
+  burstRate: 0
+  reloading: 1
   firingRate: 0.25
+  reloadTime: 0
   shot:
   - {fileID: 8300000, guid: 6a9a2dbd96c8eef49802d4d34c49850f, type: 3}
 --- !u!61 &1773298131207352381
@@ -389,22 +400,22 @@ PrefabInstance:
     - target: {fileID: -8678419556779964894, guid: d534db2381ee3844aa757b06b080f3fd,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
-      value: 3.068294
+      value: 4.452606
       objectReference: {fileID: 0}
     - target: {fileID: -8678419556779964894, guid: d534db2381ee3844aa757b06b080f3fd,
         type: 3}
       propertyPath: m_Bounds.m_Center.y
-      value: -0.6519995
+      value: 0.03861499
       objectReference: {fileID: 0}
     - target: {fileID: -8678419556779964894, guid: d534db2381ee3844aa757b06b080f3fd,
         type: 3}
       propertyPath: m_Bounds.m_Extent.x
-      value: 4.975269
+      value: 4.9751987
       objectReference: {fileID: 0}
     - target: {fileID: -8678419556779964894, guid: d534db2381ee3844aa757b06b080f3fd,
         type: 3}
       propertyPath: m_Bounds.m_Extent.y
-      value: 2.0030072
+      value: 2.0118089
       objectReference: {fileID: 0}
     - target: {fileID: 1344731869146192179, guid: d534db2381ee3844aa757b06b080f3fd,
         type: 3}

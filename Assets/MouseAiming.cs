@@ -18,7 +18,7 @@ public class MouseAiming : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         mousePos = Input.mousePosition;
         mousePos.z = 5.23f; //The distance between the camera and object

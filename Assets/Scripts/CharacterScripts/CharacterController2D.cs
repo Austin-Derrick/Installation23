@@ -32,8 +32,8 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 20;
 
-    [SerializeField]
-    private Transform heldWeapon;
+    //[SerializeField]
+    //private Transform heldWeapon;
 
     //Jumping Bools
     public bool grounded;
@@ -84,7 +84,7 @@ public class CharacterController2D : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
         }
-
+        animator.SetBool("isGrounded", grounded);
         //RotateItemInHands();
     }
 
@@ -132,6 +132,7 @@ public class CharacterController2D : MonoBehaviour
         {
             transform.position = resetPoint.transform.position;
         }
+        animator.SetFloat("DeltaY", playerRigidbody.velocity.y);
         animator.SetFloat("DeltaX", Mathf.Abs(input.x));
         playerCam.transform.position = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
         //CameraControl();
