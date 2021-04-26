@@ -8,6 +8,8 @@ public class CharacterController2D : MonoBehaviour
     public Animator animator;
     private Rigidbody2D playerRigidbody;
     private CapsuleCollider2D capsuleCollider;
+    [SerializeField]
+    private Transform gunSpriteTransform;
 
     [SerializeField]
     PlayerInventory inventory;
@@ -31,6 +33,9 @@ public class CharacterController2D : MonoBehaviour
 
     [SerializeField]
     private float maxSpeed = 20;
+
+    //[SerializeField]
+    //private Transform heldWeapon;
 
     //Jumping Bools
     public bool grounded;
@@ -81,6 +86,8 @@ public class CharacterController2D : MonoBehaviour
         {
             playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
         }
+        animator.SetBool("isGrounded", grounded);
+        //RotateItemInHands();
     }
 
     private void Update()
@@ -95,7 +102,7 @@ public class CharacterController2D : MonoBehaviour
         //Character flipping based on mouse position
         if (mousePos.x >= charPos.x && !isFacingRight)
         {
-            FlipSprite();
+            FlipSprite();          
             isFacingRight = true;
         }
         if (mousePos.x <= charPos.x && isFacingRight)
@@ -127,6 +134,7 @@ public class CharacterController2D : MonoBehaviour
         {
             transform.position = resetPoint.transform.position;
         }
+        animator.SetFloat("DeltaY", playerRigidbody.velocity.y);
         animator.SetFloat("DeltaX", Mathf.Abs(input.x));
         playerCam.transform.position = new Vector3(transform.position.x, transform.position.y, playerCam.transform.position.z);
         //CameraControl();
@@ -154,9 +162,10 @@ public class CharacterController2D : MonoBehaviour
     }
 
     private void FlipSprite()
-    {
+    {       
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
+        gunSpriteTransform.Rotate(180, 0, 0);
     }
 
     private void CameraControl()

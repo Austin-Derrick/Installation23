@@ -60,6 +60,10 @@ public class ShootBullet : MonoBehaviour
         source = GetComponent<AudioSource>();
         currentAmmo = maxAmmo;
     }
+    public void Awake()
+    {
+       
+    }
     public void setIsBeingHeld()
     {
         isBeingHeld = true;
