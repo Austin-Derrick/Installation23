@@ -13,12 +13,13 @@ public class RoomData : MonoBehaviour
     [SerializeField]
     private bool canBeFlipped;
 
-    [SerializeField]
-    private BoxCollider2D roomSizeCollider;
+    //[SerializeField]
+    //private BoxCollider2D enemyScanCollider;
 
     private CompositeCollider2D compCollider;
 
     public GameObject usedEntrance;
+
     
 
     // Start is called before the first frame update
@@ -26,7 +27,6 @@ public class RoomData : MonoBehaviour
     {
         compCollider = GetComponentInChildren<CompositeCollider2D>();
         Debug.Log(compCollider.bounds);
-        roomSizeCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -66,4 +66,5 @@ public class RoomData : MonoBehaviour
             return canBeFlipped;
         }
     }
+    
 }
