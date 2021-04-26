@@ -8,6 +8,9 @@ public class DetectPlayer : MonoBehaviour
     EnemyMovement enemyMovementScript;
 
     [SerializeField]
+    GameObject objectBody;
+
+    [SerializeField]
     Transform targetTransform;
 
     [SerializeField]
@@ -15,11 +18,14 @@ public class DetectPlayer : MonoBehaviour
 
     [SerializeField]
     bool hasFoundPlayer = false;
+    bool facingLeft;
+    
 
     //Start is called before the first frame update
     void Start()
     {
         hasFoundPlayer = false;
+        bool facingLeft = true;
     }
 
     // Update is called once per frame
@@ -31,6 +37,16 @@ public class DetectPlayer : MonoBehaviour
             {
                 gameObject.transform.parent.position = Vector2.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
             }
+
+            if(gameObject.transform.position.x <= targetTransform.position.x && !facingLeft)
+            {
+                FlipSprite();
+            }
+            else if(gameObject.transform.position.x >= targetTransform.position.x && facingLeft)
+            {
+                FlipSprite();
+            }
+
             
         }
     }
@@ -44,5 +60,11 @@ public class DetectPlayer : MonoBehaviour
             hasFoundPlayer = true;
         }
         Debug.Log("Something entered the trigger");
+    }
+
+    private void FlipSprite()
+    {
+        facingLeft = !facingLeft;
+        objectBody.transform.Rotate(0, 180, 0);
     }
 }
