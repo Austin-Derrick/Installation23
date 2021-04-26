@@ -53,13 +53,17 @@ public class Health : MonoBehaviour
         }*/
         if(healthBar != null)
             healthBar.value = currentHealth;
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        
+
         if (collision.gameObject.name == "Bullet")
         {
-            //BounceBack(collision);
+            Debug.Log("The enemy has taken damage");
         }
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
@@ -85,6 +89,8 @@ public class Health : MonoBehaviour
         //if(source.clip != null)
         //    source.clip = audDamage[Random.Range(0, audDamage.Length)];
         //source.Play();
+
+        
     }
 
     private void BounceBack(Collision2D collision)
