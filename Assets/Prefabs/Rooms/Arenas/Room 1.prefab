@@ -10382,7 +10382,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8613668005335644609}
   - component: {fileID: 3744152628951527147}
-  - component: {fileID: 5496184926801705398}
   m_Layer: 0
   m_Name: Room 1
   m_TagString: Untagged
@@ -10427,35 +10426,7 @@ MonoBehaviour:
   - {fileID: 2677537917879266649}
   - {fileID: 1577487364240894079}
   canBeFlipped: 1
-  enemyScanCollider: {fileID: 5496184926801705398}
   usedEntrance: {fileID: 0}
-  doorsLocked: 0
---- !u!61 &5496184926801705398
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8523875421444537539}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 21.65, y: 9.97}
-  m_EdgeRadius: 0
 --- !u!1001 &5542838678015468405
 PrefabInstance:
   m_ObjectHideFlags: 0
