@@ -8,6 +8,8 @@ public class CharacterController2D : MonoBehaviour
     public Animator animator;
     private Rigidbody2D playerRigidbody;
     private CapsuleCollider2D capsuleCollider;
+    [SerializeField]
+    private Transform gunSpriteTransform;
 
     [SerializeField]
     PlayerInventory inventory;
@@ -100,7 +102,7 @@ public class CharacterController2D : MonoBehaviour
         //Character flipping based on mouse position
         if (mousePos.x >= charPos.x && !isFacingRight)
         {
-            FlipSprite();
+            FlipSprite();          
             isFacingRight = true;
         }
         if (mousePos.x <= charPos.x && isFacingRight)
@@ -160,9 +162,10 @@ public class CharacterController2D : MonoBehaviour
     }
 
     private void FlipSprite()
-    {
+    {       
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
+        gunSpriteTransform.Rotate(180, 0, 0);
     }
 
     private void CameraControl()
