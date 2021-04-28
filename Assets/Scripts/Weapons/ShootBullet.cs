@@ -50,8 +50,28 @@ public class ShootBullet : MonoBehaviour
 
     //Audio
     AudioSource source;
+
     [SerializeField]
     AudioClip[] shot;
+
+    [SerializeField]
+    AudioClip[] reloadStart;
+
+    [SerializeField]
+    AudioClip[] reloadMiddle;
+
+    [SerializeField]
+    AudioClip[] reloadEnd;
+
+    [SerializeField]
+    AudioClip[] dryFire;
+
+    [SerializeField]
+    private float pitchMin = 1;
+
+    [SerializeField]
+    private float pitchMax = 1;
+
     string aud_weapontype;
 
     public void Start()
@@ -130,10 +150,24 @@ public class ShootBullet : MonoBehaviour
     }
     IEnumerator ReloadCoroutine()
     {
+        //Start of Reload Sound
+        ReloadSound(reloadStart);
         reloading = true;
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(reloadTime/2);
+        //Middle of Reload Sound
+        ReloadSound(reloadMiddle);
+        yield return new WaitForSeconds(reloadTime/2);
         currentAmmo = maxAmmo;
-        reloading = false;
+        //Last Reload sound
+        ReloadSound(reloadEnd);
+        reloading = false;       
+    }
+
+    private void ReloadSound(AudioClip[] clipArray)
+    {
+        source.clip = clipArray[Random.Range(0, clipArray.Length)];
+        source.pitch = Random.Range(pitchMin, pitchMax);
+        source.PlayOneShot(source.clip);
     }
 
     public void FireWeapon()
@@ -144,16 +178,14 @@ public class ShootBullet : MonoBehaviour
                 if (Input.GetMouseButton(0) && Time.time > nextFire && currentAmmo != 0 && !reloading) //&& isBeingHeld == true)
                 {
                     aud_weapontype = "Machine Gun";
-                    FireRound();
-                   
+                    FireRound();                  
                 }
                 break;
             case "DMR":
                 if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo != 0 && !reloading) //&& isBeingHeld == true)
                 {
                     aud_weapontype = "Pistol";
-                    FireRound();
-                    
+                    FireRound();                    
                 }
                 break;
             case "Burst Rifle":
@@ -163,6 +195,15 @@ public class ShootBullet : MonoBehaviour
                     StartCoroutine(TimeBetweenBurst(burstRate));
                 }
                 break;
+
+            default:               
+                break;
+        }
+        if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo == 0 && !reloading)
+        {            
+            source.clip = dryFire[Random.Range(0, dryFire.Length)];
+            source.pitch = Random.Range(pitchMin, pitchMax);
+            source.PlayOneShot(source.clip);            
         }
     }
     public void FireRound()
