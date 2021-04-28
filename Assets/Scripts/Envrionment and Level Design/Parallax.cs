@@ -26,7 +26,7 @@ public class Parallax : MonoBehaviour
         //Determines distance the parallax has travelled
         float dist = (player.transform.position.x * parallaxEffect);
 
-        transform.position = new Vector3(startPos + dist, (player.transform.position.y - 15), transform.position.z);
+        transform.position = new Vector3(startPos + dist, (player.transform.position.y - 5), transform.position.z);
 
         //Keeps background repeating.
         if (temp > startPos + length)

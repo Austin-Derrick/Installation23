@@ -12563,7 +12563,6 @@ MonoBehaviour:
   - {fileID: 4916933900263143341}
   - {fileID: 8698181074310947009}
   canBeFlipped: 1
-  roomSizeCollider: {fileID: 0}
   usedEntrance: {fileID: 0}
 --- !u!1 &2713964645319399366
 GameObject:
@@ -12791,7 +12790,7 @@ PrefabInstance:
     - target: {fileID: 6433921442897210504, guid: 17dafd8c8cd26b14d99c977560f44142,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.5
+      value: -13.64
       objectReference: {fileID: 0}
     - target: {fileID: 6433921442897210504, guid: 17dafd8c8cd26b14d99c977560f44142,
         type: 3}
@@ -12988,12 +12987,12 @@ PrefabInstance:
     - target: {fileID: 6433921442897210504, guid: 17dafd8c8cd26b14d99c977560f44142,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.5
+      value: 13.64
       objectReference: {fileID: 0}
     - target: {fileID: 6433921442897210504, guid: 17dafd8c8cd26b14d99c977560f44142,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.42
+      value: -0.56
       objectReference: {fileID: 0}
     - target: {fileID: 6433921442897210504, guid: 17dafd8c8cd26b14d99c977560f44142,
         type: 3}

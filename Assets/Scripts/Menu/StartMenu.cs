@@ -25,7 +25,7 @@ public class StartMenu : MonoBehaviour
     {
         if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(1);
         }
     }
 

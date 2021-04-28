@@ -8,6 +8,8 @@ public class TimerScript : MonoBehaviour
     public float timeRemaining = 10;
     public bool timerIsRunning = false;
     public Text timeText;
+    [SerializeField]
+    public GameObject score;
 
     private void Start()
     {
@@ -30,7 +32,9 @@ public class TimerScript : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
 
+                Scene sceneToLoad = SceneManager.GetSceneByBuildIndex(2);
                 SceneManager.LoadScene(2);
+                SceneManager.MoveGameObjectToScene(score, sceneToLoad);
             }
         }
     }

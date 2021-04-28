@@ -8,6 +8,8 @@ TagManager:
   - Pickup
   - Enemy
   - FootstepMetal
+  - Door
+  - Interactive
   layers:
   - Default
   - TransparentFX
