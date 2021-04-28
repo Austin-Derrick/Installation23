@@ -91,6 +91,7 @@ public class ShootBullet : MonoBehaviour
 
     private void Update()
     {
+        
         FireWeapon();
         Reload();
     }
