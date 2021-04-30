@@ -22,17 +22,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        scene = SceneManager.GetActiveScene();
-        if (scene.name == "StartScreen")
-        {
-            Play("MM_Theme");
-            Play("MM_PowerHum");
-        }
-        else
-        {
-            Play("Theme");
-            Play("Ambience");
-        }
+      
     }
 
     // Update is called once per frame
