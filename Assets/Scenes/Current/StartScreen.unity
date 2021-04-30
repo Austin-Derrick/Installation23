@@ -148,7 +148,8 @@ AudioSource:
   m_GameObject: {fileID: 71487761}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 5485984302072063565, guid: 45bed2a1ab8b8ce4e9e2f6b0a685abac,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.3
@@ -1403,12 +1404,17 @@ PrefabInstance:
         type: 3}
       propertyPath: select
       value: 
-      objectReference: {fileID: 8300000, guid: ebdaa06d2b5817446900efdcb6b49132, type: 3}
+      objectReference: {fileID: 8300000, guid: bf5dd0fcb8884ba4c922756a39ec96ff, type: 3}
     - target: {fileID: 4185977285321016127, guid: 6ca495037a0d61f45ac360f207a2c852,
         type: 3}
       propertyPath: hover
       value: 
-      objectReference: {fileID: 8300000, guid: 166896d69f676c342bb1276e48b44a14, type: 3}
+      objectReference: {fileID: 8300000, guid: 5389e3efa5d74f646b04b4d99092ec93, type: 3}
+    - target: {fileID: 4185977285321016127, guid: 6ca495037a0d61f45ac360f207a2c852,
+        type: 3}
+      propertyPath: selectPlay
+      value: 
+      objectReference: {fileID: 8300000, guid: 39eed9216bddf9043a0c4686107bac2a, type: 3}
     - target: {fileID: 7216068272503203383, guid: 6ca495037a0d61f45ac360f207a2c852,
         type: 3}
       propertyPath: m_LocalPosition.x
