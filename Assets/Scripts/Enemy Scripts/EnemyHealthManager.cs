@@ -13,9 +13,10 @@ public class EnemyHealthManager : MonoBehaviour
     
     public void Die()
     {
+        
         //Instantiate(EnemyDeathSound, this.transform.position, this.transform.rotation);
         StartMenu.score += enemy.scoreValue;
-        if(!source.isPlaying)
+        
         source.PlayOneShot(source.clip);
         Debug.Log("Playing DeathSound");
         Invoke("killBug", .8f);
@@ -38,6 +39,7 @@ public class EnemyHealthManager : MonoBehaviour
 
     public void killBug()
     {
+        
         Destroy(this.gameObject);
     }
 }
