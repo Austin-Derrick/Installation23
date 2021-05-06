@@ -8,6 +8,7 @@ public class Health : MonoBehaviour
     private Collider2D entityCollider;
     private Rigidbody2D entityRb;
     public Damagable damagable;
+    public GameManager gameManager;
 
     [Header("Attributes")]
     public float maxHealth = 100;
@@ -44,13 +45,15 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (currentHealth <= 0)
+
+        if(currentHealth <=0 )
         {
             if(gameObject.CompareTag("Player"))
             {
-                //Game Over, or whatever we decide odn death
+                currentHealth = 0;
+                gameManager.GameOver();
             }
-        }*/
+        }
         if(healthBar != null)
             healthBar.value = currentHealth;
 
@@ -70,7 +73,7 @@ public class Health : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy") && !gameObject.CompareTag("Enemy"))
         {
             float enemyHealth = collision.gameObject.GetComponent<Health>().maxHealth;
-            //TakeDamage(enemyHealth * .1f);
+            TakeDamage(enemyHealth * .1f);
             //BounceBack(collision);
         }
     }
