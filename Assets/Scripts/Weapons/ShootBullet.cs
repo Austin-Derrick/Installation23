@@ -52,7 +52,13 @@ public class ShootBullet : MonoBehaviour
     AudioSource source;
 
     [SerializeField]
-    AudioClip[] shot;
+    AudioClip[] AutoRifle_Shot;
+
+    [SerializeField]
+    AudioClip[] DMR_Shot;
+
+    [SerializeField]
+    AudioClip[] Burst_Shot;
 
     [SerializeField]
     AudioClip[] reloadStart;
@@ -178,14 +184,14 @@ public class ShootBullet : MonoBehaviour
             case "Automatic Rifle":
                 if (Input.GetMouseButton(0) && Time.time > nextFire && currentAmmo != 0 && !reloading) //&& isBeingHeld == true)
                 {
-                    aud_weapontype = "Machine Gun";
+                    aud_weapontype = "Automatic Gun";
                     FireRound();                  
                 }
                 break;
             case "DMR":
                 if (Input.GetMouseButtonDown(0) && Time.time > nextFire && currentAmmo != 0 && !reloading) //&& isBeingHeld == true)
                 {
-                    aud_weapontype = "Pistol";
+                    aud_weapontype = "DMR";
                     FireRound();                    
                 }
                 break;
@@ -212,7 +218,7 @@ public class ShootBullet : MonoBehaviour
         nextFire = Time.time + firingRate;
         currentAmmo--;
         StartCoroutine(shootBullet(firePosition));
-        FindObjectOfType<AudioManager>().Play(aud_weapontype);
+        GunShotSound();
         //source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
     }
     public void BurstFire(float Delay)
@@ -265,11 +271,37 @@ public class ShootBullet : MonoBehaviour
         {
             currentAmmo--;
             StartCoroutine(shootBullet(firePosition));
-            FindObjectOfType<AudioManager>().Play("Pistol");
+            //FindObjectOfType<AudioManager>().Play("Pistol");
             //source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
+            GunShotSound();
             yield return new WaitForSeconds(burstDelay);
 
         }
         
+    }
+
+    private void GunShotSound()
+    {
+        if(aud_weapontype == "Automatic Gun")
+        {
+            source.clip = AutoRifle_Shot[Random.Range(0, AutoRifle_Shot.Length)];
+            source.pitch = Random.Range(pitchMin, pitchMax);
+            source.PlayOneShot(source.clip);
+            Debug.Log("Playing Automatic Gun");
+        }
+        if (aud_weapontype == "DMR")
+        {
+            source.clip = DMR_Shot[Random.Range(0, DMR_Shot.Length)];
+            source.pitch = Random.Range(pitchMin, pitchMax);
+            source.PlayOneShot(source.clip);
+            Debug.Log("Playing DMR Gun");
+        }
+        if (aud_weapontype == "Burst Shot")
+        {
+            source.clip = Burst_Shot[Random.Range(0, Burst_Shot.Length)];
+            source.pitch = Random.Range(pitchMin, pitchMax);
+            source.PlayOneShot(source.clip);
+            Debug.Log("Playing DMR Gun");
+        }
     }
 }

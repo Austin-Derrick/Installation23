@@ -59,6 +59,10 @@ public class CharacterController2D : MonoBehaviour
     Vector2 input;
     Vector2 cameraBoost = new Vector2(5f, 5f);
 
+    //Audio
+    AudioSource source;
+    public AudioClip[] land_Gravel;
+
     private void Awake()
     {
         capsuleCollider = GetComponent<CapsuleCollider2D>();
@@ -67,6 +71,7 @@ public class CharacterController2D : MonoBehaviour
         audPlayerMovement = GetComponent<AUDIO_PlayerMovement>();
         //This variable is hold the position the Camera will go ahead of the player towards.
         Vector2 cameraBoost = new Vector2(5f, 5f);
+        source = GetComponent<AudioSource>();
     }
     private void Start()
     {
@@ -128,6 +133,14 @@ public class CharacterController2D : MonoBehaviour
             Vector2 v = playerRigidbody.velocity;
             v.y = jumpHeight * .8f;
             playerRigidbody.velocity = v;
+        }
+        if(grounded == false)
+        {
+            if(grounded == true)
+            {
+                source.clip = land_Gravel[Random.Range(0, land_Gravel.Length)];
+                source.PlayOneShot(source.clip);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.T))

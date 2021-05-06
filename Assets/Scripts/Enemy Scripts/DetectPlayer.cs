@@ -17,7 +17,7 @@ public class DetectPlayer : MonoBehaviour
     float speed = 1f;
 
     [SerializeField]
-    bool hasFoundPlayer = false;
+   public bool hasFoundPlayer = false;
     bool facingLeft;
     
 
