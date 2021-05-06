@@ -11350,7 +11350,7 @@ GameObject:
   - component: {fileID: 5495350971911723520}
   - component: {fileID: 2474004441426263774}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal (1)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11409,7 +11409,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11431,7 +11431,7 @@ GameObject:
   - component: {fileID: 2329524537221663853}
   - component: {fileID: 9026413922687540199}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11490,7 +11490,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -11554,8 +11554,14 @@ MonoBehaviour:
   entrances:
   - {fileID: 2435987067930108355}
   - {fileID: 3686992517479294830}
+  doors:
+  - {fileID: 3015023808678439213}
+  - {fileID: 2007380230080777222}
   canBeFlipped: 1
   usedEntrance: {fileID: 0}
+  doorsLocked: 0
+  spawnZone: {fileID: 8349249940691961689}
+  OpenDoor: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
 --- !u!1 &6051096690038242128
 GameObject:
   m_ObjectHideFlags: 0
@@ -11883,3 +11889,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7088054772602549296}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8349249940691961689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
+    type: 3}
+  m_PrefabInstance: {fileID: 7088054772602549296}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b4bdf69bb4c584e8ba52423220fd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

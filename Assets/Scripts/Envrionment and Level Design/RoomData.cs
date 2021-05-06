@@ -13,14 +13,10 @@ public class RoomData : MonoBehaviour
     [SerializeField]
     private bool canBeFlipped;
 
-    //[SerializeField]
-    //private BoxCollider2D enemyScanCollider;
-
     private CompositeCollider2D compCollider;
 
     public GameObject usedEntrance;
 
-    
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +28,7 @@ public class RoomData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     
     public void FlipSide()

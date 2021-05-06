@@ -4,15 +4,15 @@ using UnityEngine;
 
 
 public class RoomGeneration : MonoBehaviour
-{
+{   
     [SerializeField]
     private GameObject[] arenaRooms;
-
     [SerializeField]
     private GameObject[] hallwayRooms;
-
     [SerializeField]
     private GameObject[] verticalRooms;
+
+    
 
     // Start is called before the first frame update
     void Start()
