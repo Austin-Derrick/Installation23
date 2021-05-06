@@ -12562,8 +12562,14 @@ MonoBehaviour:
   entrances:
   - {fileID: 4916933900263143341}
   - {fileID: 8698181074310947009}
+  doors:
+  - {fileID: 2713964645319399366}
+  - {fileID: 4868930765269316426}
   canBeFlipped: 1
   usedEntrance: {fileID: 0}
+  doorsLocked: 0
+  spawnZone: {fileID: 4020055906195241966}
+  OpenDoor: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
 --- !u!1 &2713964645319399366
 GameObject:
   m_ObjectHideFlags: 0
@@ -12575,7 +12581,7 @@ GameObject:
   - component: {fileID: 1552166706953595001}
   - component: {fileID: 1902845901296018863}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12634,7 +12640,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12700,7 +12706,7 @@ GameObject:
   - component: {fileID: 3651874528292099595}
   - component: {fileID: 4300161829329176890}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12759,7 +12765,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12871,22 +12877,22 @@ PrefabInstance:
     - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_Size.x
-      value: 19.988632
+      value: 18.08
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_Size.y
-      value: 9.825321
+      value: 4.36
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.7833538
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.320179
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
@@ -12912,12 +12918,12 @@ PrefabInstance:
     - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
         type: 3}
@@ -12972,6 +12978,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2758931252942964871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4020055906195241966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
+    type: 3}
+  m_PrefabInstance: {fileID: 2758931252942964871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2b4bdf69bb4c584e8ba52423220fd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3312658870614096257
 PrefabInstance:
   m_ObjectHideFlags: 0

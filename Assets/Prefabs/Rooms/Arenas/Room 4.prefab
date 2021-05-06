@@ -182,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3202679390191723118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.13, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9057346472753220251}
@@ -214,8 +214,12 @@ MonoBehaviour:
   - {fileID: 8400098647898630743}
   - {fileID: 8719341571413356155}
   - {fileID: 5117203668426602697}
+  doors: []
   canBeFlipped: 0
   usedEntrance: {fileID: 0}
+  doorsLocked: 0
+  spawnZone: {fileID: 0}
+  OpenDoor: {fileID: 0}
 --- !u!1 &5267875647281428400
 GameObject:
   m_ObjectHideFlags: 0

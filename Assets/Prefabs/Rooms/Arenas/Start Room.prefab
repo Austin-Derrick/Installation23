@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 1256908709833092986}
   - component: {fileID: 4795583484643628513}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 1076961903441726553}
   - component: {fileID: 1169078584995401965}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal (2)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,7 +195,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 1847332270778973203}
   - component: {fileID: 2720191764131686053}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal (1)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -326,6 +326,7 @@ Transform:
   - {fileID: 3896201058902734837}
   - {fileID: 590997420697599323}
   - {fileID: 7764603614402810383}
+  - {fileID: 1262040162232233037}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -347,9 +348,16 @@ MonoBehaviour:
   - {fileID: 477222867305534801}
   - {fileID: 4088948052240326655}
   - {fileID: 6578651066888679595}
+  doors:
+  - {fileID: 1650304142979070647}
+  - {fileID: 3365827274875579895}
+  - {fileID: 2811258397158896231}
+  - {fileID: 8277120675462516832}
   canBeFlipped: 0
-  roomSizeCollider: {fileID: 0}
   usedEntrance: {fileID: 0}
+  doorsLocked: 1
+  spawnZone: {fileID: 0}
+  OpenDoor: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
 --- !u!1 &5018542535003214107
 GameObject:
   m_ObjectHideFlags: 0
@@ -5276,7 +5284,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 10
-      m_TileSpriteIndex: 10
+      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -25948,9 +25956,8 @@ Tilemap:
   - m_RefCount: 3
     m_Data: {fileID: -7155731974257518825, guid: 327e497cab9f4ab45be85b0a53ed1ccc,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: -7223522575224913941, guid: 95b6d5a5933616f428ce4ca7016e654c,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -5927804329306753253, guid: 95b6d5a5933616f428ce4ca7016e654c,
       type: 3}
@@ -25978,8 +25985,9 @@ Tilemap:
   - m_RefCount: 8
     m_Data: {fileID: 4850627170950606426, guid: fb1b89d534082434b954c5e52c55c0e3,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -7223522575224913941, guid: 95b6d5a5933616f428ce4ca7016e654c,
+      type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2827
     m_Data:
@@ -26167,30 +26175,6 @@ CompositeCollider2D:
   - m_Collider: {fileID: 6192644053012926386}
     m_ColliderPaths:
     - - X: 230000000
-        Y: -100
-      - X: 230000041
-        Y: -100
-      - X: 230000100
-        Y: -41
-      - X: 230000100
-        Y: 50000041
-      - X: 230000041
-        Y: 50000100
-      - X: 230000000
-        Y: 50000100
-      - X: 230000000
-        Y: 59999900
-      - X: 230000041
-        Y: 59999900
-      - X: 230000100
-        Y: 59999959
-      - X: 230000100
-        Y: 110000041
-      - X: 230000041
-        Y: 110000100
-      - X: 230000000
-        Y: 110000100
-      - X: 230000000
         Y: 320000000
       - X: 170000000
         Y: 320000000
@@ -27208,10 +27192,10 @@ CompositeCollider2D:
         Y: 100234376
       - X: 125937504
         Y: 100000000
-      - X: 129999900
+      - X: 130000000
         Y: 100000000
-      - X: 129999900
-        Y: 69687653
+      - X: 130000000
+        Y: 69687504
       - X: 129843752
         Y: 69921872
       - X: 121328128
@@ -27402,10 +27386,10 @@ CompositeCollider2D:
         Y: 40156248
       - X: 127500000
         Y: 40000000
-      - X: 129999900
+      - X: 130000000
         Y: 40000000
-      - X: 129999900
-        Y: 9687650
+      - X: 130000000
+        Y: 9687500
       - X: 129843752
         Y: 9921875
       - X: 121328128
@@ -27660,9 +27644,9 @@ CompositeCollider2D:
         Y: 9921875
       - X: -129843752
         Y: 9843750
-      - X: -129999900
-        Y: 9687600
-      - X: -129999900
+      - X: -130000000
+        Y: 9687500
+      - X: -130000000
         Y: 40000000
       - X: -129687504
         Y: 40000000
@@ -27856,9 +27840,9 @@ CompositeCollider2D:
         Y: 69921872
       - X: -129843752
         Y: 69843752
-      - X: -129999900
-        Y: 69687604
-      - X: -129999900
+      - X: -130000000
+        Y: 69687504
+      - X: -130000000
         Y: 100000000
       - X: -127265624
         Y: 100000000
@@ -28727,30 +28711,6 @@ CompositeCollider2D:
       - X: -230000000
         Y: 160000000
       - X: -230000000
-        Y: 110000100
-      - X: -230000041
-        Y: 110000100
-      - X: -230000100
-        Y: 110000041
-      - X: -230000100
-        Y: 59999959
-      - X: -230000041
-        Y: 59999900
-      - X: -230000000
-        Y: 59999900
-      - X: -230000000
-        Y: 50000100
-      - X: -230000041
-        Y: 50000100
-      - X: -230000100
-        Y: 50000041
-      - X: -230000100
-        Y: -41
-      - X: -230000041
-        Y: -100
-      - X: -230000000
-        Y: -100
-      - X: -230000000
         Y: -90000000
       - X: 230000000
         Y: -90000000
@@ -29284,8 +29244,8 @@ CompositeCollider2D:
       - {x: 12.27344, y: 10}
       - {x: 12.414065, y: 10.023437}
       - {x: 12.593752, y: 10}
-      - {x: 12.99999, y: 9.99997}
-      - {x: 12.999919, y: 6.968872}
+      - {x: 13, y: 9.99997}
+      - {x: 12.999929, y: 6.968857}
       - {x: 12.984361, y: 6.9921875}
       - {x: 12.1328125, y: 6.9921875}
       - {x: 12.015617, y: 6.984368}
@@ -29381,8 +29341,8 @@ CompositeCollider2D:
       - {x: 12.679694, y: 4.0000043}
       - {x: 12.703137, y: 4.0156207}
       - {x: 12.750004, y: 4}
-      - {x: 12.99999, y: 3.9999704}
-      - {x: 12.999919, y: 0.96887153}
+      - {x: 13, y: 3.9999704}
+      - {x: 12.999929, y: 0.9688565}
       - {x: 12.984361, y: 0.9921875}
       - {x: 12.1328125, y: 0.99218744}
       - {x: 12.015617, y: 0.9843681}
@@ -29510,8 +29470,8 @@ CompositeCollider2D:
       - {x: -12.015639, y: 0.9921875}
       - {x: -12.8671875, y: 0.99218744}
       - {x: -12.984383, y: 0.9843681}
-      - {x: -12.99999, y: 0.9688474}
-      - {x: -12.999961, y: 4}
+      - {x: -13, y: 0.96883744}
+      - {x: -12.99997, y: 4}
       - {x: -12.968742, y: 4.0000076}
       - {x: -12.945294, y: 4.0234265}
       - {x: -12.906242, y: 4}
@@ -29608,8 +29568,8 @@ CompositeCollider2D:
       - {x: -12.015639, y: 6.9921875}
       - {x: -12.8671875, y: 6.9921875}
       - {x: -12.984383, y: 6.984368}
-      - {x: -12.99999, y: 6.968848}
-      - {x: -12.999961, y: 10}
+      - {x: -13, y: 6.9688377}
+      - {x: -12.99997, y: 10}
       - {x: -12.726561, y: 10}
       - {x: -12.585935, y: 10.023437}
       - {x: -12.406248, y: 10}
@@ -30066,7 +30026,7 @@ GameObject:
   - component: {fileID: 3217908821334581190}
   - component: {fileID: 1479543846149822635}
   m_Layer: 0
-  m_Name: Portaldoorwithoutportal (3)
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30125,7 +30085,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 145fe7f531f68a0479597a493e7e7f3b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f75126ff2c8f2439565873dc5da674, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -30136,6 +30096,107 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &146349862
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8791060759473156787}
+    m_Modifications:
+    - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 13.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946984, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946985, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: enemyPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: -529939980243732275, guid: 6b29aba020b1da24c9bfe47f826da037,
+        type: 3}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.190625
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1262040162105946990, guid: a7d40194a587e2344baa6e825633dcff,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemySpawnZone
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7d40194a587e2344baa6e825633dcff, type: 3}
+--- !u!4 &1262040162232233037 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1262040162105946987, guid: a7d40194a587e2344baa6e825633dcff,
+    type: 3}
+  m_PrefabInstance: {fileID: 146349862}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1154654554892343349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30156,7 +30217,7 @@ PrefabInstance:
     - target: {fileID: 3961588170351977822, guid: eb1ed521bbb8b4041bf60f50098cc961,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5038643
+      value: -1.491
       objectReference: {fileID: 0}
     - target: {fileID: 3961588170351977822, guid: eb1ed521bbb8b4041bf60f50098cc961,
         type: 3}
@@ -30211,7 +30272,7 @@ PrefabInstance:
     - target: {fileID: 3961588170351977822, guid: eb1ed521bbb8b4041bf60f50098cc961,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8081468
+      value: 0.78778857
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb1ed521bbb8b4041bf60f50098cc961, type: 3}
@@ -30378,6 +30439,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Side Connector Point (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7621384581983063596, guid: 17dafd8c8cd26b14d99c977560f44142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17dafd8c8cd26b14d99c977560f44142, type: 3}
 --- !u!1 &6578651066888679595 stripped
@@ -30458,6 +30524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Side Connector Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621384581983063596, guid: 17dafd8c8cd26b14d99c977560f44142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17dafd8c8cd26b14d99c977560f44142, type: 3}
@@ -30545,6 +30616,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Side Connector Point (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7621384581983063596, guid: 17dafd8c8cd26b14d99c977560f44142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactive
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17dafd8c8cd26b14d99c977560f44142, type: 3}
 --- !u!1 &4088948052240326655 stripped
@@ -30625,6 +30701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Side Connector Point (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621384581983063596, guid: 17dafd8c8cd26b14d99c977560f44142,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interactive
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17dafd8c8cd26b14d99c977560f44142, type: 3}
