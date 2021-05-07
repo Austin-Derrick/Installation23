@@ -238,7 +238,6 @@ public class ShootBullet : MonoBehaviour
         {
             if (hitInfo.collider.isTrigger != true)
             {
-                Debug.Log("The Bullet is not hitting a trigger");
                 lineRenderer.SetPosition(0, shootPosition.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
                 if (hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
@@ -275,9 +274,7 @@ public class ShootBullet : MonoBehaviour
             //source.PlayOneShot(shot[Random.Range(0, shot.Length)]);
             GunShotSound();
             yield return new WaitForSeconds(burstDelay);
-
-        }
-        
+        }        
     }
 
     private void GunShotSound()

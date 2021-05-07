@@ -59,7 +59,6 @@ public class DetectPlayer : MonoBehaviour
             targetTransform = collision.gameObject.transform;
             hasFoundPlayer = true;
         }
-        Debug.Log("Something entered the trigger");
     }
 
     private void FlipSprite()

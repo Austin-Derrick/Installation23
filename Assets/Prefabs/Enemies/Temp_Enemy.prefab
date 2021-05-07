@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7159198315256562774}
   - component: {fileID: 5727436503677711440}
   - component: {fileID: 412820168727524728}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Temp_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagable: {fileID: 0}
+  gameManager: {fileID: 0}
   maxHealth: 40
   armor: 5
   currentHealth: 40
@@ -396,7 +397,7 @@ GameObject:
   - component: {fileID: 7738011277744602520}
   - component: {fileID: 7738011277744602526}
   - component: {fileID: 7738011277744602521}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DetectionRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}

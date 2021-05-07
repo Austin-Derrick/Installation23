@@ -13,16 +13,29 @@ public class MusicManager : MonoBehaviour
     AudioSource source01;
     [SerializeField]
     AudioSource source02;
-    DetectPlayer[] detectPlayer;
+
+    [SerializeField]
+    Enemy[] enemy;
+
     public AudioMixerSnapshot CombatMusic;
     public AudioMixerSnapshot NormalMusic;
+
+    private GameObject player;
+    private CapsuleCollider2D capCollider;
+    private bool isPlayingCombatMusic;
+    [SerializeField]
+    private float detectionRadius;
+
+
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
         source01 = GetComponent<AudioSource>();
+
         source01.clip = normalMusic;
         source01.loop = true;
         source01.Play();
+
         source02.clip = combatMusic;
         source02.loop = true;
         source02.Play();
@@ -30,18 +43,39 @@ public class MusicManager : MonoBehaviour
 
     private void Update()
     {
-        detectPlayer = FindObjectsOfType<DetectPlayer>();
-        for(int i = 0; i < detectPlayer.Length; i++)
-        {
-            if (detectPlayer[i].hasFoundPlayer)
-            {
-                CombatMusic.TransitionTo(1f);
-            }
-        }
-        if(detectPlayer.Length == 0)
-        {
-            NormalMusic.TransitionTo(1f);
-        }
-    }
+        enemy = FindObjectsOfType<Enemy>();
 
+        if(enemy.Length > 0)
+        {
+            Debug.Log("Playing Combat Music");
+            SwitchToCombatMusic();
+        }
+        else
+        {
+            Debug.Log("Playing Normal Music");
+            SwitchToNormalMusic();
+        }
+        //for (int i = 0; i < enemy.Length; i++)
+        //{
+        //    if (enemy[i].isActiveAndEnabled)
+        //    {
+        //        source02.clip = combatMusic;
+        //        source02.loop = true;
+        //        source02.Play();
+        //        CombatMusic.TransitionTo(1f);
+        //    }
+        //}
+        //else
+        //{
+        //    NormalMusic.TransitionTo(1f);
+        //}
+    }
+    private void SwitchToCombatMusic()
+    {       
+        CombatMusic.TransitionTo(1f);
+    }
+    private void SwitchToNormalMusic()
+    {
+        NormalMusic.TransitionTo(1f);
+    }
 }

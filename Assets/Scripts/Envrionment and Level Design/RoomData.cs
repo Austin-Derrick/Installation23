@@ -22,7 +22,6 @@ public class RoomData : MonoBehaviour
     void Start()
     {
         compCollider = GetComponentInChildren<CompositeCollider2D>();
-        Debug.Log(compCollider.bounds);
     }
 
     // Update is called once per frame
