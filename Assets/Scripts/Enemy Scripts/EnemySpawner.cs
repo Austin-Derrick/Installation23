@@ -25,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     void Update()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
+        
     }
 
     private void OnTriggerExit2D(Collider2D collision)

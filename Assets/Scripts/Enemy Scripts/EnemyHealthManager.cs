@@ -9,6 +9,7 @@ public class EnemyHealthManager : MonoBehaviour
     Enemy enemy;
     public AudioClip[] deathSound;
     public AudioSource source;
+    public GameObject healthPickup;
     //public GameObject EnemyDeathSound;
     
     public void Die()
@@ -16,10 +17,15 @@ public class EnemyHealthManager : MonoBehaviour
         
         //Instantiate(EnemyDeathSound, this.transform.position, this.transform.rotation);
         StartMenu.score += enemy.scoreValue;
-        
+        int num = Random.Range(0, 3);
+        for (int i = 0; i <= num; i++)
+        {
+            Instantiate(healthPickup, enemy.transform.position, enemy.transform.rotation);
+        }
         source.PlayOneShot(source.clip);
         Debug.Log("Playing DeathSound");
-        Invoke("killBug", .8f);
+        Invoke("killBug", 2f);
+        
         //Destroy(gameObject);
     }
     // Start is called before the first frame update

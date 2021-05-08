@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     private Rigidbody2D entityRb;
     public Damagable damagable;
     public GameManager gameManager;
+    public SpriteRenderer sprite;
 
     [Header("Attributes")]
     public float maxHealth = 100;
@@ -45,13 +46,24 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         if(currentHealth <=0 )
         {
             if(gameObject.CompareTag("Player"))
             {
                 currentHealth = 0;
                 gameManager.GameOver();
+            }
+            if(gameObject.CompareTag("Enemy"))
+            {
+                entityCollider.enabled = false;
+                if(sprite != null)
+                {
+                    sprite.enabled = false;
+                }
             }
         }
         if(healthBar != null)
@@ -61,10 +73,10 @@ public class Health : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {       
-
-        if (collision.gameObject.name == "Bullet")
+        if(collision.gameObject.CompareTag("HealthPot") && gameObject.CompareTag("Player"))
         {
-            Debug.Log("The enemy has taken damage");
+            currentHealth += (maxHealth * .05f);
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
@@ -73,7 +85,7 @@ public class Health : MonoBehaviour
         if(collision.gameObject.CompareTag("Enemy") && !gameObject.CompareTag("Enemy"))
         {
             float enemyHealth = collision.gameObject.GetComponent<Health>().maxHealth;
-            TakeDamage(enemyHealth * .1f);
+            TakeDamage(enemyHealth * .3f);
             //BounceBack(collision);
         }
     }

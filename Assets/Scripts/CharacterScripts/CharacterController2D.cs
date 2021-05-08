@@ -59,6 +59,8 @@ public class CharacterController2D : MonoBehaviour
     Vector2 input;
     Vector2 cameraBoost = new Vector2(5f, 5f);
 
+    public SpriteRenderer rKey;
+
     //Audio
     AudioSource source;
     public AudioClip[] land_Gravel;
@@ -101,6 +103,8 @@ public class CharacterController2D : MonoBehaviour
 
         //Updates mouse and character positions
         mouseAndCharacterPosition();
+
+        
 
         //playerCam.transform.position = gameObject.transform.position + cameraOffset;
 
@@ -175,7 +179,8 @@ public class CharacterController2D : MonoBehaviour
     }
 
     private void FlipSprite()
-    {       
+    {      
+        
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
         gunSpriteTransform.Rotate(180, 0, 0);

@@ -10,6 +10,7 @@ TagManager:
   - FootstepMetal
   - Door
   - Interactive
+  - HealthPot
   layers:
   - Default
   - TransparentFX
