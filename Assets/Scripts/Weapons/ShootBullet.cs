@@ -11,6 +11,9 @@ public class ShootBullet : MonoBehaviour
     public int maxAmmo;
     public int currentAmmo;
 
+
+    public GameObject reloadImage;
+
     [SerializeField]
     GameObject bulletPrefab;
 
@@ -97,7 +100,14 @@ public class ShootBullet : MonoBehaviour
 
     private void Update()
     {
-        
+        if(currentAmmo <= 0)
+        {
+            reloadImage.active = true;
+        }
+        else
+        {
+            reloadImage.active = false;
+        }
         FireWeapon();
         Reload();
     }
@@ -240,7 +250,7 @@ public class ShootBullet : MonoBehaviour
             {
                 lineRenderer.SetPosition(0, shootPosition.position);
                 lineRenderer.SetPosition(1, hitInfo.point);
-                if (hitInfo.collider.gameObject.CompareTag("Player") || hitInfo.collider.gameObject.CompareTag("Enemy"))
+                if (/*hitInfo.collider.gameObject.CompareTag("Player") ||*/ hitInfo.collider.gameObject.CompareTag("Enemy"))
                 {
                     hitInfo.collider.gameObject.GetComponent<Damagable>().hitByPlayer(damage);
                     //hitInfo.collider.gameObject.GetComponent<Health>().TakeDamage(damage);
