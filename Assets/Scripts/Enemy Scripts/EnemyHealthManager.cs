@@ -17,7 +17,7 @@ public class EnemyHealthManager : MonoBehaviour
         
         //Instantiate(EnemyDeathSound, this.transform.position, this.transform.rotation);
         StartMenu.score += enemy.scoreValue;
-        int num = Random.Range(0, 3);
+        int num = Random.Range(0, 2);
         for (int i = 0; i <= num; i++)
         {
             Instantiate(healthPickup, enemy.transform.position, enemy.transform.rotation);
