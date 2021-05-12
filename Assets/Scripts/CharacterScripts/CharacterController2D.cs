@@ -23,6 +23,11 @@ public class CharacterController2D : MonoBehaviour
     private float speed = 10;
 
     [SerializeField]
+    private float airClamp;
+
+    private float normalClamp;
+
+    [SerializeField]
     Camera playerCam;
 
     [SerializeField]
@@ -74,6 +79,7 @@ public class CharacterController2D : MonoBehaviour
         //This variable is hold the position the Camera will go ahead of the player towards.
         Vector2 cameraBoost = new Vector2(5f, 5f);
         source = GetComponent<AudioSource>();
+        normalClamp = playerRigidbody.drag;
     }
     private void Start()
     {
@@ -94,7 +100,14 @@ public class CharacterController2D : MonoBehaviour
             playerRigidbody.velocity = new Vector2(input.x * speed, playerRigidbody.velocity.y);
         }
         animator.SetBool("isGrounded", grounded);
-        //RotateItemInHands();
+        if(!grounded && playerRigidbody.velocity.y <0)
+        {
+            playerRigidbody.drag = airClamp;
+        }
+        else
+        {
+            playerRigidbody.drag = normalClamp;
+        }
     }
 
     private void Update()
