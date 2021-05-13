@@ -10,6 +10,9 @@ public class StartMenu : MonoBehaviour
     public AudioClip selectPlay;
     public AudioClip select;
     public AudioClip hover;
+    private bool showingCredits = false;
+    [SerializeField]
+    private Canvas creditsCanvas;
 
     // Start is called before the first frame update
  
@@ -55,27 +58,34 @@ public class StartMenu : MonoBehaviour
     //Audio
 
     public void PlayHover()
-    {
-       
+    {      
             source.clip = hover;
             source.PlayOneShot(source.clip);
-        
-
     }
 
     public void Select()
-    {
-        
+    {        
             source.clip = select;
-            source.PlayOneShot(source.clip);
-        
+            source.PlayOneShot(source.clip);        
     }
 
     public void SelectPlay()
-    {
-       
+    {      
             source.clip = selectPlay;
-            source.PlayOneShot(source.clip);
-        
+            source.PlayOneShot(source.clip);       
+    }
+    public void ToggleCredits()
+    {
+        Debug.Log("Toggling Credits");
+        if(!showingCredits)
+        {
+            showingCredits = true;
+            creditsCanvas.enabled = true;
+        }
+        else
+        {
+            showingCredits = false;
+            creditsCanvas.enabled = false;
+        }
     }
 }

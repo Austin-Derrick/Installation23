@@ -53,15 +53,13 @@ public class TextBoxManager : MonoBehaviour
 
     void Update()
     {
-
         if(!isActive)
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
-        {
-            
+        if (Input.GetKeyDown(KeyCode.Return))
+        {            
             if(!isTyping)
             {
                 FindObjectOfType<AudioManager>().Play("Dialogue");
@@ -81,10 +79,7 @@ public class TextBoxManager : MonoBehaviour
             {
                 cancelTyping = true;
             }
-
-
         }
-
     }
 
     private IEnumerator TextScroll (string lineOfText)

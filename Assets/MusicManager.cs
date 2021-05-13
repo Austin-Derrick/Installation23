@@ -47,12 +47,10 @@ public class MusicManager : MonoBehaviour
 
         if(enemy.Length > 0)
         {
-            Debug.Log("Playing Combat Music");
             SwitchToCombatMusic();
         }
         else
         {
-            Debug.Log("Playing Normal Music");
             SwitchToNormalMusic();
         }
         //for (int i = 0; i < enemy.Length; i++)
