@@ -15,9 +15,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     Vector2 spawnCheckRange;
 
+    private GameObject parentRoom;
     // Start is called before the first frame update
     void Start()
     {
+        parentRoom = gameObject.transform.parent.gameObject;
         SpawnEnemyWave(waveNumber);
     }
 
@@ -67,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
             enemiesToSpawn = GetRandEnemyNum(enemyWave);
         for (int i = 0; i < enemiesToSpawn; i++)
         {
-            Instantiate(enemyPrefabs[0], GenerateSpawnPos(), enemyPrefabs[0].transform.rotation);
+            Instantiate(enemyPrefabs[0], GenerateSpawnPos(), enemyPrefabs[0].transform.rotation,parentRoom.transform);
         }
     }
 

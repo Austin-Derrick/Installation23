@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
@@ -13,24 +15,25 @@ public class StartMenu : MonoBehaviour
     private bool showingCredits = false;
     [SerializeField]
     private Canvas creditsCanvas;
-
     // Start is called before the first frame update
- 
 
-   
 
+
+    private void Start()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Update is called once per frame
     void Update()
     {
-
         source = GetComponent<AudioSource>();
-
     }
 
     public void GoToFirstLevel()
     {
         if (!FindObjectOfType<AudioManager>().GetComponent<AudioSource>().isPlaying)
         {
+            score = 0;
             SceneManager.LoadScene(1);
         }
     }

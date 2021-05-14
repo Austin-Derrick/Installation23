@@ -52,10 +52,13 @@ public class Health : MonoBehaviour
         }
         if(currentHealth <=0 )
         {
-            if(gameObject.CompareTag("Player"))
+            if (gameObject.CompareTag("Player"))
             {
                 currentHealth = 0;
-                gameManager.GameOver();
+                if (gameManager != null)
+                { 
+                    gameManager.GameOver();
+                }
             }
             if(gameObject.CompareTag("Enemy"))
             {
@@ -95,7 +98,7 @@ public class Health : MonoBehaviour
     {
         //Temp formula for armor damage reduction, provides 50% armor reduction at 50 armor stat and provides diminishing returns above.
         currentHealth = currentHealth - (damage - ((damage * (armor / (armor + 50)))));
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && gameObject.CompareTag("Enemy"))
         {
             GetComponent<EnemyHealthManager>().Die();
         }

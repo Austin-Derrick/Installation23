@@ -10,18 +10,22 @@ public class EnemyHealthManager : MonoBehaviour
     public AudioClip[] deathSound;
     public AudioSource source;
     public GameObject healthPickup;
+    public GameObject splatEffect;
     //public GameObject EnemyDeathSound;
     
+
     public void Die()
-    {
-        
+    {        
         //Instantiate(EnemyDeathSound, this.transform.position, this.transform.rotation);
         StartMenu.score += enemy.scoreValue;
         int num = Random.Range(0, 2);
         for (int i = 0; i <= num; i++)
         {
-            Instantiate(healthPickup, enemy.transform.position, enemy.transform.rotation);
+            Instantiate(healthPickup, enemy.transform.position, enemy.transform.rotation,gameObject.transform.parent.gameObject.transform);
+            
         }
+        Vector3 splatAngle = new Vector3(-90, 0, 0);
+        Instantiate(splatEffect, enemy.transform.position, Quaternion.Euler(splatAngle));
         source.PlayOneShot(source.clip);
         Debug.Log("Playing DeathSound");
         Invoke("killBug", 2f);

@@ -29,7 +29,7 @@ public class MusicManager : MonoBehaviour
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
         source01 = GetComponent<AudioSource>();
 
         source01.clip = normalMusic;

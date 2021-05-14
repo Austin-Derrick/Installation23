@@ -8,7 +8,13 @@ public class ShootBullet : MonoBehaviour
     private bool isBeingHeld = false;
 
     [SerializeField]
+    private Sprite[] gunSprites;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
     public int maxAmmo;
+
     public int currentAmmo;
 
 
@@ -102,58 +108,64 @@ public class ShootBullet : MonoBehaviour
     {
         if(currentAmmo <= 0)
         {
-            reloadImage.active = true;
+            reloadImage.SetActive(true);
         }
         else
         {
-            reloadImage.active = false;
+            reloadImage.SetActive(false);
         }
         FireWeapon();
         Reload();
     }
     private void GenerateWeapon()
     {
-        if(weaponTypeDebug != 0)
+        if (weaponTypeDebug == 0)
         {
-            switch(weaponTypeDebug)
-            {
-                case 1:
-                    weaponType = "Automatic Rifle";
-                    break;
-                case 2:
-                    weaponType = "DMR";
-                    break;
-                case 3:
-                    weaponType = "Burst Rifle";
-                    break;
+            weaponTypeDebug = Random.Range(1, 4);
+            if (weaponTypeDebug == 4)
+                weaponTypeDebug = 3;
+        }           
+        switch (weaponTypeDebug)
+        {
+            case 1:
+                weaponType = "Automatic Rifle";
+                break;
+            case 2:
+                weaponType = "DMR";
+                break;
+            case 3:
+                weaponType = "Burst Rifle";
+                break;
 
-            }
         }
         Debug.Log("Weapon type is " + weaponType);
 
         switch(weaponType)
         {
             case "Automatic Rifle":
-                damage = Random.Range(20, 30);
+                damage = Random.Range(15, 20);
                 firingRate = Random.Range(.07f, .1f);
                 reloadTime = 1f + (damage/50);
                 maxAmmo = 15 + ((Random.Range(1, 5) * 5));
-                
+                spriteRenderer.sprite = gunSprites[0];
+
                 break;
             case "DMR":
                 damage = Random.Range(75, 100);
                 firingRate = .5f;
                 reloadTime = .5f + (damage / 50);
                 maxAmmo = 4 + Random.Range(0, 6);
-                
+                spriteRenderer.sprite = gunSprites[1];
+
                 break;
             case "Burst Rifle":
-                damage = Random.Range(35, 45);
+                damage = Random.Range(20, 30);
                 burstRate = Random.Range(.075f, .125f);
                 firingRate = burstRate * 4;
                 reloadTime = .2f + (damage / 50);
                 maxAmmo = 3 * (Random.Range(5, 10));
-                
+                spriteRenderer.sprite = gunSprites[2];
+
                 break;
         }
     }

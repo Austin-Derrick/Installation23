@@ -15,6 +15,7 @@ public class TimerScript : MonoBehaviour
     {
         // Starts the timer automatically
         timerIsRunning = true;
+        timeText.color = new Color(255, 255, 255);
     }
 
     void Update()
@@ -36,6 +37,12 @@ public class TimerScript : MonoBehaviour
                 SceneManager.LoadScene(2);
                 SceneManager.MoveGameObjectToScene(score, sceneToLoad);
             }
+            if(timeRemaining < 60)
+            {
+                timeText.color = new Color(245, 33, 0);
+            }
+            if (timeRemaining < 30)
+                timeText.color = new Color(250, 0, 0);
         }
     }
 

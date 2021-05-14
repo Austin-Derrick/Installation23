@@ -102,7 +102,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 3
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   sprite: {fileID: 7738011276479687946}
   maxHealth: 60
-  armor: 20
+  armor: 10
   currentHealth: 60
   damageBounceBack: 10
   healthBar: {fileID: 0}
@@ -150,6 +150,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fdf1a9c28b66f094f8c1a998e3a1f7a1, type: 3}
   source: {fileID: 7159198315256562774}
   healthPickup: {fileID: 6094770262683616065, guid: df45dae4aae13f64bab23a88e56dcd53,
+    type: 3}
+  splatEffect: {fileID: 1845226498693611315, guid: 74b71cc184db23944993a22377e5e0f5,
     type: 3}
 --- !u!114 &-529939980243732275
 MonoBehaviour:

@@ -16,7 +16,7 @@ public class TextBoxManager : MonoBehaviour
     public int currentLine = 0;
     public int endAtLine = 0;
 
-    public CharacterController2D[] players;
+    public CharacterController2D player;
 
     public bool isActive;
 
@@ -30,7 +30,7 @@ public class TextBoxManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        players = FindObjectsOfType<CharacterController2D>();
+        player = FindObjectOfType<CharacterController2D>();
         if(textFile != null)
         {
             textLines = (textFile.text.Split('\n'));
@@ -99,29 +99,21 @@ public class TextBoxManager : MonoBehaviour
         enterKey.enabled = true;
         isTyping = false;
         cancelTyping = false;
-
     }
 
     public void EnableTextBox()
     {
-
         textBox.SetActive(true);
         isActive = true;
-        for(int i = 0; i >= players.Length - 1; i++)
-        {
-            players[i].SetSpeedToZero();
-            StartCoroutine(TextScroll(textLines[currentLine]));
-        }
+        player.SetSpeedToZero();
+        StartCoroutine(TextScroll(textLines[currentLine]));
     }
 
     public void DisableTextBox()
     {
         textBox.SetActive(false);
         isActive = false;
-        for (int i = 0; i >= players.Length - 1; i++)
-        {
-            players[i].ReturnSpeedToDefault();
-        }
+        player.ReturnSpeedToDefault();
     }
 
     public void ReloadScript(TextAsset newText)

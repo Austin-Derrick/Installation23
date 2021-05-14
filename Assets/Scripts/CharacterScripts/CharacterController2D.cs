@@ -64,7 +64,7 @@ public class CharacterController2D : MonoBehaviour
     Vector2 input;
     Vector2 cameraBoost = new Vector2(5f, 5f);
 
-    public SpriteRenderer rKey;
+    public GameObject rKey;
 
     //Audio
     AudioSource source;
@@ -197,6 +197,7 @@ public class CharacterController2D : MonoBehaviour
         isFacingRight = !isFacingRight;
         transform.Rotate(0, 180, 0);
         gunSpriteTransform.Rotate(180, 0, 0);
+        rKey.transform.Rotate(0, 180, 0);
     }
 
     private void CameraControl()
